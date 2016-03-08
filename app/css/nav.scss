@@ -1,16 +1,16 @@
-.main-nav {
-    background: #002F2F;
-    height: 40px;
-    width: 100%;
+.navbar {
+    background: #FFF;
+    position: relative;
+}
 
-    &__menu-container {
-        float: right;
-    }
-
-    &__link {
-        color: #FFF;
-        display: inline-block;
-        padding: 10px 15px;
-        text-decoration: none;
+.bap-nav {
+    &__logo {
+        background: url('../images/logo-nav.png');
+        background-repeat: no-repeat;
+        height: 58px;
+        left: 20px;
+        position: absolute;
+        top: 6px;
+        width: 300px;
     }
 }
