@@ -9,6 +9,7 @@ import routes from 'routes';
 import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
+import { setActiveTab } from 'actions/app';
 import { setItems, setCart } from 'actions/ProductsActions';
 
 import items from 'server/fake-database-items.js';
@@ -42,6 +43,7 @@ app.use((req, res) => {
 
         store.dispatch(setItems(items));
         store.dispatch(setCart(cart));
+        store.dispatch(setActiveTab(req.url));
         const initialState = store.getState();
 
         const componentHTML = renderToString(InitialComponent);
@@ -51,7 +53,7 @@ app.use((req, res) => {
             <html>
                 <head>
                     <meta charset="utf-8">
-                    <title>React Redux Fullstack Starter</title>
+                    <title>Best ACT Prep</title>
 
                     <script>
                         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}

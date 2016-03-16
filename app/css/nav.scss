@@ -4,6 +4,10 @@
 }
 
 .bap-nav {
+    &__container {
+        padding-right: 0;
+    }
+
     &__logo {
         background: url('../images/logo-nav.png');
         background-repeat: no-repeat;
@@ -12,5 +16,36 @@
         position: absolute;
         top: 6px;
         width: 300px;
+    }
+
+    &__log-in-link {
+        cursor: pointer;
+    }
+}
+
+.log-in-box {
+    background: #F6F6F6;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 280px;
+
+    &__overlay {
+        height: 99vh;
+        margin-top: -50px;
+        position: absolute;
+        width: 100%;
+    }
+
+    &__header {
+        text-align: center;
+    }
+
+    &__button {
+        display: block;
+        margin: 0 auto;
     }
 }

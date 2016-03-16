@@ -1,41 +1,42 @@
 .home {
     &__banner {
-        background: #A7A37E;
-        height: 200px;
-        margin: 30px auto;
-        padding-bottom: 30px;
-        text-align: center;
-        width: 70%;
-    }
-
-    &__logo-image {
-        background: url('../images/panda.png');
+        background: url('../images/slider-students.jpg');
         background-repeat: no-repeat;
-        display: inline-block;
-        height: 85px;
-        margin-right: 10px;
-        position: relative;
-        top: 10px;
-        width: 85px;
+        height: 600px;
+        margin: -20px auto;
+        padding-top: 80px;
+        text-align: center;
+        width: 100%;
     }
 
     &__banner-heading {
         color: #FFF;
-        display: inline-block;
-        font-size: 70px;
-        margin-bottom: 10px;
+        font-size: 25px;
+
+        &--important {
+            color: $yellow;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
     }
 
-    &__tagline {
-        color: #EFECCA;
-        font-size: 30px;
+    &__banner-button {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    &__banner-button:hover {
+        background: #FFF;
+        border: 1px solid #5cb85c;
+        color: #5cb85c;
     }
 }
 
 .products {
     background: #FFF;
     border-radius: 5px;
-    margin: 0 auto;
+    margin: 30px auto;
     opacity: 0.8;
     padding: 15px 0;
     text-align: center;

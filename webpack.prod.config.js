@@ -1,7 +1,11 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-    entry: './app/components',
+    entry: [
+        'bootstrap-loader',
+        './app/components'
+    ],
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -35,7 +39,16 @@ module.exports = {
                     'url?limit=8192',
                     'img'
                 ]
+            },
+            {
+                test: /\.(woff2?|ttf|eot|svg)$/,
+                loader: 'url?limit=10000'
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery'
+        })
+    ]
 };
