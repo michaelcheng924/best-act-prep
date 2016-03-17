@@ -1,5 +1,6 @@
 .navbar {
     background: #FFF;
+    margin-bottom: 0;
     position: relative;
 }
 
@@ -38,10 +39,6 @@
         margin-top: -50px;
         position: absolute;
         width: 100%;
-    }
-
-    &__header {
-        text-align: center;
     }
 
     &__button {

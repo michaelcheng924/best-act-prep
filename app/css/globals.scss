@@ -4,3 +4,15 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
 }
+
+.page {
+    padding: 15px 20px;
+
+    &__content {
+        background: #FFF;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        padding: 15px 20px;
+        width: 100%;
+    }
+}

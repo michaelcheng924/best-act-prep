@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { addToCart, removeFromCart } from 'actions/ProductsActions';
 
 export class Home extends React.Component {
     renderProducts() {
@@ -37,34 +36,9 @@ export class Home extends React.Component {
                         <button className="home__banner-button btn btn-success">Learn More</button>
                     </Link>
                 </div>
-                <div className="products">
-                    <div className="cart__count">Number of items in cart: <strong>{this.props.cart.length}</strong></div>
-                    <h2 className="products__heading">Products</h2>
-                    <div className="products__items">
-                        {this.renderProducts()}
-                    </div>
-                </div>
             </div>
         );
     }
-
-    onCartChange(isInCart, id) {
-        const dispatch = this.props.dispatch;
-
-        if (isInCart) {
-            dispatch(removeFromCart(id));
-            return;
-        }
-
-        dispatch(addToCart(id));
-    }
 }
 
-function mapStateToProps(state) {
-    return {
-        items: state.products.get('items').toJS(),
-        cart: state.products.get('cart').toJS()
-    };
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;

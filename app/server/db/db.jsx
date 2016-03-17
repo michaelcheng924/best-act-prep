@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/best-act-prep');
-
-const App = mongoose.model('App', {
-    id: Number,
-    showLogin: Boolean
+import mysql from 'mysql';
+const connection = mysql.createConnection({
+    host: process.env.SQL_URL,
+    user: process.env.SQL_USERNAME,
+    password: process.env.SQL_PASSWORD,
+    port: '3306',
+    database: 'bestactp'
 });
 
-module.exports = {
-    App
-};
+connection.connect();
+
+export default connection;

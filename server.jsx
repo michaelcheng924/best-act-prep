@@ -10,10 +10,6 @@ import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import { setActiveTab } from 'actions/app';
-import { setItems, setCart } from 'actions/ProductsActions';
-
-import items from 'server/fake-database-items.js';
-import cart from 'server/fake-database-cart.js';
 
 var app = express();
 
@@ -41,8 +37,6 @@ app.use((req, res) => {
             </Provider>
         );
 
-        store.dispatch(setItems(items));
-        store.dispatch(setCart(cart));
         store.dispatch(setActiveTab(req.url));
         const initialState = store.getState();
 
@@ -61,6 +55,7 @@ app.use((req, res) => {
                 </head>
                 <body>
                     <div id="app">${componentHTML}</div>
+                    <script src="https://checkout.stripe.com/checkout.js"></script>
                     <script src="/bundle.js"></script>
                 </body>
             </html>

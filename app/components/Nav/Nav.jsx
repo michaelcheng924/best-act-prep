@@ -10,8 +10,10 @@ export default class Nav extends React.Component {
       super(props);
 
       this.toggleLogin = this.toggleLogin.bind(this);
+      this.setActiveTab = this.setActiveTab.bind(this);
       this.setActiveTabHome = this.setActiveTab.bind(this, '/');
       this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
+      this.setActiveTabCourse = this.setActiveTab.bind(this, '/course');
       this.setActiveTabLogin = this.setActiveTab.bind(this, 'login');
     }
 
@@ -28,7 +30,15 @@ export default class Nav extends React.Component {
     renderLogin() {
       if (!this.props.showLogin) { return null; }
 
-      return <LogInBox toggleLogin={this.props.toggleLogin} />;
+      const { toggleLogin, onLoginSubmit, onLoginSubmitSuccess, previousTab } = this.props
+
+      return <LogInBox
+        toggleLogin={toggleLogin}
+        onLoginSubmit={onLoginSubmit}
+        onLoginSubmitSuccess={onLoginSubmitSuccess}
+        previousTab={previousTab}
+        setActiveTab={this.setActiveTab}
+      />;
     }
 
     render() {
@@ -50,8 +60,11 @@ export default class Nav extends React.Component {
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
                   <li className={activeTab === '/why-best-act-prep' ? 'active' : ''} onClick={this.setActiveTabWhy}>
-                      <Link to="why-best-act-prep">Why Best ACT Prep?</Link>
-                    </li>
+                    <Link to="why-best-act-prep">Why Best ACT Prep?</Link>
+                  </li>
+                  <li className={activeTab === '/course' ? 'active' : ''} onClick={this.setActiveTabCourse}>
+                    <Link to="course">Online Course Home</Link>
+                  </li>
                   <li className={activeTab === 'login' ? 'active' : ''} onClick={this.setActiveTabLogin}>
                     <a className="bap-nav__log-in-link" onClick={this.toggleLogin}>Log In</a>
                   </li>
@@ -65,20 +78,19 @@ export default class Nav extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const app = state.app;
+  const app = state.app.toJS();
 
-  return {
-    activeTab: app.get('activeTab'),
-    showLogin: app.get('showLogin')
-  };
+  return app;
 }
 
 function mapDispatchToProps(dispatch) {
-  const { setActiveTab, toggleLogin } = bindActionCreators(AppActions, dispatch);
+  const { setActiveTab, toggleLogin, onLoginSubmitSuccess } = bindActionCreators(AppActions, dispatch);
 
   return {
     setActiveTab,
-    toggleLogin
+    toggleLogin,
+    onLoginSubmitSuccess,
+    onLoginSubmit: AppActions.onLoginSubmit
   };
 }
 
