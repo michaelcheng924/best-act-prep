@@ -43,7 +43,6 @@ export class Welcome extends React.Component {
     }
 
     renderErrorMessage() {
-        console.log(this.state);
         if (!this.state.errorMessage) { return null; }
 
         return <div className="alert alert-danger">{this.state.errorMessage}</div>;

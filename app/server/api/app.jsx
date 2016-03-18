@@ -15,7 +15,7 @@ router.post('/authenticate', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    const { email, password } = req.body.email;
+    const { email, password } = req.body;
 
     User.findOne({ email }, (err, user) => {
         if (err) {
