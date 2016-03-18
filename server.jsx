@@ -23,7 +23,6 @@ app.use(session({
     cookie: {
         // Recommended for HTTPS
         // secure: true,
-        maxAge: 3600000
     }
 }));
 

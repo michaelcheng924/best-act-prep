@@ -18,6 +18,10 @@ export function onLoginSubmit(email, password) {
     });
 }
 
+export function logout() {
+    
+}
+
 export function onToken(token) {
     return $.ajax({
         type: 'POST',

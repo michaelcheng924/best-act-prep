@@ -5,15 +5,19 @@ const stripe = require('stripe')(process.env.STRIPE_KEY);
 import { publicPaths } from 'server/routes';
 
 router.post('/authenticate', (req, res) => {
-    if (publicPaths[req.body.path]) {
-        res.send({ authenticated: true });
-    } else {
+    if (!publicPaths[req.body.path] && !req.session.user) {
         res.send({ authenticated: false });
+    } else {
+        res.send({ authenticated: true });
     }
 });
 
 router.post('/login', (req, res) => {
-    res.send({ email: req.body.email });
+    const email = req.body.email;
+
+    req.session.user = email;
+
+    res.send({ email });
 });
 
 router.post('/buycourse', (req, res) => {

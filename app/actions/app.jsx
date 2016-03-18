@@ -1,9 +1,3 @@
-export function authenticate() {
-    return $.ajax({
-
-    });
-}
-
 export function setActiveTab(tab) {
     return {
         type: 'SET_ACTIVE_TAB',
