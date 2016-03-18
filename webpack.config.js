@@ -20,11 +20,6 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
-            },
-            {
                 test: /\.scss$/,
                 loaders: [
                     'style',
@@ -32,6 +27,11 @@ module.exports = {
                     'autoprefixer?browsers=last 3 versions',
                     'sass?outputStyle=expanded'
                 ]
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015']
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,

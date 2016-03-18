@@ -3,7 +3,7 @@ import $ from 'jquery';
 export function authenticate(path) {
     return $.ajax({
         type: 'POST',
-        url: '/api/authenticate',
+        url: '/api/app/authenticate',
         contentType: 'application/json',
         data: JSON.stringify({ path })
     });
@@ -12,7 +12,7 @@ export function authenticate(path) {
 export function onLoginSubmit(email, password) {
     return $.ajax({
         type: 'POST',
-        url: '/api/login',
+        url: '/api/app/login',
         contentType: 'application/json',
         data: JSON.stringify({ email, password })
     });
@@ -21,7 +21,7 @@ export function onLoginSubmit(email, password) {
 export function logout() {
     return $.ajax({
         type: 'POST',
-        url: '/api/logout',
+        url: '/api/app/logout',
         contentType: 'application/json'
     });
 }
@@ -29,7 +29,7 @@ export function logout() {
 export function onToken(token) {
     return $.ajax({
         type: 'POST',
-        url: '/api/buycourse',
+        url: '/api/app/buycourse',
         contentType: 'application/json',
         data: JSON.stringify(token)
     });

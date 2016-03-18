@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    req.session.destroy();
+    req.session.user = null;
 
     res.send({ loggedOut: true });
 });

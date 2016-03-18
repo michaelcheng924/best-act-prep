@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
-import $ from 'jquery';
 
 const defaultState = Map({
     activeTab: null,
-    showLogin: false
+    showLogin: false,
+    user: null
 });
 
 export default function appReducer(state = defaultState, action) {

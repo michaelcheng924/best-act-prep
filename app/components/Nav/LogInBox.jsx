@@ -16,9 +16,10 @@ export default class LogInBox extends React.Component {
     onLoginSubmit(event) {
         event.preventDefault();
 
-        const { router, onLoginSubmit, setUser, setActiveTab } = this.props
+        const { router, onLoginSubmit, setUser, setActiveTab } = this.props;
+        const { email, password } = this.refs;
 
-        return onLoginSubmit(this.refs.email.value, this.refs.password.value)
+        return onLoginSubmit(email.value, password.value)
             .success(response => {
                 setUser(response.email);
                 this.hideLogin();

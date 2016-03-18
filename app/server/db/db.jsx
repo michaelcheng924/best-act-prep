@@ -1,12 +1,3 @@
-import mysql from 'mysql';
-const connection = mysql.createConnection({
-    host: process.env.SQL_URL,
-    user: process.env.SQL_USERNAME,
-    password: process.env.SQL_PASSWORD,
-    port: '3306',
-    database: 'bestactp'
-});
+import mongoose from 'mongoose';
 
-connection.connect();
-
-export default connection;
+mongoose.connect(process.env.MONGOLAB_URI);

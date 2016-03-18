@@ -16,7 +16,7 @@ export default class Welcome extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" className="form-control" id="password" ref="password" />
                       </fieldset>
-                      <button className="btn btn-primary log-in-box__button">Log In</button>
+                      <button className="btn btn-primary log-in-box__button">Set Password</button>
                     </form>
                 </div>
             </div>

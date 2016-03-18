@@ -11,6 +11,7 @@ import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import { setActiveTab, setUser } from 'actions/app';
+import { setAdminUser } from 'actions/admin';
 
 var app = express();
 
@@ -29,7 +30,7 @@ app.use(session({
 serverRoutes(app);
 
 app.use((req, res) => {
-    const user = req.session.user;
+    const { user, adminUser } = req.session;
     const location = createLocation(req.url);
     const store = makeStore();
     match({ routes, location }, (err, redirectLocation, renderProps) => {
@@ -51,6 +52,9 @@ app.use((req, res) => {
         store.dispatch(setActiveTab(req.url));
         if (user) {
             store.dispatch(setUser(user));
+        }
+        if (adminUser) {
+            store.dispatch(setAdminUser(adminUser));
         }
 
         const initialState = store.getState();
