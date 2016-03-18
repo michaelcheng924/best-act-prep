@@ -1,8 +1,6 @@
 import bcrypt from 'bcrypt-nodejs';
-
 import db from 'server/db/db';
 import { AdminUser } from 'server/db/users';
-
 import express from 'express';
 const router = express.Router();
 
@@ -32,7 +30,7 @@ router.post('/login', (req, res) => {
                     console.log(err);
                     res.send(err);
                 } else {
-                    req.session.adminUser = email
+                    req.session.adminUser = email;
                     res.send({ authenticated });
                 }
             });

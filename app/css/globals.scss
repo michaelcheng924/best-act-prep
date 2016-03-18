@@ -5,6 +5,20 @@ body {
     margin: 0;
 }
 
+.spinner {
+    position: absolute;
+    text-align: center;
+    top: 75px;
+    width: 100%;
+
+    &__image {
+        background: url('../images/spinner.gif');
+        display: inline-block;
+        height: 140px;
+        width: 140px;
+    }
+}
+
 .page {
     padding: 15px 20px;
 

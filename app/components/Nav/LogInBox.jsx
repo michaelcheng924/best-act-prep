@@ -1,5 +1,7 @@
 import React from 'react';
 
+const DEFAULT_ERROR_MESSAGE = 'Incorrect password!'
+
 export default class LogInBox extends React.Component {
     constructor(props) {
         super(props);
@@ -16,16 +18,27 @@ export default class LogInBox extends React.Component {
     onLoginSubmit(event) {
         event.preventDefault();
 
-        const { router, onLoginSubmit, setUser, setActiveTab } = this.props;
+        const { router, onLoginSubmit, setUser, setLoginErrorMessage, setActiveTab } = this.props;
         const { email, password } = this.refs;
 
         return onLoginSubmit(email.value, password.value)
-            .success(response => {
-                setUser(response.email);
-                this.hideLogin();
-                router.push('/course');
-                setActiveTab('/course');
+            .then(response => {
+                if (!response.authenticated) {
+                    setLoginErrorMessage(response.reason || DEFAULT_ERROR_MESSAGE);
+                } else {
+                    setLoginErrorMessage(null);
+                    setUser(email);
+                    this.hideLogin();
+                    router.push('/course');
+                    setActiveTab('/course');
+                }
             });
+    }
+
+    renderErrorMessage() {
+        if (!this.props.loginErrorMessage) { return null; }
+
+        return <div className="alert alert-danger">{this.props.loginErrorMessage}</div>;
     }
 
     render() {
@@ -33,6 +46,7 @@ export default class LogInBox extends React.Component {
             <div>
                 <div className="log-in-box__overlay" onClick={this.hideLogin} />
                 <div className="log-in-box">
+                    {this.renderErrorMessage()}
                     <form onSubmit={this.onLoginSubmit}>
                       <fieldset className="form-group">
                         <label htmlFor="email">Email</label>

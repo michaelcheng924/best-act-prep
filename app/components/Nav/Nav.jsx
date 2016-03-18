@@ -31,10 +31,11 @@ export class Nav extends React.Component {
     }
 
     logout() {
-      const { logout, setUser } = this.props;
+      const { setUser, setActiveTab } = this.props;
 
       logout();
       setUser(null);
+      setActiveTab('/');
       this.context.router.push('/');
     }
 
@@ -77,13 +78,15 @@ export class Nav extends React.Component {
     renderLoginBox() {
       if (!this.props.showLogin) { return null; }
 
-      const { toggleLogin, onLoginSubmit, setUser, previousTab } = this.props
+      const { toggleLogin, setUser, setLoginErrorMessage, loginErrorMessage, previousTab } = this.props;
 
       return <LogInBox
         router={this.context.router}
         toggleLogin={toggleLogin}
         onLoginSubmit={onLoginSubmit}
         setUser={setUser}
+        setLoginErrorMessage={setLoginErrorMessage}
+        loginErrorMessage={loginErrorMessage}
         previousTab={previousTab}
         setActiveTab={this.setActiveTab}
       />;
@@ -130,15 +133,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const { setActiveTab, toggleLogin, setUser } = bindActionCreators(AppActions, dispatch);
+  const appActions = bindActionCreators(AppActions, dispatch);
 
-  return {
-    setActiveTab,
-    toggleLogin,
-    setUser,
-    onLoginSubmit,
-    logout
-  };
+  return appActions;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);

@@ -18,3 +18,10 @@ export function setUser(email) {
         email
     };
 }
+
+export function setLoginErrorMessage(message) {
+    return {
+        type: 'SET_LOGIN_ERROR_MESSAGE',
+        message
+    };
+}

@@ -15,6 +15,9 @@ export class AppView extends React.Component {
     render() {
         return (
             <div>
+                <div className="spinner hidden">
+                    <span className="spinner__image" />
+                </div>
                 <Nav />
                 {this.props.children}
             </div>

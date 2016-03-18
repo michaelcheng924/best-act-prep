@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,9 +14,14 @@ export class WhyBestActPrep extends React.Component {
     }
 
     onToken(token) {
+        const spinnerEl = $('.spinner');
+
+        spinnerEl.removeClass('hidden');
+
         onToken(token).then(response => {
-            if (response.email) {
-                this.props.setUser(response.email);
+            if (response.newUser) {
+                this.props.setUser(response.newUser);
+                spinnerEl.addClass('hidden');
                 this.context.router.push('/welcome');
             }
         });

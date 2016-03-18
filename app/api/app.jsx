@@ -34,3 +34,12 @@ export function onToken(token) {
         data: JSON.stringify(token)
     });
 }
+
+export function onSetPasswordSubmit(email, password) {
+    return $.ajax({
+        type: 'POST',
+        url: '/api/app/setpassword',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password })
+    });
+}
