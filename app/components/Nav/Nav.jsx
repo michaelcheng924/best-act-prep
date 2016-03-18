@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Router from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from 'actions/app';
+import { onLoginSubmit } from 'api/app';
 import LogInBox from 'components/Nav/LogInBox';
 
-export default class Nav extends React.Component {
+export class Nav extends React.Component {
     constructor(props) {
       super(props);
 
@@ -27,12 +29,49 @@ export default class Nav extends React.Component {
       toggleLogin(!showLogin);
     }
 
-    renderLogin() {
+    renderWhy(activeTab, user) {
+      if (user) { return null; }
+
+      return (
+        <li className={activeTab === '/why-best-act-prep' ? 'active' : ''} onClick={this.setActiveTabWhy}>
+          <Link to="why-best-act-prep">Why Best ACT Prep?</Link>
+        </li>
+      );
+    }
+
+    renderCourse(activeTab, user) {
+      if (!user) { return null; }
+
+      return (
+        <li className={activeTab === '/course' ? 'active' : ''} onClick={this.setActiveTabCourse}>
+          <Link to="course">Course Home</Link>
+        </li>
+      );
+    }
+
+    renderLoginLogout(activeTab, user) {
+      if (!user) {
+        return (
+          <li className={activeTab === 'login' ? 'active' : ''} onClick={this.setActiveTabLogin}>
+            <a className="bap-nav__log-in-link" onClick={this.toggleLogin}>Log In</a>
+          </li>
+        );
+      }
+
+      return (
+        <li>
+          <a className="bap-nav__log-in-link" onClick={this.logout}>Log Out</a>
+        </li>
+      );
+    }
+
+    renderLoginBox() {
       if (!this.props.showLogin) { return null; }
 
       const { toggleLogin, onLoginSubmit, onLoginSubmitSuccess, previousTab } = this.props
 
       return <LogInBox
+        router={this.context.router}
         toggleLogin={toggleLogin}
         onLoginSubmit={onLoginSubmit}
         onLoginSubmitSuccess={onLoginSubmitSuccess}
@@ -42,7 +81,7 @@ export default class Nav extends React.Component {
     }
 
     render() {
-      const activeTab = this.props.activeTab;
+      const { activeTab, user } = this.props;
 
       return (
           <nav className="navbar navbar-default">
@@ -59,23 +98,21 @@ export default class Nav extends React.Component {
 
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
-                  <li className={activeTab === '/why-best-act-prep' ? 'active' : ''} onClick={this.setActiveTabWhy}>
-                    <Link to="why-best-act-prep">Why Best ACT Prep?</Link>
-                  </li>
-                  <li className={activeTab === '/course' ? 'active' : ''} onClick={this.setActiveTabCourse}>
-                    <Link to="course">Online Course Home</Link>
-                  </li>
-                  <li className={activeTab === 'login' ? 'active' : ''} onClick={this.setActiveTabLogin}>
-                    <a className="bap-nav__log-in-link" onClick={this.toggleLogin}>Log In</a>
-                  </li>
+                  {this.renderWhy(activeTab, user)}
+                  {this.renderCourse(activeTab, user)}
+                  {this.renderLoginLogout(activeTab, user)}
                 </ul>
               </div>
             </div>
-            {this.renderLogin()}
+            {this.renderLoginBox()}
           </nav>
       );
     }
 }
+
+Nav.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
   const app = state.app.toJS();
@@ -90,7 +127,7 @@ function mapDispatchToProps(dispatch) {
     setActiveTab,
     toggleLogin,
     onLoginSubmitSuccess,
-    onLoginSubmit: AppActions.onLoginSubmit
+    onLoginSubmit
   };
 }
 

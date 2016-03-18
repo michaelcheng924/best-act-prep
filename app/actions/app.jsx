@@ -1,4 +1,8 @@
-import $ from 'jquery';
+export function authenticate() {
+    return $.ajax({
+
+    });
+}
 
 export function setActiveTab(tab) {
     return {
@@ -12,15 +16,6 @@ export function toggleLogin(showLogin) {
         type: 'TOGGLE_LOGIN',
         showLogin
     };
-}
-
-export function onLoginSubmit(email, password) {
-    return $.ajax({
-        type: 'POST',
-        url: '/api/login',
-        contentType: 'application/json',
-        data: JSON.stringify({ email, password })
-    });
 }
 
 export function onLoginSubmitSuccess(email) {

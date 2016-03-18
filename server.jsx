@@ -1,9 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import session from 'express-session';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { RoutingContext, match } from 'react-router';
+import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from 'routes';
 import serverRoutes from 'server/routes';
@@ -15,12 +16,22 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'blah blah',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        // Recommended for HTTPS
+        // secure: true,
+        maxAge: 3600000
+    }
+}));
+
 serverRoutes(app);
 
 app.use((req, res) => {
     const location = createLocation(req.url);
     const store = makeStore();
-
     match({ routes, location }, (err, redirectLocation, renderProps) => {
         if (err) {
             console.log(err);
@@ -33,7 +44,7 @@ app.use((req, res) => {
 
         const InitialComponent = (
             <Provider store={store}>
-                <RoutingContext {...renderProps} />
+                <RouterContext {...renderProps} />
             </Provider>
         );
 
@@ -47,6 +58,8 @@ app.use((req, res) => {
             <html>
                 <head>
                     <meta charset="utf-8">
+                    <link rel="icon" type="image/png" href="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-favicon-size_zpskhedtdjn.png" />
+
                     <title>Best ACT Prep</title>
 
                     <script>
