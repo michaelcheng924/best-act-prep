@@ -20,6 +20,12 @@ router.post('/login', (req, res) => {
     res.send({ email });
 });
 
+router.post('/logout', (req, res) => {
+    req.session.destroy();
+
+    res.send({ loggedOut: true });
+});
+
 router.post('/buycourse', (req, res) => {
     const token = req.body.id;
     const email = req.body.email;

@@ -12,7 +12,7 @@ export default function appReducer(state = defaultState, action) {
             return state.set('previousTab', state.get('activeTab')).set('activeTab', action.tab);
         case 'TOGGLE_LOGIN':
             return state.set('showLogin', action.showLogin);
-        case 'LOGIN_SUBMIT_SUCCESS':
+        case 'SET_USER':
             return state.set('user', action.email);
         default:
             return state;

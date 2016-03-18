@@ -4,7 +4,7 @@ import Router from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from 'actions/app';
-import { onLoginSubmit } from 'api/app';
+import { onLoginSubmit, logout } from 'api/app';
 import LogInBox from 'components/Nav/LogInBox';
 
 export class Nav extends React.Component {
@@ -12,6 +12,7 @@ export class Nav extends React.Component {
       super(props);
 
       this.toggleLogin = this.toggleLogin.bind(this);
+      this.logout = this.logout.bind(this);
       this.setActiveTab = this.setActiveTab.bind(this);
       this.setActiveTabHome = this.setActiveTab.bind(this, '/');
       this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
@@ -27,6 +28,14 @@ export class Nav extends React.Component {
       const { toggleLogin, showLogin } = this.props;
 
       toggleLogin(!showLogin);
+    }
+
+    logout() {
+      const { logout, setUser } = this.props;
+
+      logout();
+      setUser(null);
+      this.context.router.push('/');
     }
 
     renderWhy(activeTab, user) {
@@ -68,13 +77,13 @@ export class Nav extends React.Component {
     renderLoginBox() {
       if (!this.props.showLogin) { return null; }
 
-      const { toggleLogin, onLoginSubmit, onLoginSubmitSuccess, previousTab } = this.props
+      const { toggleLogin, onLoginSubmit, setUser, previousTab } = this.props
 
       return <LogInBox
         router={this.context.router}
         toggleLogin={toggleLogin}
         onLoginSubmit={onLoginSubmit}
-        onLoginSubmitSuccess={onLoginSubmitSuccess}
+        setUser={setUser}
         previousTab={previousTab}
         setActiveTab={this.setActiveTab}
       />;
@@ -121,13 +130,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const { setActiveTab, toggleLogin, onLoginSubmitSuccess } = bindActionCreators(AppActions, dispatch);
+  const { setActiveTab, toggleLogin, setUser } = bindActionCreators(AppActions, dispatch);
 
   return {
     setActiveTab,
     toggleLogin,
-    onLoginSubmitSuccess,
-    onLoginSubmit
+    setUser,
+    onLoginSubmit,
+    logout
   };
 }
 

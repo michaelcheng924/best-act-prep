@@ -12,9 +12,9 @@ export function toggleLogin(showLogin) {
     };
 }
 
-export function onLoginSubmitSuccess(email) {
+export function setUser(email) {
     return {
-        type: 'LOGIN_SUBMIT_SUCCESS',
+        type: 'SET_USER',
         email
     };
 }

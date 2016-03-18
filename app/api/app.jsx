@@ -19,7 +19,11 @@ export function onLoginSubmit(email, password) {
 }
 
 export function logout() {
-    
+    return $.ajax({
+        type: 'POST',
+        url: '/api/logout',
+        contentType: 'application/json'
+    });
 }
 
 export function onToken(token) {
