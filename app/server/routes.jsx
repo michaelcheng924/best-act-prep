@@ -2,7 +2,8 @@ import apiRoutes from 'server/api';
 
 export const publicPaths = {
     '/': true,
-    '/why-best-act-prep': true
+    '/why-best-act-prep': true,
+    '/welcome': true
 };
 
 export default function routes(app) {

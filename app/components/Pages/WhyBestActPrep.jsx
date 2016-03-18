@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
-import { onToken } from 'actions/app';
+import { onToken } from 'api/app';
+import { setUser } from 'actions/app';
 
-export default class About extends React.Component {
+export class WhyBestActPrep extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +15,8 @@ export default class About extends React.Component {
     onToken(token) {
         onToken(token).then(response => {
             if (response.email) {
-                
+                this.props.setUser(response.email);
+                this.context.router.push('/welcome');
             }
         });
     }
@@ -37,3 +40,17 @@ export default class About extends React.Component {
         );
     }
 }
+
+WhyBestActPrep.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+function mapDispatchToProps(dispatch) {
+    const boundActions = bindActionCreators({ setUser }, dispatch);
+
+    return {
+        setUser: boundActions.setUser
+    };
+}
+
+export default connect(null, mapDispatchToProps)(WhyBestActPrep);
