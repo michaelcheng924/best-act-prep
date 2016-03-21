@@ -1,11 +1,14 @@
 import React from 'react';
+import CourseSidebar from 'components/Course/Sidebar';
+import CourseMain from 'components/Course/Main';
 
-export default class About extends React.Component {
+export default class Course extends React.Component {
     render() {
         return (
-            <div className="page">
-                <div className="page__content">
-                    COURSE
+            <div className="course">
+                <CourseSidebar />
+                <div className="course-main">
+                    MAIN
                 </div>
             </div>
         );

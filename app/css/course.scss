@@ -1,0 +1,22 @@
+.course {
+    display: flex;
+    margin: 5px;
+}
+
+.course-sidebar {
+    background: lighten($orange, 35%);
+    border-radius: 8px 0 0 8px;
+    border: 1px solid $border-color;
+    height: 100vh;
+    padding: 10px;
+    width: 180px;
+}
+
+.course-main {
+    background: lighten($blue, 60%);
+    border: 1px solid $border-color;
+    border-radius: 0 8px 8px 0;
+    border-left: 0;
+    flex-grow: 1;
+    padding: 10px;
+}
