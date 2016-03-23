@@ -6,24 +6,6 @@ const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 import { publicPaths } from 'server/routes';
 
-const initialUserData = {
-    sections: {
-        '1': { expanded: true },
-        '2': { expanded: true },
-        '3': { expanded: true },
-        '4': { expanded: true },
-        '5': { expanded: true },
-        '6': { expanded: true },
-    },
-    modules: {
-        '1.1': { completed: false },
-        '1.2': { completed: false },
-        '1.3': { completed: false },
-        '1.4': { completed: false },
-
-    }
-};
-
 router.post('/authenticate', (req, res) => {
     if (!publicPaths[req.body.path] && !req.session.user) {
         res.send({ authenticated: false });

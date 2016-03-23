@@ -23,12 +23,12 @@ export default class Course extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const course = state.course;
+    const course = state.course.toJS();
 
     return {
         user: state.app.get('user'),
-        sections: course.get('sections').toJS(),
-        modules: course.get('modules').toJS()
+        sections: course.sections,
+        modules: course.modules
     };
 }
 
