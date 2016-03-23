@@ -7,11 +7,12 @@ import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
     render() {
-        const { toggleSection } = this.props;
+        const { sections, toggleSection } = this.props;
 
         return (
             <div className="course">
                 <CourseSidebar
+                    sections={sections}
                     toggleSection={toggleSection}
                 />
                 <div className="course-main">

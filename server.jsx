@@ -23,6 +23,7 @@ const initialUserData = {
         '4': { collapsed: false },
         '5': { collapsed: false },
         '6': { collapsed: false },
+        '7': { collapsed: false }
     },
     modules: {
         '1.1': { completed: false },

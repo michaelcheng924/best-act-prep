@@ -89,6 +89,7 @@ export default class CourseSidebar extends React.Component {
                     name={name}
                     modules={modules}
                     toggleSection={this.props.toggleSection}
+                    collapsed={this.props.sections[id].collapsed}
                 />
             );
         });
