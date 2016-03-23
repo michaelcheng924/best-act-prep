@@ -4,16 +4,51 @@
 }
 
 .course-sidebar {
-    background: lighten($orange, 35%);
+    background: lighten($orange, 38%);
     border-radius: 8px 0 0 8px;
     border: 1px solid $border-color;
     height: 100vh;
-    padding: 10px;
+    padding: 10px 0;
     width: 180px;
+
+    &__section,
+    &__module {
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+            background: lighten($orange, 33%);
+        }
+
+        .glyphicon {
+            font-size: 9px;
+            position: absolute;
+            right: 6px;
+            top: 5px;
+        }
+    }
+
+    &__section {
+        font-weight: bold;
+        padding: 0 10px;
+    }
+
+    &__module {
+        font-size: 12px;
+        font-weight: normal;
+        padding: 0 20px;
+    }
+
+    &__module-title {
+        color: $muted-text-color;
+        font-size: 12px;
+        font-style: italic;
+        padding: 0 20px;
+    }
 }
 
 .course-main {
-    background: lighten($blue, 60%);
+    background: lighten($blue, 61%);
     border: 1px solid $border-color;
     border-radius: 0 8px 8px 0;
     border-left: 0;
