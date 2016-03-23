@@ -2,17 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CourseActions from 'actions/course';
-import { fetchCourseData } from 'api/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
-    componentWillMount() {
-        fetchCourseData(this.props.user).then(response => {
-            this.props.setCourseData(response);
-        });     
-    }
-
     render() {
         const { toggleSection } = this.props;
 

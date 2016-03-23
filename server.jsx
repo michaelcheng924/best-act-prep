@@ -11,7 +11,27 @@ import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import { setActiveTab, setUser } from 'actions/app';
+import { setCourseData } from 'actions/course';
 import { setAdminUser } from 'actions/admin';
+
+// REMOVE
+const initialUserData = {
+    sections: {
+        '1': { collapsed: false },
+        '2': { collapsed: false },
+        '3': { collapsed: false },
+        '4': { collapsed: false },
+        '5': { collapsed: false },
+        '6': { collapsed: false },
+    },
+    modules: {
+        '1.1': { completed: false },
+        '1.2': { completed: false },
+        '1.3': { completed: false },
+        '1.4': { completed: false },
+
+    }
+};
 
 var app = express();
 
@@ -52,6 +72,7 @@ app.use((req, res) => {
         store.dispatch(setActiveTab(req.url));
         if (user) {
             store.dispatch(setUser(user));
+            store.dispatch(setCourseData(initialUserData));
         }
         if (adminUser) {
             store.dispatch(setAdminUser(adminUser));

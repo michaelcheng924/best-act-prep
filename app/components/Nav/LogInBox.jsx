@@ -27,7 +27,7 @@ export default class LogInBox extends React.Component {
                     setLoginErrorMessage(response.reason || DEFAULT_ERROR_MESSAGE);
                 } else {
                     setLoginErrorMessage(null);
-                    setUser(email);
+                    setUser(email.value);
                     this.hideLogin();
                     router.push('/course');
                     setActiveTab('/course');
