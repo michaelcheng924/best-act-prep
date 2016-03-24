@@ -1,0 +1,13 @@
+.course-main {
+    background: lighten($blue, 61%);
+    border: 1px solid $border-color;
+    border-radius: 0 8px 8px 0;
+    border-left: 0;
+    flex-grow: 1;
+}
+
+.main-header {
+    background: lighten($blue, 55%);
+    border-bottom: 1px solid lighten($blue, 30%);
+    padding: 10px;
+}
