@@ -1,4 +1,6 @@
 import React from 'react';
+import classNames from 'classnames';
+import SidebarModule from 'components/Course/SidebarModule';
 
 export default class SidebarSection extends React.Component {
     constructor(props) {
@@ -13,33 +15,31 @@ export default class SidebarSection extends React.Component {
 
     renderModules(modules) {
         return modules.map(module => {
-            const { title, name, id, partialId } = module;
-            const displayId = partialId || id;
-
-            if (title) {
-                return <div key={id} className="course-sidebar__module-title">{`${displayId}) ${title}`}</div>
-            }
-
-            const style = {
-                color: this.props.completed ? '#138EAD' : '#F5953E'
-            };
+            const { modulesData, toggleModules } = this.props;
 
             return (
-                <div key={id} className="course-sidebar__module" style={style}>
-                    {`${displayId}) ${name}`}
-                </div>
+                <SidebarModule
+                    key={module.id}
+                    {...module}
+                    modulesData={modulesData}
+                    toggleModules={toggleModules}
+                />
             );
         });
     }
 
     render() {
         const { id, name, modules, collapsed, toggleSection } = this.props;
+        const arrowClassNames = classNames('glyphicon', {
+            'glyphicon-chevron-down': collapsed,
+            'glyphicon-chevron-up': !collapsed
+        });
 
         return (
             <div key={id}>
                 <div className="course-sidebar__section" onClick={this.toggleSection}>
                     {`${id}) ${name}`}
-                    <span className="glyphicon glyphicon-chevron-down" />
+                    <span className={arrowClassNames} />
                 </div>
                 <div className={collapsed ? 'hidden' : ''}>
                     {this.renderModules(modules)}

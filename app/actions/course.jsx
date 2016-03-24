@@ -11,3 +11,10 @@ export function toggleSection(id) {
         id
     };
 }
+
+export function toggleModules(id) {
+    return {
+        type: 'TOGGLE_MODULES',
+        id
+    };
+}

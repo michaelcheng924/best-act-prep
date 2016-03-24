@@ -7,13 +7,15 @@ import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
     render() {
-        const { sections, toggleSection } = this.props;
+        const { sectionsData, modulesData, toggleSection, toggleModules } = this.props;
 
         return (
             <div className="course">
                 <CourseSidebar
-                    sections={sections}
+                    sectionsData={sectionsData}
+                    modulesData={modulesData}
                     toggleSection={toggleSection}
+                    toggleModules={toggleModules}
                 />
                 <div className="course-main">
                     MAIN
@@ -28,8 +30,8 @@ function mapStateToProps(state) {
 
     return {
         user: state.app.get('user'),
-        sections: course.sections,
-        modules: course.modules
+        sectionsData: course.sections,
+        modulesData: course.modules
     };
 }
 

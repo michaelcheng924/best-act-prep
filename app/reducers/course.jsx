@@ -19,6 +19,8 @@ export default function courseReducer(state = defaultState, action) {
             return fromJS(action.data);
         case 'TOGGLE_SECTION':
             return toggleSection(state, action);
+        case 'TOGGLE_MODULES':
+            return toggleModules(state, action);
         default:
             return state;
     }
@@ -28,5 +30,12 @@ function toggleSection(state, action) {
     const nextSections = state.get('sections');
     return state.set('sections', nextSections.updateIn([action.id], section => {
         return section.set('collapsed', !section.get('collapsed'));
+    }));
+}
+
+function toggleModules(state, action) {
+    const nextModules = state.get('modules');
+    return state.set('modules', nextModules.updateIn([action.id], module => {
+        return module.set('collapsed', !module.get('collapsed'));
     }));
 }

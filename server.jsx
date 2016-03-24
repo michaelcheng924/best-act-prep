@@ -26,11 +26,18 @@ const initialUserData = {
         '7': { collapsed: false }
     },
     modules: {
+        '2.A': { collapsed: false },
+        '2.B': { collapsed: false },
+        '3.A': { collapsed: false },
+        '3.B': { collapsed: false },
+        '4.A': { collapsed: false },
+        '4.B': { collapsed: false },
+        '5.A': { collapsed: false },
+        '5.B': { collapsed: false },
         '1.1': { completed: false },
         '1.2': { completed: false },
         '1.3': { completed: false },
-        '1.4': { completed: false },
-
+        '1.4': { completed: false }
     }
 };
 
