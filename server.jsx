@@ -34,6 +34,8 @@ const initialUserData = {
         '4.B': { collapsed: false },
         '5.A': { collapsed: false },
         '5.B': { collapsed: false },
+        '6.A': { collapsed: false },
+        '6.B': { collapsed: false },
         '1.1': { completed: false },
         '1.2': { completed: false },
         '1.3': { completed: false },

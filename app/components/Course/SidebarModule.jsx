@@ -16,7 +16,8 @@ export default class SidebarSection extends React.Component {
         const { title, name, id, partialId, modulesData } = this.props;
         const displayId = partialId || id;
         const parentId = id.slice(0, 3);
-        const collapsed = modulesData[parentId].collapsed;
+
+        const collapsed = partialId && modulesData[parentId].collapsed;
 
         const arrowClassNames = classNames('glyphicon', {
             'glyphicon-chevron-down': collapsed,

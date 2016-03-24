@@ -68,12 +68,20 @@ const sections = [
 {
     id: '6',
     name: 'ACT Writing',
-    modules: []
+    modules: [
+        { id: '6.A', title: 'Introduction/Basics' },
+        { id: '6.A.1', partialId: 'A.1', name: 'Overview/Format' },
+        { id: '6.A.2', partialId: 'A.2', name: 'Managing Time' },
+        { id: '6.B', title: 'ACT Writing Strategies' }
+    ]
 },
 {
     id: '7',
     name: 'The Full ACT',
-    modules: []
+    modules: [
+        { id: '7.1', name: 'Being Mentally Prepared' },
+        { id: '7.2', name: 'Taking the Full ACT Test' }
+    ]
 }
 ];
 
