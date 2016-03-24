@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import sections from 'registries/course';
 import * as CourseActions from 'actions/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
@@ -19,6 +20,7 @@ export default class Course extends React.Component {
                 />
                 <CourseMain
                     currentModule={currentModule}
+                    sections={sections}
                 />
             </div>
         );

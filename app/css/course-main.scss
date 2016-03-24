@@ -10,4 +10,15 @@
     background: lighten($blue, 55%);
     border-bottom: 1px solid lighten($blue, 30%);
     padding: 10px;
+
+    &__title {
+        display: inline-block;
+    }
+
+    &__complete-button {
+        font-size: 12px;
+        float: right;
+        position: relative;
+        top: 3px;
+    }
 }
