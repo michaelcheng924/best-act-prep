@@ -9,6 +9,7 @@
 .main-header {
     background: lighten($blue, 55%);
     border-bottom: 1px solid lighten($blue, 30%);
+    color: darken($muted-text-color, 10%);
     padding: 10px;
 
     &__title {
@@ -18,7 +19,8 @@
     &__complete-button {
         font-size: 12px;
         float: right;
+        padding: 5px 10px;
         position: relative;
-        top: 3px;
+        top: -5px;
     }
 }
