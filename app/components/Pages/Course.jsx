@@ -7,7 +7,7 @@ import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
     render() {
-        const { sectionsData, modulesData, toggleSection, toggleModules } = this.props;
+        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule } = this.props;
 
         return (
             <div className="course">
@@ -17,9 +17,9 @@ export default class Course extends React.Component {
                     toggleSection={toggleSection}
                     toggleModules={toggleModules}
                 />
-                <div className="course-main">
-                    MAIN
-                </div>
+                <CourseMain
+                    currentModule={currentModule}
+                />
             </div>
         );
     }
@@ -27,9 +27,11 @@ export default class Course extends React.Component {
 
 function mapStateToProps(state) {
     const course = state.course.toJS();
+    const { sections, modules, currentModule } = course;
 
     return {
         user: state.app.get('user'),
+        currentModule,
         sectionsData: course.sections,
         modulesData: course.modules
     };

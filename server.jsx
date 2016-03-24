@@ -36,11 +36,13 @@ const initialUserData = {
         '5.B': { collapsed: false },
         '6.A': { collapsed: false },
         '6.B': { collapsed: false },
+        '1.0': { completed: false },
         '1.1': { completed: false },
         '1.2': { completed: false },
         '1.3': { completed: false },
         '1.4': { completed: false }
-    }
+    },
+    currentModule: '1.0'
 };
 
 var app = express();

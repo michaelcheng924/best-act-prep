@@ -7,6 +7,7 @@ const sections = [
     id: '1',
     name: 'ACT Foundations',
     modules: [
+        { id: '1.0', name: 'Welcome, Instructions' },
         { id: '1.1', name: 'Overview/Format' },
         { id: '1.2', name: 'Read, Read, Read!' },
         { id: '1.3', name: 'Use a Digital Watch' },
