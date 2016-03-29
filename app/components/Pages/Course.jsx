@@ -26,6 +26,7 @@ export default class Course extends React.Component {
                 <CourseMain
                     currentModule={currentModule}
                     sections={sections}
+                    modulesData={modulesData}
                     setCourseData={setCourseData}
                 />
             </div>

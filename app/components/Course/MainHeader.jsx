@@ -31,11 +31,22 @@ export default class MainHeader extends React.Component {
         return <span>{`${sectionName} > ${moduleCategory} > `}<strong>{moduleName}</strong></span>;
     }
 
+    renderButton() {
+        const { currentModule, modulesData } = this.props;
+
+        const module = modulesData[currentModule];
+        const isCompleted = module.completed;
+        const buttonType = isCompleted ? 'warning' : 'success';
+        const text = isCompleted ? 'Mark Incomplete' : 'Mark Complete and Continue to Next Module';
+
+        return <button className={`btn btn-${buttonType} main-header__complete-button`} onClick={this.markComplete}>{text}</button>;
+    }
+
     render() {
         return (
             <div className="main-header">
                 <div className="main-header__title">{this.getTitle()}</div>
-                <button className="btn btn-success main-header__complete-button" onClick={this.markComplete}>Mark Complete and Continue to Next Module</button>
+                {this.renderButton()}
             </div>
         );
     }
