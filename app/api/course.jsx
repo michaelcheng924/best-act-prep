@@ -1,8 +1,9 @@
 import $ from 'jquery';
 
-export function fetchCourseData(email) {
+export function markComplete(id) {
     return $.ajax({
-        url: `/api/course/fetchdata/${encodeURIComponent(email)}`,
+        type: 'POST',
+        url: `/api/course/markcomplete/${id}`,
         contentType: 'application/json'
     });
 }

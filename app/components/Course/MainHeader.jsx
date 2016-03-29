@@ -1,11 +1,19 @@
 import React from 'react';
 import titles from 'registries/titles';
+import { markComplete } from 'api/course';
 
 export default class MainHeader extends React.Component {
     constructor(props) {
         super(props);
 
         this.getTitle = this.getTitle.bind(this);
+        this.markComplete = this.markComplete.bind(this, this.props.currentModule);
+    }
+
+    markComplete(currentModule) {
+        markComplete(currentModule).then(response => {
+            this.props.setCourseData(response.data);
+        });
     }
 
     getTitle() {
@@ -27,7 +35,7 @@ export default class MainHeader extends React.Component {
         return (
             <div className="main-header">
                 <div className="main-header__title">{this.getTitle()}</div>
-                <button className="btn btn-success main-header__complete-button">Mark Complete and Continue to Next Module</button>
+                <button className="btn btn-success main-header__complete-button" onClick={this.markComplete}>Mark Complete and Continue to Next Module</button>
             </div>
         );
     }

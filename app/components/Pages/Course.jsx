@@ -12,7 +12,7 @@ export default class Course extends React.Component {
     }
 
     render() {
-        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule } = this.props;
+        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData } = this.props;
 
         return (
             <div className="course">
@@ -26,6 +26,7 @@ export default class Course extends React.Component {
                 <CourseMain
                     currentModule={currentModule}
                     sections={sections}
+                    setCourseData={setCourseData}
                 />
             </div>
         );

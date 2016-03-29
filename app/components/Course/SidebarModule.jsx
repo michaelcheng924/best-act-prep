@@ -23,6 +23,7 @@ export default class SidebarSection extends React.Component {
         const parentId = id.slice(0, 3);
         const isCurrentModule = id === currentModule;
         const collapsed = partialId && modulesData[parentId].collapsed;
+        const completed = modulesData[id] && modulesData[id].completed;
 
         const arrowClassNames = classNames('glyphicon', {
             'glyphicon-chevron-down': collapsed,
@@ -41,7 +42,7 @@ export default class SidebarSection extends React.Component {
         const moduleClasses = classNames('course-sidebar__module', { hidden: collapsed });
         const style = {
             background: isCurrentModule ? '#E0E2E3' : null,
-            color: this.props.completed ? '#138EAD' : '#F5953E',
+            color: completed ? '#138EAD' : '#F5953E',
             cursor: isCurrentModule ? 'auto' : null
         };
 
