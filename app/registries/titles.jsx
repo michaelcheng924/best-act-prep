@@ -15,7 +15,12 @@ const titles = {
     },
     names: {
         '1.0': 'Welcome, Instructions',
-        '2.A.1': 'Overview/Format'
+        '1.1': 'Overview/Format',
+        '1.2': 'Read, Read, Read!',
+        '1.3': 'Use a Digital Watch',
+        '1.4': 'The Best ACT Prep Plan',
+        '2.A.1': 'Overview/Format',
+        
     }
 };
 

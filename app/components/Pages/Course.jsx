@@ -7,6 +7,10 @@ import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
+    componentDidMount() {
+        this.context.router.push(this.props.currentModule);     
+    }
+
     render() {
         const { sectionsData, modulesData, toggleSection, toggleModules, currentModule } = this.props;
 
@@ -17,6 +21,7 @@ export default class Course extends React.Component {
                     modulesData={modulesData}
                     toggleSection={toggleSection}
                     toggleModules={toggleModules}
+                    currentModule={currentModule}
                 />
                 <CourseMain
                     currentModule={currentModule}
@@ -26,6 +31,10 @@ export default class Course extends React.Component {
         );
     }
 }
+
+Course.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
     const course = state.course.toJS();

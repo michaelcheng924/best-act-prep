@@ -14,5 +14,6 @@ export default (
         <Route component={Course} path="course" />
         <Route component={Welcome} path="welcome" />
         <Route component={Admin} path="admin" />
+        <Route component={Course} path="1.0" />
     </Route>
 );

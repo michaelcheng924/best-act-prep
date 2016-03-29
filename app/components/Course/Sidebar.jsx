@@ -7,7 +7,7 @@ export default class CourseSidebar extends React.Component {
     renderSections() {
         return sections.map(section => {
             const { id, name, modules } = section;
-            const { sectionsData, modulesData, toggleSection, toggleModules } = this.props;
+            const { sectionsData, modulesData, toggleSection, toggleModules, currentModule } = this.props;
 
             return (
                 <SidebarSection
@@ -19,6 +19,7 @@ export default class CourseSidebar extends React.Component {
                     toggleSection={toggleSection}
                     toggleModules={toggleModules}
                     collapsed={sectionsData[id].collapsed}
+                    currentModule={currentModule}
                 />
             );
         });

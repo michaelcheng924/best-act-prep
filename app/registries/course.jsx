@@ -7,7 +7,7 @@ const sections = [
         { id: '1.1', name: 'Overview/Format' },
         { id: '1.2', name: 'Read, Read, Read!' },
         { id: '1.3', name: 'Use a Digital Watch' },
-        { id: '1.4', name: 'Preparing with a Plan' }
+        { id: '1.4', name: 'The Best ACT Prep Plan' }
     ]
 },
 {
