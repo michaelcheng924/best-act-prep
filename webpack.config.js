@@ -9,7 +9,6 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://127.0.0.1:8080/',
         'webpack/hot/only-dev-server',
-        'bootstrap-loader',
         './app/components'
     ],
     output: {
@@ -37,19 +36,12 @@ module.exports = {
                     'url?limit=8192',
                     'img'
                 ]
-            },
-            {
-                test: /\.(woff2?|ttf|eot|svg)$/,
-                loader: 'url?limit=10000'
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new webpack.ProvidePlugin({
-            jQuery: "jquery"
-        }),
         extractCSS
     ],
     devServer: {
