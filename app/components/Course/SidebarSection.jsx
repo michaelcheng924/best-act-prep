@@ -15,7 +15,7 @@ export default class SidebarSection extends React.Component {
 
     renderModules(modules) {
         return modules.map(module => {
-            const { modulesData, toggleModules, currentModule } = this.props;
+            const { modulesData, toggleModules, currentModule, setCurrentModule } = this.props;
 
             return (
                 <SidebarModule
@@ -24,6 +24,7 @@ export default class SidebarSection extends React.Component {
                     modulesData={modulesData}
                     toggleModules={toggleModules}
                     currentModule={currentModule}
+                    setCurrentModule={setCurrentModule}
                 />
             );
         });

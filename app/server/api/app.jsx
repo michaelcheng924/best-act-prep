@@ -5,6 +5,7 @@ import express from 'express';
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 import { publicPaths } from 'server/routes';
+import initialUserData from 'registries/initial-user-data';
 
 router.post('/authenticate', (req, res) => {
     if (!publicPaths[req.body.path] && !req.session.user) {
@@ -18,6 +19,7 @@ router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     User.findOne({ email }, (err, user) => {
+        console.log(user);
         if (err) {
             console.log(err);
             res.send(err);
@@ -33,7 +35,10 @@ router.post('/login', (req, res) => {
                     res.send(err);
                 } else {
                     req.session.user = email;
-                    res.send({ authenticated });
+                    res.send({
+                        authenticated,
+                        userData: user.data
+                    });
                 }
             });
         }
@@ -66,24 +71,38 @@ router.post('/buycourse', (req, res) => {
                     res.send(err);
                 } else {
                     if (result) {
-                        const dupUser = new User({ email: result.email + (Math.random() * 1000)});
+                        const uniqueEmail = result.email + (Math.random() * 1000);
+                        const dupUser = new User({
+                            email: uniqueEmail,
+                            data: initialUserData
+                        });
                         dupUser.save((err, result) => {
                             if (err) {
                                 console.log(err);
                                 res.send(err);
                             } else {
-                                res.send(result);
+                                req.session.user = uniqueEmail;
+                                res.send({
+                                    email: uniqueEmail,
+                                    userData: initialUserData
+                                });
                             }
                         });
                     } else {
-                        const user = new User({ email });
+                        const user = new User({
+                            email,
+                            data: initialUserData
+                        });
                         user.save((err, result) => {
                             if (err) {
                                 console.log(err);
                                 res.send(err);
                             } else {
                                 req.session.user = email;
-                                res.send({ newUser: email });
+                                res.send({
+                                    email,
+                                    userData: initialUserData
+                                });
                             }
                         });
                     }

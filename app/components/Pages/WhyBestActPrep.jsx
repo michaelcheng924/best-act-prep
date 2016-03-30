@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { onToken } from 'api/app';
 import { setUser } from 'actions/app';
+import { setCourseData } from 'actions/course';
 
 export class WhyBestActPrep extends React.Component {
     constructor(props) {
@@ -19,8 +20,9 @@ export class WhyBestActPrep extends React.Component {
         spinnerEl.removeClass('hidden');
 
         onToken(token).then(response => {
-            if (response.newUser) {
-                this.props.setUser(response.newUser);
+            if (response.email) {
+                this.props.setUser(response.email);
+                this.props.setCourseData(response.userData);
                 spinnerEl.addClass('hidden');
                 this.context.router.push('/welcome');
             }
@@ -52,10 +54,12 @@ WhyBestActPrep.contextTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-    const boundActions = bindActionCreators({ setUser }, dispatch);
+    const boundAppActions = bindActionCreators({ setUser }, dispatch);
+    const boundCourseActions = bindActionCreators({ setCourseData }, dispatch);
 
     return {
-        setUser: boundActions.setUser
+        setUser: boundAppActions.setUser,
+        setCourseData: boundCourseActions.setCourseData
     };
 }
 

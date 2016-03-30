@@ -16,7 +16,15 @@ const defaultState = fromJS({
 export default function courseReducer(state = defaultState, action) {
     switch(action.type) {
         case 'SET_COURSE_DATA':
-            return fromJS(action.data);
+            const { sections, modules, currentModule } = action.userData;
+
+            return state.set('sections', sections)
+                .set('modules', modules)
+                .set('currentModule', currentModule);
+        case 'SET_MODULES':
+            return state.set('modules', action.modules);
+        case 'SET_CURRENT_MODULE':
+            return state.set('currentModule', action.id);
         case 'TOGGLE_SECTION':
             return toggleSection(state, action);
         case 'TOGGLE_MODULES':

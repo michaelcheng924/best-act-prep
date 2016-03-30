@@ -14,6 +14,13 @@ export default (
         <Route component={Course} path="course" />
         <Route component={Welcome} path="welcome" />
         <Route component={Admin} path="admin" />
-        <Route component={Course} path="1.0" />
+        <Route component={Course} path="10" />
+        <Route component={Course} path="11" />
+        <Route component={Course} path="12" />
+        <Route component={Course} path="13" />
+        <Route component={Course} path="14" />
+        <Route component={Course} path="2A1" />
+        <Route component={Course} path="2A2" />
+        <Route component={Course} path="2A3" />
     </Route>
 );

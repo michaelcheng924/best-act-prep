@@ -26,5 +26,12 @@
 }
 
 .module {
-    text-align: center;
+    &__title {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    &__content {
+        padding: 0 20px;
+    }
 }

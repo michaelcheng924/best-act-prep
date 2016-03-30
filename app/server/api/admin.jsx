@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt-nodejs';
 import db from 'server/db/db';
-import { AdminUser } from 'server/db/users';
+import { AdminUser, User } from 'server/db/users';
 import express from 'express';
 const router = express.Router();
 
@@ -42,6 +42,19 @@ router.post('/logout', (req, res) => {
     req.session.adminUser = null;
 
     res.send({ loggedOut: true });
+});
+
+// FOR DEVELOPMENT ONLY
+router.get('/delete', (req, res) => {
+    User.remove({ email: 'cheng.c.mike@gmail.com' }, (err) => {
+        res.send('User deleted');
+    });
+});
+
+router.get('/refresh', (req, res) => {
+    User.update({ email: 'cheng.c.mike@gmail.com' }, { $set: { data: initialUserData }}, (err) => {
+        res.send('User data refreshed');
+    });
 });
 
 export default router;

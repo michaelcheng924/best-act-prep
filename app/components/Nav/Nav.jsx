@@ -1,9 +1,11 @@
+import { extend } from 'lodash';
 import React from 'react';
 import { Link } from 'react-router';
 import Router from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from 'actions/app';
+import { setCourseData } from 'actions/course';
 import { onLoginSubmit, logout } from 'api/app';
 import LogInBox from 'components/Nav/LogInBox';
 
@@ -31,10 +33,15 @@ export class Nav extends React.Component {
     }
 
     logout() {
-      const { setUser, setActiveTab } = this.props;
+      const { setUser, setCourseData, setActiveTab } = this.props;
 
       logout();
       setUser(null);
+      setCourseData({
+        sections: null,
+        modules: null,
+        currentModule: null
+      });
       setActiveTab('/');
       this.context.router.push('/');
     }
@@ -78,13 +85,14 @@ export class Nav extends React.Component {
     renderLoginBox() {
       if (!this.props.showLogin) { return null; }
 
-      const { toggleLogin, setUser, setLoginErrorMessage, loginErrorMessage, previousTab } = this.props;
+      const { toggleLogin, setUser, setCourseData, setLoginErrorMessage, loginErrorMessage, previousTab } = this.props;
 
       return <LogInBox
         router={this.context.router}
         toggleLogin={toggleLogin}
         onLoginSubmit={onLoginSubmit}
         setUser={setUser}
+        setCourseData={setCourseData}
         setLoginErrorMessage={setLoginErrorMessage}
         loginErrorMessage={loginErrorMessage}
         previousTab={previousTab}
@@ -134,8 +142,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   const appActions = bindActionCreators(AppActions, dispatch);
+  const courseActions = bindActionCreators({ setCourseData }, dispatch);
 
-  return appActions;
+  return extend(appActions, {
+    setCourseData: courseActions.setCourseData
+  });
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);

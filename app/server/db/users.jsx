@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 export const User = mongoose.model('User', {
     email: String,
-    password: String
+    password: String,
+    data: Object
 });
 
 export const AdminUser = mongoose.model('AdminUser', {

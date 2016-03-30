@@ -1,7 +1,21 @@
-export function setCourseData(data) {
+export function setCourseData(userData) {
     return {
         type: 'SET_COURSE_DATA',
-        data
+        userData
+    };
+}
+
+export function setModules(modules) {
+    return {
+        type: 'SET_MODULES',
+        modules
+    };
+}
+
+export function setCurrentModule(id) {
+    return {
+        type: 'SET_CURRENT_MODULE',
+        id
     };
 }
 

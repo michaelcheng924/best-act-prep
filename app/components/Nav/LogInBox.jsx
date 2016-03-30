@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React from 'react';
 
 const DEFAULT_ERROR_MESSAGE = 'Incorrect password!'
@@ -18,17 +19,23 @@ export default class LogInBox extends React.Component {
     onLoginSubmit(event) {
         event.preventDefault();
 
-        const { router, onLoginSubmit, setUser, setLoginErrorMessage, setActiveTab } = this.props;
+        const spinnerEl = $('.spinner');
+        spinnerEl.removeClass('hidden');
+
+        const { router, onLoginSubmit, setUser, setCourseData, setLoginErrorMessage, setActiveTab } = this.props;
         const { email, password } = this.refs;
 
         return onLoginSubmit(email.value, password.value)
             .then(response => {
                 if (!response.authenticated) {
+                    spinnerEl.addClass('hidden');
                     setLoginErrorMessage(response.reason || DEFAULT_ERROR_MESSAGE);
                 } else {
                     setLoginErrorMessage(null);
                     setUser(email.value);
+                    setCourseData(response.userData);
                     this.hideLogin();
+                    spinnerEl.addClass('hidden');
                     router.push('/course');
                     setActiveTab('/course');
                 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import sections from 'registries/course';
+import course from 'registries/course';
 import * as CourseActions from 'actions/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
@@ -12,7 +12,7 @@ export default class Course extends React.Component {
     }
 
     render() {
-        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData } = this.props;
+        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData, setModules, setCurrentModule } = this.props;
 
         return (
             <div className="course">
@@ -22,12 +22,15 @@ export default class Course extends React.Component {
                     toggleSection={toggleSection}
                     toggleModules={toggleModules}
                     currentModule={currentModule}
+                    setCurrentModule={setCurrentModule}
                 />
                 <CourseMain
                     currentModule={currentModule}
-                    sections={sections}
                     modulesData={modulesData}
                     setCourseData={setCourseData}
+                    setModules={setModules}
+                    setCurrentModule={setCurrentModule}
+                    router={this.context.router}
                 />
             </div>
         );

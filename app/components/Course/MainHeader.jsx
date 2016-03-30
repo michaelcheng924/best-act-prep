@@ -12,7 +12,8 @@ export default class MainHeader extends React.Component {
 
     markComplete(currentModule) {
         markComplete(currentModule).then(response => {
-            this.props.setCourseData(response.data);
+            this.props.setCourseData(response.userData);
+            this.props.router.push(response.userData.currentModule);
         });
     }
 
@@ -22,11 +23,11 @@ export default class MainHeader extends React.Component {
         const sectionName = titles.categories[sectionId];
         const moduleName = titles.names[currentModule];
 
-        if (currentModule.length <= 3) {
+        if (currentModule.length <= 2) {
             return <span>{`${sectionName} > `}<strong>{moduleName}</strong></span>;
         }
 
-        const moduleCategory = currentModule[2] === 'D' ? titles.categories[currentModule.slice(0, 3)] : titles.categories[currentModule[2]];
+        const moduleCategory = currentModule[1] === 'D' ? titles.categories[currentModule.slice(0, 2)] : titles.categories[currentModule[1]];
 
         return <span>{`${sectionName} > ${moduleCategory} > `}<strong>{moduleName}</strong></span>;
     }
