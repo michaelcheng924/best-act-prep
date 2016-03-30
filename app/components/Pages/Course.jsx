@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import course from 'registries/course';
 import * as CourseActions from 'actions/course';
+import { fetchCourseData } from 'api/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
@@ -10,7 +11,7 @@ export default class Course extends React.Component {
     componentWillMount() {
         if (!this.props.user) {
             this.context.router.push('/');
-        }     
+        }
     }
 
     componentDidMount() {
@@ -22,6 +23,9 @@ export default class Course extends React.Component {
 
         if (user && !currentModule) {
             $('.spinner').removeClass('hidden');
+            fetchCourseData().then(response => {
+                this.props.setCourseData(response.userData);
+            });
         }
     }
 
@@ -32,7 +36,7 @@ export default class Course extends React.Component {
     }
 
     render() {
-        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData, setModules, setCurrentModule } = this.props;
+        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, setModules, setCurrentModule } = this.props;
 
         if (!currentModule) {
             return null;
@@ -51,7 +55,6 @@ export default class Course extends React.Component {
                 <CourseMain
                     currentModule={currentModule}
                     modulesData={modulesData}
-                    setCourseData={setCourseData}
                     setModules={setModules}
                     setCurrentModule={setCurrentModule}
                     router={this.context.router}

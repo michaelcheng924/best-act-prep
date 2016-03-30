@@ -4,6 +4,27 @@ import express from 'express';
 const router = express.Router();
 import moduleMappings from 'registries/module-mappings';
 
+router.get('/fetchcoursedata', (req, res) => {
+    const email = req.session.user;
+
+    User.findOne({ email }, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            const { sections, modules, currentModule } = result.data;
+
+            res.send({
+                userData: {
+                    sections,
+                    modules,
+                    currentModule
+                }
+            });
+        }
+    });
+});
+
 router.post('/markcomplete/:id', (req, res) => {
     const currentModuleId = req.params.id;
 
