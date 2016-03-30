@@ -52,12 +52,12 @@ app.use((req, res) => {
         );
 
         store.dispatch(setActiveTab(req.url));
+        if (adminUser) {
+            store.dispatch(setAdminUser(adminUser));
+        }
         if (user) {
             store.dispatch(setUser(user));
             store.dispatch(setCourseData(initialUserData));
-        }
-        if (adminUser) {
-            store.dispatch(setAdminUser(adminUser));
         }
 
         const initialState = store.getState();

@@ -12,7 +12,12 @@ export default class MainHeader extends React.Component {
 
     markComplete(currentModule) {
         markComplete(currentModule).then(response => {
-            this.props.setCourseData(response.userData);
+            const { modules, currentModule } = response.userData;
+
+            this.props.setModules(modules);
+            if (currentModule !== this.props.currentModule) {
+                this.props.setCurrentModule(currentModule);
+            }
             this.props.router.push(response.userData.currentModule);
         });
     }

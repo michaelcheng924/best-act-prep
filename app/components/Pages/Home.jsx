@@ -4,26 +4,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 export class Home extends React.Component {
-    renderProducts() {
-        return _.map(this.props.items, product => {
-            const isInCart = _.indexOf(this.props.cart, product.id) !== -1;
-
-            return (
-                <div key={product.id} className="products__item">
-                    <strong>{product.name}</strong>
-                    <div className="products__item-price">${product.price}</div>
-                    <button
-                        className="products__item-button"
-                        onClick={this.onCartChange.bind(this, isInCart, product.id)}
-                    >
-                        {isInCart ? 'Remove from Cart' : 'Add to Cart'}
-                    </button>
-                    <div>{product.description}</div>
-                </div>
-            );
-        });
-    }
-
     render() {
         return (
             <div>

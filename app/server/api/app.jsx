@@ -19,7 +19,6 @@ router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     User.findOne({ email }, (err, user) => {
-        console.log(user);
         if (err) {
             console.log(err);
             res.send(err);
