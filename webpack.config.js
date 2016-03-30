@@ -1,5 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('style.css');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -21,12 +24,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.scss$/,
-                loaders: [
-                    'style',
-                    'css',
-                    'autoprefixer?browsers=last 3 versions',
-                    'sass?outputStyle=expanded'
-                ]
+                loader: extractCSS.extract(['css','sass'])
             },
             {
                 test: /\.jsx?$/,
@@ -51,7 +49,8 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new webpack.ProvidePlugin({
             jQuery: "jquery"
-        })
+        }),
+        extractCSS
     ],
     devServer: {
         hot: true,

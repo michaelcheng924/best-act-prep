@@ -1,5 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var extractCSS = new ExtractTextPlugin('style.css');
 
 module.exports = {
     entry: [
@@ -26,12 +29,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: [
-                    'style',
-                    'css',
-                    'autoprefixer?browsers=last 3 versions',
-                    'sass?outputStyle=expanded'
-                ]
+                loader: extractCSS.extract(['css','sass'])
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -49,6 +47,7 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             jQuery: 'jquery'
-        })
+        }),
+        extractCSS
     ]
 };

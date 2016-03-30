@@ -69,6 +69,7 @@ app.use((req, res) => {
             <html>
                 <head>
                     <meta charset="utf-8">
+                    <link rel="stylesheet" href="/style.css" />
                     <link rel="icon" type="image/png" href="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-favicon-size_zpskhedtdjn.png" />
 
                     <title>Best ACT Prep</title>
