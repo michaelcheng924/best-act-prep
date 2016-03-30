@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export function authenticate(path) {
     return $.ajax({
         type: 'POST',

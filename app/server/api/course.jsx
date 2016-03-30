@@ -28,22 +28,4 @@ router.post('/markcomplete/:id', (req, res) => {
     });
 });
 
-router.post('/setnextmodule/:id', (req, res) => {
-    const currentModuleId = req.params.id;
-
-    User.findOne({ email: req.session.user }, (err, result) => {
-        const userData = result.data;
-        userData.currentModule = moduleMappings[currentModuleId].next;
-
-        User.update({ email: req.session.user }, { $set: { data: userData } }, err => {
-            if (err) {
-                console.log(err);
-                res.send(err);
-            } else {
-                res.send({ currentModule: userData.currentModule });
-            }
-        })
-    });
-});
-
 export default router;

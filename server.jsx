@@ -11,9 +11,7 @@ import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import { setActiveTab, setUser } from 'actions/app';
-import { setCourseData } from 'actions/course';
 import { setAdminUser } from 'actions/admin';
-import initialUserData from 'registries/initial-user-data';
 
 var app = express();
 
@@ -57,7 +55,6 @@ app.use((req, res) => {
         }
         if (user) {
             store.dispatch(setUser(user));
-            store.dispatch(setCourseData(initialUserData));
         }
 
         const initialState = store.getState();
@@ -69,6 +66,7 @@ app.use((req, res) => {
             <html>
                 <head>
                     <meta charset="utf-8">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="icon" type="image/png" href="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-favicon-size_zpskhedtdjn.png" />

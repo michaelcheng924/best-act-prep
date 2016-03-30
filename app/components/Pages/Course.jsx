@@ -7,12 +7,36 @@ import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
 export default class Course extends React.Component {
+    componentWillMount() {
+        if (!this.props.user) {
+            this.context.router.push('/');
+        }     
+    }
+
     componentDidMount() {
-        this.context.router.push(this.props.currentModule);     
+        const { user, currentModule } = this.props;
+
+        if (currentModule) {
+            this.context.router.push(currentModule);
+        }
+
+        if (user && !currentModule) {
+            $('.spinner').removeClass('hidden');
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentModule && !prevProps.currentModule) {
+            $('.spinner').addClass('hidden');
+        }     
     }
 
     render() {
-        const { sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData, setModules, setCurrentModule } = this.props;
+        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, setCourseData, setModules, setCurrentModule } = this.props;
+
+        if (!currentModule) {
+            return null;
+        }
 
         return (
             <div className="course">

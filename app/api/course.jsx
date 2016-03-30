@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export function markComplete(id) {
     return $.ajax({
         type: 'POST',

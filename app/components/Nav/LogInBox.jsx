@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React from 'react';
 
 const DEFAULT_ERROR_MESSAGE = 'Incorrect password!'
