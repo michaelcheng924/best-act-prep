@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { setCurrentModule } from 'api/course';
 
 export default class SidebarSection extends React.Component {
     constructor(props) {
@@ -14,8 +15,16 @@ export default class SidebarSection extends React.Component {
     }
 
     navigateToModule() {
-        this.props.setCurrentModule(this.props.id);
-        this.context.router.push(this.props.id);
+        const { id, optimisticSetCurrentModule, router } = this.props;
+
+        optimisticSetCurrentModule(id);
+        router.push(id);
+
+        setCurrentModule(id).then(response => {
+            if (!response.userData) {
+                router.push(id);
+            }
+        });
     }
 
     render() {
@@ -53,7 +62,3 @@ export default class SidebarSection extends React.Component {
         );
     }
 }
-
-SidebarSection.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};

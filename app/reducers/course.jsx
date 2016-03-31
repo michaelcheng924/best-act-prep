@@ -16,13 +16,9 @@ const defaultState = fromJS({
 export default function courseReducer(state = defaultState, action) {
     switch(action.type) {
         case 'SET_COURSE_DATA':
-            const { sections, modules, currentModule } = action.userData;
-
-            return state.set('sections', sections)
-                .set('modules', modules)
-                .set('currentModule', currentModule);
-        case 'SET_MODULES':
-            return state.set('modules', action.modules);
+            return fromJS(action.userData);
+        case 'MARK_COMPLETE':
+            return markComplete(state, action);
         case 'SET_CURRENT_MODULE':
             return state.set('currentModule', action.id);
         case 'TOGGLE_SECTION':
@@ -32,6 +28,13 @@ export default function courseReducer(state = defaultState, action) {
         default:
             return state;
     }
+}
+
+function markComplete(state, action) {
+    const nextModules = state.get('modules');
+    return state.set('modules', nextModules.updateIn([action.id], module => {
+        return module.set('completed', !module.get('completed'));
+    }));
 }
 
 function toggleSection(state, action) {

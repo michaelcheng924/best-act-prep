@@ -1,5 +1,6 @@
 import React from 'react';
 import titles from 'registries/titles';
+import moduleMappings from 'registries/module-mappings';
 import { markComplete } from 'api/course';
 
 export default class MainHeader extends React.Component {
@@ -7,18 +8,24 @@ export default class MainHeader extends React.Component {
         super(props);
 
         this.getTitle = this.getTitle.bind(this);
-        this.markComplete = this.markComplete.bind(this, this.props.currentModule);
     }
 
     markComplete(currentModule) {
-        markComplete(currentModule).then(response => {
-            const { modules, currentModule } = response.userData;
+        const { modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router } = this.props;
 
-            this.props.setModules(modules);
-            if (currentModule !== this.props.currentModule) {
-                this.props.setCurrentModule(currentModule);
+        const nextModule = moduleMappings[currentModule].next;
+        const completed = modulesData[currentModule].completed;
+
+        optimisticMarkComplete(currentModule);
+        if (!completed) {
+            optimisticSetCurrentModule(nextModule);
+            router.push(nextModule);
+        }
+
+        markComplete(currentModule).then(response => {
+            if (!response.userData) {
+                router.push('/');
             }
-            this.props.router.push(response.userData.currentModule);
         });
     }
 
@@ -45,7 +52,7 @@ export default class MainHeader extends React.Component {
         const buttonType = isCompleted ? 'warning' : 'success';
         const text = isCompleted ? 'Mark Incomplete' : 'Mark Complete and Continue to Next Module';
 
-        return <button className={`btn btn-${buttonType} main-header__complete-button`} onClick={this.markComplete}>{text}</button>;
+        return <button className={`btn btn-${buttonType} main-header__complete-button`} onClick={this.markComplete.bind(this, currentModule)}>{text}</button>;
     }
 
     render() {

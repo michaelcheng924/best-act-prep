@@ -36,7 +36,8 @@ export default class Course extends React.Component {
     }
 
     render() {
-        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, setModules, setCurrentModule } = this.props;
+        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, optimisticMarkComplete, optimisticSetCurrentModule } = this.props;
+        const router = this.context.router;
 
         if (!currentModule) {
             return null;
@@ -50,14 +51,15 @@ export default class Course extends React.Component {
                     toggleSection={toggleSection}
                     toggleModules={toggleModules}
                     currentModule={currentModule}
-                    setCurrentModule={setCurrentModule}
+                    optimisticSetCurrentModule={optimisticSetCurrentModule}
+                    router={router}
                 />
                 <CourseMain
                     currentModule={currentModule}
                     modulesData={modulesData}
-                    setModules={setModules}
-                    setCurrentModule={setCurrentModule}
-                    router={this.context.router}
+                    optimisticMarkComplete={optimisticMarkComplete}
+                    optimisticSetCurrentModule={optimisticSetCurrentModule}
+                    router={router}
                 />
             </div>
         );

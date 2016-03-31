@@ -5,6 +5,14 @@ export function fetchCourseData() {
     });
 }
 
+export function setCurrentModule(id) {
+    return $.ajax({
+        type: 'POST',
+        url: `/api/course/setcurrentmodule/${id}`,
+        contentType: 'application/json'
+    });
+}
+
 export function markComplete(id) {
     return $.ajax({
         type: 'POST',

@@ -5,14 +5,14 @@ export function setCourseData(userData) {
     };
 }
 
-export function setModules(modules) {
+export function optimisticMarkComplete(id) {
     return {
-        type: 'SET_MODULES',
-        modules
+        type: 'MARK_COMPLETE',
+        id
     };
 }
 
-export function setCurrentModule(id) {
+export function optimisticSetCurrentModule(id) {
     return {
         type: 'SET_CURRENT_MODULE',
         id

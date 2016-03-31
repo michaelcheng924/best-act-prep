@@ -25,6 +25,29 @@ router.get('/fetchcoursedata', (req, res) => {
     });
 });
 
+router.post('/setcurrentmodule/:id', (req, res) => {
+    const currentModuleId = req.params.id;
+
+    User.findOne({ email: req.session.user }, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            const userData = result.data;
+            userData.currentModule = currentModuleId;
+            
+            User.update({ email: req.session.user }, { $set: {data: userData } }, err => {
+                if (err) {
+                    console.log(err);
+                    res.send(err);
+                } else {
+                    res.send(userData);
+                }
+            });
+        }
+    });
+});
+
 router.post('/markcomplete/:id', (req, res) => {
     const currentModuleId = req.params.id;
 
