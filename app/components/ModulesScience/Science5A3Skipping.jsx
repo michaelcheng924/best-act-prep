@@ -1,0 +1,14 @@
+import React from 'react';
+
+export default class Science5A3Skipping extends React.Component {
+    render() {
+        return (
+            <div className="module">
+                <h2 className="module__title">ACT Science - Skipping/Marking Questions</h2>
+                <div className="module__content">
+                    CONTENT
+                </div>
+            </div>
+        );
+    }
+}

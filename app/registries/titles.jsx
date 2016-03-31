@@ -17,7 +17,7 @@ const titles = {
         '10': 'Welcome, Instructions',
         '11': 'Overview/Format',
         '12': 'Read, Read, Read!',
-        '13': 'Use a Digital Watch',
+        '13': 'Digital Watch Not Optional!',
         '14': 'The Best ACT Prep Plan',
         '2A1': 'Overview/Format',
         

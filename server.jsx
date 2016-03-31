@@ -10,6 +10,7 @@ import routes from 'routes';
 import serverRoutes from 'server/routes';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
+import moduleMappings from 'registries/module-mappings';
 import { setActiveTab, setUser } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
 
@@ -49,7 +50,11 @@ app.use((req, res) => {
             </Provider>
         );
 
+        if (moduleMappings[req.url.slice(1)]) {
+            req.url = '/course';
+        }
         store.dispatch(setActiveTab(req.url));
+
         if (adminUser) {
             store.dispatch(setAdminUser(adminUser));
         }

@@ -30,7 +30,7 @@ const sections = [
 },
 {
     id: '3',
-    name: 'A.CT Math',
+    name: 'ACT Math',
     modules: [
         { id: '3A', displayId: '3.A', title: 'Introduction/Basics' },
         { id: '3A1', displayId: 'A.1', name: 'Overview/Format' },
@@ -38,6 +38,11 @@ const sections = [
         { id: '3A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
         { id: '3A4', displayId: 'A.4', name: 'Bubbling' },
         { id: '3B', displayId: '3.B', title: 'Specific Strategies' },
+        { id: '3B1', displayId: 'B.1', name: 'Memorize Math Concepts' },
+        { id: '3B2', displayId: 'B.2', name: '"Cheat" Using the Answers' },
+        { id: '3B3', displayId: 'B.3', name: '"Cheat" by Plugging in Numbers' },
+        { id: '3B4', displayId: 'B.4', name: 'Draw the Problem' },
+        { id: '3B5', displayId: 'B.5', name: 'Use a Graphing Calculator' },
         { id: '3C', displayId: '3.C', title: 'Practice Plan' },
         { id: '3D', displayId: '3.D', title: 'Math Concepts to Know' }
     ]
@@ -52,6 +57,10 @@ const sections = [
         { id: '4A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
         { id: '4A4', displayId: 'A.4', name: 'Bubbling' },
         { id: '4B', displayId: '4.B', title: 'Specific Strategies' },
+        { id: '4B1', displayId: 'B.1', name: 'Use Your Finger(s)' },
+        { id: '4B2', displayId: 'B.2', name: 'What\'s the Main Idea/Message?' },
+        { id: '4B3', displayId: 'B.3', name: 'Guess the Answer First' },
+        { id: '4B4', displayId: 'B.4', name: 'Narrowing Down the Choices' },
         { id: '4C', displayId: '4.C', title: 'Practice Plan' }
     ]
 },
@@ -60,12 +69,15 @@ const sections = [
     name: 'ACT Science',
     modules: [
         { id: '5A', displayId: '5.A', title: 'Introduction/Basics' },
-        { id: '5A1', partialId: 'A1', name: 'Overview/Format' },
-        { id: '5A2', partialId: 'A2', name: 'Managing Time' },
-        { id: '5A3', partialId: 'A3', name: 'Skipping/Marking Questions' },
-        { id: '5A4', partialId: 'A4', name: 'Bubbling' },
-        { id: '2B', displayId: '5.B', title: 'Specific Strategies' },
-        { id: '2C', displayId: '5.C', title: 'Practice Plan' }
+        { id: '5A1', displayId: 'A.1', name: 'Overview/Format' },
+        { id: '5A2', displayId: 'A.2', name: 'Managing Time' },
+        { id: '5A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
+        { id: '5A4', displayId: 'A.4', name: 'Bubbling' },
+        { id: '5B', displayId: '5.B', title: 'Specific Strategies' },
+        { id: '5B1', displayId: 'B.1', name: 'Conflicting Viewpoints Strategy' },
+        { id: '5B2', displayId: 'B.2', name: 'Use Your Finger(s)' },
+        { id: '5B3', displayId: 'B.2', name: 'Reading Charts Faster' },
+        { id: '5C', displayId: '5.C', title: 'Practice Plan' }
     ]
 },
 {
@@ -84,8 +96,9 @@ const sections = [
     id: '7',
     name: 'The Full ACT',
     modules: [
-        { id: '71', displayId: '7.1', name: 'Being Mentally Prepared' },
-        { id: '72', displayId: '7.2', name: 'Taking the Full ACT Test' }
+        { id: '71', displayId: '7.1', name: 'Full ACT Test Preparation' },
+        { id: '72', displayId: '7.2', name: 'Full ACT Practice Test #1' },
+        { id: '73', displayId: '7.3', name: 'Full ACT Practice Test #2' }
     ]
 }
 ];

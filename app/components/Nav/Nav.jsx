@@ -18,6 +18,7 @@ export class Nav extends React.Component {
         this.setActiveTab = this.setActiveTab.bind(this);
         this.setActiveTabHome = this.setActiveTab.bind(this, '/');
         this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
+        this.setActiveTabDashboard = this.setActiveTab.bind(this, '/dashboard');
         this.setActiveTabCourse = this.setActiveTab.bind(this, '/course');
         this.setActiveTabLogin = this.setActiveTab.bind(this, 'login');
     }
@@ -52,6 +53,16 @@ export class Nav extends React.Component {
         return (
             <li className={activeTab === '/why-best-act-prep' ? 'active' : ''} onClick={this.setActiveTabWhy}>
                 <Link to="why-best-act-prep">Why Best ACT Prep?</Link>
+            </li>
+        );
+    }
+
+    renderDashboard(activeTab, user) {
+        if (!user) { return null; }
+
+        return (
+            <li className={activeTab === '/dashboard' ? 'active' : ''} onClick={this.setActiveTabDashboard}>
+                <Link to="dashboard">Dashboard</Link>
             </li>
         );
     }
@@ -119,6 +130,7 @@ export class Nav extends React.Component {
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav navbar-right">
                                 {this.renderWhy(activeTab, user)}
+                                {this.renderDashboard(activeTab, user)}
                                 {this.renderCourse(activeTab, user)}
                                 {this.renderLoginLogout(activeTab, user)}
                             </ul>
