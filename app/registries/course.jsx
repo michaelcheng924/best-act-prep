@@ -91,7 +91,6 @@ const sections = [
         { id: '5B3', displayId: 'B.3', name: 'Reading Charts Faster' },
         { id: '5C', displayId: '5.C', title: 'Practice Plan' },
         { id: '5C1', displayId: 'C.1', name: 'One Passage at a Time' },
-        { id: '5C1', displayId: 'C.1', name: 'One Passage at a Time' },
         { id: '5C2', displayId: 'C.2', name: 'Three, Three, One' },
         { id: '5C3', displayId: 'C.3', name: 'All Seven Passages' }
     ]

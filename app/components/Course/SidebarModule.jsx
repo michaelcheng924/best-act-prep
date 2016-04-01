@@ -31,7 +31,7 @@ export default class SidebarSection extends React.Component {
         const { title, name, id, displayId, modulesData, currentModule } = this.props;
         const parentId = id.slice(0, 2);
         const isCurrentModule = id === currentModule;
-        const collapsed = id.length > 2 && modulesData[parentId].collapsed;
+        const collapsed = modulesData[parentId] && modulesData[parentId].collapsed;
         const completed = modulesData[id] && modulesData[id].completed;
 
         const arrowClassNames = classNames('glyphicon', {
