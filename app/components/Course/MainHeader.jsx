@@ -50,7 +50,11 @@ export default class MainHeader extends React.Component {
         const module = modulesData[currentModule];
         const isCompleted = module.completed;
         const buttonType = isCompleted ? 'warning' : 'success';
-        const text = isCompleted ? 'Mark Incomplete' : 'Mark Complete and Continue to Next Module';
+        let text = isCompleted ? 'Mark Incomplete' : 'Mark Complete and Continue to Next Module';
+
+        if (currentModule === '73' && !isCompleted) {
+            text = 'Mark Complete';
+        }
 
         return <button className={`btn btn-${buttonType} main-header__complete-button`} onClick={this.markComplete.bind(this, currentModule)}>{text}</button>;
     }
