@@ -30,6 +30,10 @@ const titles = {
         '2B2': 'Shorter is Usually Better',
         '2B3': 'Skim and Look Above/Below',
         '2B4': 'Read "Out Loud"',
+        '2C1': 'One Passage at a Time',
+        '2C2': 'Two/Three Passages Together',
+        '2C3': 'All Five Passages',
+        '2D1': 'All Grammar Rules PDF',
 
         // MATH
         '3A1': 'Overview/Format',
@@ -41,22 +45,43 @@ const titles = {
         '3B3': '"Cheat" by Plugging in Numbers',
         '3B4': 'Draw the Problem',
         '3B5': 'Use a Graphing Calculator',
+        '3C1': 'First 30 Questions',
+        '3C2': 'Last 30 Questions',
+        '3C3': 'All 60 Questions',
+        '3D1': 'All Math Concepts PDF',
 
         // READING
         '4A1': 'Overview/Format',
         '4A2': 'Managing Time',
         '4A3': 'Skipping/Marking Questions',
         '4A4': 'Bubbling',
+        '4B1': 'Do the Prose Passage Last',
+        '4B2': 'Use Your Finger(s)',
+        '4B3': 'What\'s the Main Idea/Message?',
+        '4B4': 'Guess the Answer First',
+        '4B5': 'Narrowing Down the Choices',
+        '4C1': 'One Passage at a Time',
+        '4C2': 'Two Passages Together',
+        '4C3': 'All Four Passages',
 
         // SCIENCE
         '5A1': 'Overview/Format',
         '5A2': 'Managing Time',
         '5A3': 'Skipping/Marking Questions',
         '5A4': 'Bubbling',
+        '5B1': 'Conflicting Viewpoints Strategy',
+        '5B2': 'Use Your Finger(s)',
+        '5B3': 'Reading Charts Faster',
+        '5C1': 'One Passage at a Time',
+        '5C2': 'Three, Three, One',
+        '5C3': 'All Seven Passages',
 
         // WRITING
 
         // FULL
+        '71': 'Full ACT Test Preparation',
+        '72': 'Full ACT Practice Test #1',
+        '73': 'Full ACT Practice Test #2'
     }
 };
 
