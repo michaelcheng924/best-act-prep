@@ -4,7 +4,8 @@ export default class Science5A4Bubbling extends React.Component {
     render() {
         return (
             <div className="module">
-                <h2 className="module__title">ACT Science - Bubbling</h2>
+                <h4 className="module__title--category">5.A.4) ACT Science Basics</h4>
+                <h2 className="module__title">Bubbling</h2>
                 <div className="module__content">
                     CONTENT
                 </div>

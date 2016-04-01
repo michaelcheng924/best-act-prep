@@ -7,7 +7,7 @@ const titles = {
         '5': 'ACT Science',
         '6': 'ACT Writing',
         '7': 'The Full ACT',
-        'A': 'Introduction/Basics',
+        'A': 'Basics',
         'B': 'Specific Strategies',
         'C': 'Practice Plan',
         '2D': 'Grammar Rules to Know',

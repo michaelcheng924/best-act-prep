@@ -14,7 +14,7 @@ const sections = [
     id: '2',
     name: 'ACT English',
     modules: [
-        { id: '2A', displayId: '2.A', title: 'Introduction/Basics' },
+        { id: '2A', displayId: '2.A', title: 'Basics' },
         { id: '2A1', displayId: 'A.1', name: 'Overview/Format' },
         { id: '2A2', displayId: 'A.2', name: 'Managing Time' },
         { id: '2A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
@@ -36,7 +36,7 @@ const sections = [
     id: '3',
     name: 'ACT Math',
     modules: [
-        { id: '3A', displayId: '3.A', title: 'Introduction/Basics' },
+        { id: '3A', displayId: '3.A', title: 'Basics' },
         { id: '3A1', displayId: 'A.1', name: 'Overview/Format' },
         { id: '3A2', displayId: 'A.2', name: 'Managing Time' },
         { id: '3A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
@@ -59,7 +59,7 @@ const sections = [
     id: '4',
     name: 'ACT Reading',
     modules: [
-        { id: '4A', displayId: '4.A', title: 'Introduction/Basics' },
+        { id: '4A', displayId: '4.A', title: 'Basics' },
         { id: '4A1', displayId: 'A.1', name: 'Overview/Format' },
         { id: '4A2', displayId: 'A.2', name: 'Managing Time' },
         { id: '4A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
@@ -80,7 +80,7 @@ const sections = [
     id: '5',
     name: 'ACT Science',
     modules: [
-        { id: '5A', displayId: '5.A', title: 'Introduction/Basics' },
+        { id: '5A', displayId: '5.A', title: 'Basics' },
         { id: '5A1', displayId: 'A.1', name: 'Overview/Format' },
         { id: '5A2', displayId: 'A.2', name: 'Managing Time' },
         { id: '5A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
@@ -100,7 +100,7 @@ const sections = [
     name: 'ACT Writing',
     modules: [
         { id: '6A', displayId: '6.A', title: 'In Progress' }
-        // { id: '6A', title: 'Introduction/Basics' },
+        // { id: '6A', title: 'Basics' },
         // { id: '6A1', partialId: 'A1', name: 'Overview/Format' },
         // { id: '6A2', partialId: 'A2', name: 'Managing Time' },
         // { id: '6B', title: 'Specific Strategies' },

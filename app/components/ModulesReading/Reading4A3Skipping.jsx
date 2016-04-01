@@ -4,7 +4,8 @@ export default class Reading4A3Skipping extends React.Component {
     render() {
         return (
             <div className="module">
-                <h2 className="module__title">ACT Reading - Skipping/Marking Questions</h2>
+                <h4 className="module__title--category">4.A.3) ACT Reading Basics</h4>
+                <h2 className="module__title">Skipping/Marking Questions</h2>
                 <div className="module__content">
                     CONTENT
                 </div>
