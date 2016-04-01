@@ -22,10 +22,14 @@ const sections = [
         { id: '2B', displayId: '2.B', title: 'Specific Strategies' },
         { id: '2B1', displayId: 'B.1', name: 'Memorize Grammar Rules' },
         { id: '2B2', displayId: 'B.2', name: 'Shorter is Usually Better' },
-        { id: '2B3', displayId: 'B.3', name: 'Skim, then Look at Context' },
+        { id: '2B3', displayId: 'B.3', name: 'Skim and Look Above/Below' },
         { id: '2B4', displayId: 'B.4', name: 'Read "Out Loud"' },
         { id: '2C', displayId: '2.C', title: 'Practice Plan' },
-        { id: '2D', displayId: '2.D', title: 'Grammar Rules to Know' }
+        { id: '2C1', displayId: 'C.1', name: 'One Passage at a Time' },
+        { id: '2C2', displayId: 'C.2', name: 'Two/Three Passages Together' },
+        { id: '2C3', displayId: 'C.3', name: 'All Five Passages' },
+        { id: '2D', displayId: '2.D', title: 'Grammar Rules to Know' },
+        { id: '2D1', displayId: 'D.1', name: 'All Grammar Rules PDF' }
     ]
 },
 {
@@ -44,6 +48,9 @@ const sections = [
         { id: '3B4', displayId: 'B.4', name: 'Draw the Problem' },
         { id: '3B5', displayId: 'B.5', name: 'Use a Graphing Calculator' },
         { id: '3C', displayId: '3.C', title: 'Practice Plan' },
+        { id: '3C1', displayId: 'C.1', name: 'First 30 Questions' },
+        { id: '3C2', displayId: 'C.2', name: 'Last 30 Questions' },
+        { id: '3C3', displayId: 'C.3', name: 'All 60 Questions' },
         { id: '3D', displayId: '3.D', title: 'Math Concepts to Know' }
     ]
 },
@@ -57,11 +64,15 @@ const sections = [
         { id: '4A3', displayId: 'A.3', name: 'Skipping/Marking Questions' },
         { id: '4A4', displayId: 'A.4', name: 'Bubbling' },
         { id: '4B', displayId: '4.B', title: 'Specific Strategies' },
-        { id: '4B1', displayId: 'B.1', name: 'Use Your Finger(s)' },
-        { id: '4B2', displayId: 'B.2', name: 'What\'s the Main Idea/Message?' },
-        { id: '4B3', displayId: 'B.3', name: 'Guess the Answer First' },
-        { id: '4B4', displayId: 'B.4', name: 'Narrowing Down the Choices' },
-        { id: '4C', displayId: '4.C', title: 'Practice Plan' }
+        { id: '4B1', displayId: 'B.1', name: 'Do the Prose Passage Last' },
+        { id: '4B2', displayId: 'B.1', name: 'Use Your Finger(s)' },
+        { id: '4B3', displayId: 'B.2', name: 'What\'s the Main Idea/Message?' },
+        { id: '4B4', displayId: 'B.3', name: 'Guess the Answer First' },
+        { id: '4B5', displayId: 'B.4', name: 'Narrowing Down the Choices' },
+        { id: '4C', displayId: '4.C', title: 'Practice Plan' },
+        { id: '4C1', displayId: 'C.1', name: 'One Passage at a Time' },
+        { id: '4C2', displayId: 'C.2', name: 'Two Passages Together' },
+        { id: '4C3', displayId: 'C.3', name: 'All Four Passages' }
     ]
 },
 {
