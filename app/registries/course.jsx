@@ -51,7 +51,8 @@ const sections = [
         { id: '3C1', displayId: 'C.1', name: 'First 30 Questions' },
         { id: '3C2', displayId: 'C.2', name: 'Last 30 Questions' },
         { id: '3C3', displayId: 'C.3', name: 'All 60 Questions' },
-        { id: '3D', displayId: '3.D', title: 'Math Concepts to Know' }
+        { id: '3D', displayId: '3.D', title: 'Math Concepts to Know' },
+        { id: '3D1', displayId: 'D.1', name: 'All Math Concepts PDF' }
     ]
 },
 {
@@ -65,10 +66,10 @@ const sections = [
         { id: '4A4', displayId: 'A.4', name: 'Bubbling' },
         { id: '4B', displayId: '4.B', title: 'Specific Strategies' },
         { id: '4B1', displayId: 'B.1', name: 'Do the Prose Passage Last' },
-        { id: '4B2', displayId: 'B.1', name: 'Use Your Finger(s)' },
-        { id: '4B3', displayId: 'B.2', name: 'What\'s the Main Idea/Message?' },
-        { id: '4B4', displayId: 'B.3', name: 'Guess the Answer First' },
-        { id: '4B5', displayId: 'B.4', name: 'Narrowing Down the Choices' },
+        { id: '4B2', displayId: 'B.2', name: 'Use Your Finger(s)' },
+        { id: '4B3', displayId: 'B.3', name: 'What\'s the Main Idea/Message?' },
+        { id: '4B4', displayId: 'B.4', name: 'Guess the Answer First' },
+        { id: '4B5', displayId: 'B.5', name: 'Narrowing Down the Choices' },
         { id: '4C', displayId: '4.C', title: 'Practice Plan' },
         { id: '4C1', displayId: 'C.1', name: 'One Passage at a Time' },
         { id: '4C2', displayId: 'C.2', name: 'Two Passages Together' },
@@ -87,8 +88,12 @@ const sections = [
         { id: '5B', displayId: '5.B', title: 'Specific Strategies' },
         { id: '5B1', displayId: 'B.1', name: 'Conflicting Viewpoints Strategy' },
         { id: '5B2', displayId: 'B.2', name: 'Use Your Finger(s)' },
-        { id: '5B3', displayId: 'B.2', name: 'Reading Charts Faster' },
-        { id: '5C', displayId: '5.C', title: 'Practice Plan' }
+        { id: '5B3', displayId: 'B.3', name: 'Reading Charts Faster' },
+        { id: '5C', displayId: '5.C', title: 'Practice Plan' },
+        { id: '5C1', displayId: 'C.1', name: 'One Passage at a Time' },
+        { id: '5C1', displayId: 'C.1', name: 'One Passage at a Time' },
+        { id: '5C2', displayId: 'C.2', name: 'Three, Three, One' },
+        { id: '5C3', displayId: 'C.3', name: 'All Seven Passages' }
     ]
 },
 {
