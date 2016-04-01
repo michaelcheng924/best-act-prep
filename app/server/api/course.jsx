@@ -14,6 +14,24 @@ router.get('/fetchcoursedata', (req, res) => {
         } else {
             const { sections, modules, currentModule } = result.data;
 
+            if (!currentModule) {
+                result.data.currentModule = '1.0';
+                User.update({ email }, { $set: { data: result } }, err => {
+                    if (err) {
+                        console.log(err);
+                        res.send(err);
+                    } else {
+                        res.send({
+                            userData: {
+                                sections,
+                                modules,
+                                currentModule: result.data.currentModule
+                            }
+                        });
+                    }
+                });
+            }
+
             res.send({
                 userData: {
                     sections,
@@ -35,6 +53,10 @@ router.post('/setcurrentmodule/:id', (req, res) => {
         } else {
             const userData = result.data;
             userData.currentModule = currentModuleId;
+
+            if (!currentModuleId) {
+                userData.currentModule = '1.0';
+            }
             
             User.update({ email: req.session.user }, { $set: {data: userData } }, err => {
                 if (err) {
@@ -58,7 +80,11 @@ router.post('/markcomplete/:id', (req, res) => {
 
         let nextModule;
         if (currentModule.completed) {
-            userData.currentModule = moduleMappings[currentModuleId].next;
+            userData.currentModule = moduleMappings[currentModuleId] && moduleMappings[currentModuleId].next;
+
+            if (!moduleMappings[currentModuleId] || !moduleMappings[currentModuleId].next) {
+                userData.currentModule = '1.0';
+            }
         }
 
         User.update({ email: req.session.user }, { $set: { data: userData } }, err => {

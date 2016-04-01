@@ -167,7 +167,7 @@ const modules = {
     },
     '3B5': {
         component: Math3B5Calculator,
-        next: '2C1'
+        next: '3C1'
     },
     '3C1': {
         component: Math3C1First30,
@@ -201,7 +201,7 @@ const modules = {
     },
     '4A4': {
         component: Reading4A4Bubbling,
-        next: ''
+        next: '4B1'
     },
     '4B1': {
         component: Reading4B1Prose,
@@ -221,7 +221,7 @@ const modules = {
     },
     '4B5': {
         component: Reading4B5Narrow,
-        next: '2C1'
+        next: '4C1'
     },
     '4C1': {
         component: Reading4C1One,
@@ -233,7 +233,7 @@ const modules = {
     },
     '4C3': {
         component: Reading4C3All,
-        next: '3D1'
+        next: '5A1'
     },
 
     // SCIENCE
@@ -251,11 +251,7 @@ const modules = {
     },
     '5A4': {
         component: Science5A4Bubbling,
-        next: ''
-    },
-    '2A4': {
-        component: English2A4Bubbling,
-        next: '2B1'
+        next: '5B1'
     },
     '5B1': {
         component: Science5B1Conflicting,
@@ -267,7 +263,7 @@ const modules = {
     },
     '5B3': {
         component: Science5B3Charts,
-        next: '5B4'
+        next: '5C1'
     },
     '5C1': {
         component: Science5C1One,
@@ -293,7 +289,7 @@ const modules = {
     },
     '73': {
         component: Full73Test2,
-        next: ''
+        next: '73'
     },
 };
 
