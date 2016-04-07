@@ -8,6 +8,7 @@ import English2A1Overview from 'components/ModulesEnglish/English2A1Overview';
 import English2A2Time from 'components/ModulesEnglish/English2A2Time';
 import English2A3Skipping from 'components/ModulesEnglish/English2A3Skipping';
 import English2A4Bubbling from 'components/ModulesEnglish/English2A4Bubbling';
+import English2A5Score from 'components/ModulesEnglish/English2A5Score';
 import English2B1Memorize from 'components/ModulesEnglish/English2B1Memorize';
 import English2B2Shorter from 'components/ModulesEnglish/English2B2Shorter';
 import English2B3Skim from 'components/ModulesEnglish/English2B3Skim';
@@ -21,6 +22,7 @@ import Math3A1Overview from 'components/ModulesMath/Math3A1Overview';
 import Math3A2Time from 'components/ModulesMath/Math3A2Time';
 import Math3A3Skipping from 'components/ModulesMath/Math3A3Skipping';
 import Math3A4Bubbling from 'components/ModulesMath/Math3A4Bubbling';
+import Math3A5Score from 'components/ModulesMath/Math3A5Score';
 import Math3B1Memorize from 'components/ModulesMath/Math3B1Memorize';
 import Math3B2Answers from 'components/ModulesMath/Math3B2Answers';
 import Math3B3Plugging from 'components/ModulesMath/Math3B3Plugging';
@@ -35,6 +37,7 @@ import Reading4A1Overview from 'components/ModulesReading/Reading4A1Overview';
 import Reading4A2Time from 'components/ModulesReading/Reading4A2Time';
 import Reading4A3Skipping from 'components/ModulesReading/Reading4A3Skipping';
 import Reading4A4Bubbling from 'components/ModulesReading/Reading4A4Bubbling';
+import Reading4A5Score from 'components/ModulesReading/Reading4A5Score';
 import Reading4B1Prose from 'components/ModulesReading/Reading4B1Prose';
 import Reading4B2Finger from 'components/ModulesReading/Reading4B2Finger';
 import Reading4B3Main from 'components/ModulesReading/Reading4B3Main';
@@ -48,6 +51,7 @@ import Science5A1Overview from 'components/ModulesScience/Science5A1Overview';
 import Science5A2Time from 'components/ModulesScience/Science5A2Time';
 import Science5A3Skipping from 'components/ModulesScience/Science5A3Skipping';
 import Science5A4Bubbling from 'components/ModulesScience/Science5A4Bubbling';
+import Science5A5Score from 'components/ModulesScience/Science5A5Score';
 import Science5B1Conflicting from 'components/ModulesScience/Science5B1Conflicting';
 import Science5B2Finger from 'components/ModulesScience/Science5B2Finger';
 import Science5B3Charts from 'components/ModulesScience/Science5B3Charts';
@@ -97,6 +101,10 @@ const modules = {
     },
     '2A4': {
         component: English2A4Bubbling,
+        next: '2A5'
+    },
+    '2A5': {
+        component: English2A5Score,
         next: '2B1'
     },
     '2B1': {
@@ -147,6 +155,10 @@ const modules = {
     },
     '3A4': {
         component: Math3A4Bubbling,
+        next: '3A5'
+    },
+    '3A5': {
+        component: Math3A5Score,
         next: '3B1'
     },
     '3B1': {
@@ -201,6 +213,10 @@ const modules = {
     },
     '4A4': {
         component: Reading4A4Bubbling,
+        next: '4A5'
+    },
+    '4A5': {
+        component: Reading4A5Score,
         next: '4B1'
     },
     '4B1': {
@@ -251,6 +267,10 @@ const modules = {
     },
     '5A4': {
         component: Science5A4Bubbling,
+        next: '5A5'
+    },
+    '5A5': {
+        component: Science5A5Score,
         next: '5B1'
     },
     '5B1': {
