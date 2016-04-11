@@ -27,7 +27,7 @@
 
 .module {
     &__title {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         margin-top: 5px;
         text-align: center;
     }
@@ -41,5 +41,26 @@
 
     &__content {
         padding: 0 20px;
+    }
+
+    &__video {
+        display: block;
+        height: 315px;
+        margin: 0 auto;
+        width: 420px;
+    }
+
+    &__transcript-title {
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    &__transcript-container {
+        border: 1px solid #333;
+        border-radius: 10px;
+        display: block;
+        margin: 20px auto 0;
+        max-width: 600px;
+        padding: 10px 20px;
     }
 }
