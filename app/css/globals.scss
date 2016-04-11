@@ -19,6 +19,20 @@ body {
     }
 }
 
+.small-spinner {
+    position: absolute;
+    text-align: center;
+    top: 150px;
+    width: 100%;
+
+    &__image {
+        background: url('../images/small-spinner.gif');
+        display: inline-block;
+        height: 16px;
+        width: 16px;
+    }
+}
+
 .page {
     padding: 15px 20px;
 
