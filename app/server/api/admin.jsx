@@ -36,12 +36,42 @@ router.post('/login', (req, res) => {
             });
         }
     });
+
+    // Create admin user
+    // bcrypt.hash(password, null, null, (err, hash) => {
+    //     const adminUser = new AdminUser({
+    //         email,
+    //         password: hash
+    //     });
+
+    //     adminUser.save((err, result) => {
+    //         req.session.adminUser = email;
+    //         res.send({
+    //             email
+    //         });
+    //     });
+    // });
 });
 
 router.post('/logout', (req, res) => {
     req.session.adminUser = null;
 
     res.send({ loggedOut: true });
+});
+
+router.get('/getusers', (req, res) => {
+    User.find((err, results) => {
+        res.send({
+            users: results
+        });
+    });
+});
+
+router.delete('/deleteuser', (req, res) => {
+    const email = req.body.email;
+    User.remove({ email }, err => {
+        res.send(`Deleted ${email}!`);
+    });
 });
 
 // FOR DEVELOPMENT ONLY

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { onAdminLoginSubmit, logout } from 'api/admin';
+import { onAdminLoginSubmit, logout, getUsers } from 'api/admin';
 import * as AdminActions from 'actions/admin';
+import AdminUser from 'components/Pages/AdminUser';
 
 const DEFAULT_ERROR_MESSAGE = 'Incorrect password!';
 
@@ -12,6 +13,12 @@ export class Admin extends React.Component {
 
         this.onLoginSubmit = this.onLoginSubmit.bind(this);
         this.logout = this.logout.bind(this);
+    }
+
+    componentDidMount() {
+        getUsers().then(response => {
+            this.props.setUsers(response.users);
+        });
     }
 
     onLoginSubmit(event) {
@@ -70,8 +77,10 @@ export class Admin extends React.Component {
 
                 <table className="table table-striped">
                     <thead>
-                        <th>User</th>
-                        <th>Actions</th>
+                        <tr>
+                            <th>User</th>
+                            <th>Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {this.renderUsers()}
@@ -82,7 +91,13 @@ export class Admin extends React.Component {
     }
 
     renderUsers() {
-        return null;
+        if (!this.props.users) { return <tr><td>No users</td></tr>; }
+        
+        return this.props.users.map((user, index) => {
+            return (
+                <AdminUser key={index} email={user.email} />
+            );
+        });
     }
 
     render() {

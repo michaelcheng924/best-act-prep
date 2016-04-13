@@ -22,3 +22,20 @@ export function logout() {
         contentType: 'application/json'
     });
 }
+
+export function getUsers() {
+    return $.ajax({
+        type: 'GET',
+        url: '/api/admin/getusers',
+        contentType: 'application/json'
+    });
+}
+
+export function deleteUser(email) {
+    return $.ajax({
+        type: 'DELETE',
+        url: '/api/admin/deleteuser',
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
+    });
+}

@@ -74,7 +74,7 @@ app.use((req, res) => {
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
                     <link rel="stylesheet" href="/style.css" />
-                    <link rel="icon" type="image/png" href="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-favicon-size_zpskhedtdjn.png" />
+                    <link rel="icon" type="image/png" href="/favicon.png" />
 
                     <title>Best ACT Prep</title>
 

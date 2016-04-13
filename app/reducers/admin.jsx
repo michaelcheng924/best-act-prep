@@ -1,7 +1,8 @@
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 
 const defaultState = Map({
-    adminUser: null
+    adminUser: null,
+    users: null
 });
 
 export default function adminReducer(state = defaultState, action) {
@@ -10,6 +11,8 @@ export default function adminReducer(state = defaultState, action) {
             return state.set('adminUser', action.email);
         case 'SET_ADMIN_LOGIN_ERROR_MESSAGE':
             return state.set('loginErrorMessage', action.message);
+        case 'SET_USERS':
+            return state.set('users', List(action.users));
         default:
             return state
     }

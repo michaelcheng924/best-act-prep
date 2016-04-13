@@ -3,7 +3,7 @@ import db from 'server/db/db';
 import { User } from 'server/db/users';
 import express from 'express';
 const router = express.Router();
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
 import { publicPaths } from 'server/routes';
 import initialUserData from 'registries/initial-user-data';
 
@@ -51,11 +51,12 @@ router.post('/logout', (req, res) => {
 });
 
 router.post('/buycourse', (req, res) => {
-    const token = req.body.id;
-    const email = req.body.email;
+    const token = req.body.token.id;
+    const email = req.body.token.email;
+    const amount = req.body.amount;
 
     stripe.charges.create({
-        amount: 5000,
+        amount,
         currency: 'usd',
         source: token
 

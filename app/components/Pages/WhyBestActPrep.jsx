@@ -6,6 +6,8 @@ import { onToken } from 'api/app';
 import { setUser } from 'actions/app';
 import { setCourseData } from 'actions/course';
 
+const AMOUNT = 50;
+
 export class WhyBestActPrep extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,7 @@ export class WhyBestActPrep extends React.Component {
 
         spinnerEl.removeClass('hidden');
 
-        onToken(token).then(response => {
+        onToken(token, AMOUNT).then(response => {
             if (response.email) {
                 this.props.setUser(response.email);
                 this.props.setCourseData(response.userData);
@@ -31,17 +33,20 @@ export class WhyBestActPrep extends React.Component {
     render() {
         return (
             <div className="page">
+                <div className="why__beta-explanation">
+                    Get lifetime access to the Best ACT Prep online course while we continue building it! The price will go up as we add more to the course. For now, it's basically free, so sign up while you can!
+                </div>
                 <StripeCheckout
                     name="Best ACT Prep"
                     description="Online Course"
-                    amount={5000}
+                    amount={AMOUNT}
                     image="/act-logo-only.png"
                     allowRememberMe={false}
                     token={this.onToken}
-                    stripeKey="pk_test_pMf1kAuzE7xoelXFhHugn1Wy"
+                    stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
                 >
                     <button className="stripe-checkout-button">
-                        Buy now!
+                        Special Beta Lifetime Access ($3)
                     </button>
                 </StripeCheckout>
                 <div className="page__why-content">
@@ -52,15 +57,6 @@ export class WhyBestActPrep extends React.Component {
                         <iframe width="373" height="210 " src="https://www.youtube.com/embed/y9zCjGHkwWM" frameBorder="0" allowFullScreen></iframe>
                         <div className="why__most-popular-text--smaller">just got <em><strong>better</strong></em>.</div>
                     </div>
-                    <StripeCheckout
-                        name="Best ACT Prep"
-                        description="Online Course"
-                        amount={5000}
-                        image="/act-logo-only.png"
-                        allowRememberMe={false}
-                        token={this.onToken}
-                        stripeKey="pk_test_pMf1kAuzE7xoelXFhHugn1Wy"
-                    />
                 </div>
             </div>
         );

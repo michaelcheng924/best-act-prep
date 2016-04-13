@@ -24,12 +24,12 @@ export function logout() {
     });
 }
 
-export function onToken(token) {
+export function onToken(token, amount) {
     return $.ajax({
         type: 'POST',
         url: '/api/app/buycourse',
         contentType: 'application/json',
-        data: JSON.stringify(token)
+        data: JSON.stringify({ token, amount })
     });
 }
 
