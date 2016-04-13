@@ -31,8 +31,27 @@ export class WhyBestActPrep extends React.Component {
     render() {
         return (
             <div className="page">
-                <div className="page__content">
-                    WHY
+                <StripeCheckout
+                    name="Best ACT Prep"
+                    description="Online Course"
+                    amount={5000}
+                    image="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-only-100_zps9rrorraj.png"
+                    allowRememberMe={false}
+                    token={this.onToken}
+                    stripeKey="pk_test_pMf1kAuzE7xoelXFhHugn1Wy"
+                >
+                    <button className="stripe-checkout-button">
+                        Buy now!
+                    </button>
+                </StripeCheckout>
+                <div className="page__why-content">
+                    <div className="why__most-popular">
+                        <div className="why__most-popular-text">The most popular ACT prep videos and instructor in the world...</div>
+                        <iframe width="373" height="210" src="https://www.youtube.com/embed/8euL7Z8FVL4" frameBorder="0" allowFullScreen className="why__youtube-video"></iframe>
+                        <iframe width="373" height="210" src="https://www.youtube.com/embed/y9zCjGHkwWM" frameBorder="0" allowFullScreen className="why__youtube-video"></iframe>
+                        <iframe width="373" height="210 " src="https://www.youtube.com/embed/y9zCjGHkwWM" frameBorder="0" allowFullScreen></iframe>
+                        <div className="why__most-popular-text--smaller">just got <em><strong>better</strong></em>.</div>
+                    </div>
                     <StripeCheckout
                         name="Best ACT Prep"
                         description="Online Course"

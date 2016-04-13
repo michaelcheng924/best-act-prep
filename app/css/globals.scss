@@ -43,4 +43,11 @@ body {
         padding: 15px 20px;
         width: 100%;
     }
+
+    &__why-content {
+        background: #FFF;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        width: 100%;
+    }
 }
