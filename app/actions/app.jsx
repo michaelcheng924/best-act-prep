@@ -5,6 +5,13 @@ export function setActiveTab(tab) {
     };
 }
 
+export function toggleContact(showContact) {
+    return {
+        type: 'TOGGLE_CONTACT',
+        showContact
+    }
+}
+
 export function toggleLogin(showLogin) {
     return {
         type: 'TOGGLE_LOGIN',

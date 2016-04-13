@@ -13,6 +13,8 @@ export class Nav extends React.Component {
     constructor(props) {
         super(props);
 
+        this.toggleContact = this.toggleContact.bind(this);
+        this.hideContact = this.hideContact.bind(this);
         this.toggleLogin = this.toggleLogin.bind(this);
         this.logout = this.logout.bind(this);
         this.setActiveTab = this.setActiveTab.bind(this);
@@ -20,11 +22,24 @@ export class Nav extends React.Component {
         this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
         this.setActiveTabDashboard = this.setActiveTab.bind(this, '/dashboard');
         this.setActiveTabCourse = this.setActiveTab.bind(this, '/course');
+        this.setActiveTabContact = this.setActiveTab.bind(this, 'contact');
         this.setActiveTabLogin = this.setActiveTab.bind(this, 'login');
     }
 
     setActiveTab(tab) {
         this.props.setActiveTab(tab);
+    }
+
+    toggleContact() {
+        const { toggleContact, showContact } = this.props;
+
+        toggleContact(!showContact);
+    }
+
+    hideContact() {
+        const { toggleContact, setActiveTab, previousTab } = this.props;
+        this.toggleContact(false);
+        this.setActiveTab(previousTab);
     }
 
     toggleLogin() {
@@ -77,6 +92,14 @@ export class Nav extends React.Component {
         );
     }
 
+    renderContact(activeTab) {
+        return (
+            <li className={activeTab === 'contact' ? 'active' : ''} onClick={this.setActiveTabContact}>
+                <a className="bap-nav__log-in-link" onClick={this.toggleContact}>Contact</a>
+            </li>
+        );
+    }
+
     renderLoginLogout(activeTab, user) {
         if (!user) {
             return (
@@ -90,6 +113,20 @@ export class Nav extends React.Component {
             <li>
                 <a className="bap-nav__log-in-link" onClick={this.logout}>Log Out</a>
             </li>
+        );
+    }
+
+    renderContactBox() {
+        if (!this.props.showContact) { return null; }
+
+        return (
+            <div>
+                <div className="log-in-box__overlay" onClick={this.hideContact} />
+                <div className="contact-box">
+                    <strong>Email:</strong> <a href="mailto:support@bestactprep.co">support@bestactprep.co</a><br />
+                    <strong>Number:</strong> (630) 532-0154
+                </div>
+            </div>
         );
     }
 
@@ -132,10 +169,12 @@ export class Nav extends React.Component {
                                 {this.renderWhy(activeTab, user)}
                                 {this.renderDashboard(activeTab, user)}
                                 {this.renderCourse(activeTab, user)}
+                                {this.renderContact(activeTab)}
                                 {this.renderLoginLogout(activeTab, user)}
                             </ul>
                         </div>
                     </div>
+                    {this.renderContactBox()}
                     {this.renderLoginBox()}
                 </nav>
         );
