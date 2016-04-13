@@ -40,6 +40,9 @@ module.exports = {
         ]
     },
     plugins: [
-        extractCSS
+        extractCSS,
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        })
     ]
 };

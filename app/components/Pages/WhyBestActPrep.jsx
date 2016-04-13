@@ -35,7 +35,7 @@ export class WhyBestActPrep extends React.Component {
                     name="Best ACT Prep"
                     description="Online Course"
                     amount={5000}
-                    image="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-only-100_zps9rrorraj.png"
+                    image="/act-logo-only.png"
                     allowRememberMe={false}
                     token={this.onToken}
                     stripeKey="pk_test_pMf1kAuzE7xoelXFhHugn1Wy"
@@ -56,7 +56,7 @@ export class WhyBestActPrep extends React.Component {
                         name="Best ACT Prep"
                         description="Online Course"
                         amount={5000}
-                        image="http://i288.photobucket.com/albums/ll175/michaelcheng429/act-logo-only-100_zps9rrorraj.png"
+                        image="/act-logo-only.png"
                         allowRememberMe={false}
                         token={this.onToken}
                         stripeKey="pk_test_pMf1kAuzE7xoelXFhHugn1Wy"

@@ -4,12 +4,12 @@
   "description": "React Redux Fullstack Starter",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=$NODE_PATH:./app node .",
-    "dev": "npm run start & webpack-dev-server --progress --colors",
-    "postinstall": "NODE_ENV=production webpack --progress --colors -p --config webpack.prod.config.js",
+    "start": "sudo -E NODE_PATH=$NODE_PATH:./app node .",
+    "dev": "npm start & webpack-dev-server --progress --colors",
     "test": "./node_modules/mocha/bin/mocha --require ./app/tests/test_starter.js --require ./app/tests/test_helper.js ./app --recursive",
     "test:watch": "npm run test -- --watch",
-    "build": "NODE_ENV=production webpack --progress --colors -p --config webpack.prod.config.js"
+    "build": "NODE_ENV=production webpack --progress --colors -p --config webpack.prod.config.js",
+    "start:prod": "NODE_ENV=production npm start"
   },
   "repository": {
     "type": "git",
