@@ -34,7 +34,7 @@ export class WhyBestActPrep extends React.Component {
         return (
             <div className="page">
                 <div className="why__beta-explanation">
-                    Get lifetime access to the Best ACT Prep online course while we continue building it! The price will go up as we add more to the course. For now, it's basically free, so sign up while you can!
+                    Get lifetime access to the Best ACT Prep online course while we continue building it! The price will go up as we add more to the course. For now, it's basically free, so sign up while you can! Ask for a refund anytime. Easy.
                 </div>
                 <StripeCheckout
                     name="Best ACT Prep"
