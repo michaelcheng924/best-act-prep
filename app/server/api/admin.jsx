@@ -74,15 +74,24 @@ router.delete('/deleteuser', (req, res) => {
     });
 });
 
+router.post('/resetpassword', (req, res) => {
+    const { email, password } = req.body;
+    bcrypt.hash(password, null, null, (err, hash) => {
+        User.update({ email }, { $set: { password: hash } }, err => {
+            res.send('Password updated!');
+        });
+    });
+});
+
 // FOR DEVELOPMENT ONLY
 router.get('/delete', (req, res) => {
-    User.remove({ email: 'cheng.c.mike@gmail.com' }, (err) => {
+    User.remove({ email: 'cheng.c.mike@gmail.com' }, err => {
         res.send('User deleted');
     });
 });
 
 router.get('/refresh', (req, res) => {
-    User.update({ email: 'cheng.c.mike@gmail.com' }, { $set: { data: initialUserData }}, (err) => {
+    User.update({ email: 'cheng.c.mike@gmail.com' }, { $set: { data: initialUserData } }, err => {
         res.send('User data refreshed');
     });
 });

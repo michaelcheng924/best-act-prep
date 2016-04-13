@@ -39,3 +39,12 @@ export function deleteUser(email) {
         data: JSON.stringify({ email })
     });
 }
+
+export function resetPassword(email, password) {
+    return $.ajax({
+        type: 'POST',
+        url: '/api/admin/resetpassword',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password })
+    });
+}
