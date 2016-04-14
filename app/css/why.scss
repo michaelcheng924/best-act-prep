@@ -7,6 +7,47 @@
         max-width: 800px;
     }
 
+    &__so-far {
+        background: #FFF;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+    }
+
+    &__so-far-heading {
+        margin: 0;
+        text-align: center;
+    }
+
+    &__so-far-tagline {
+        color: $blue;
+        display: block;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    &__so-far-everything {
+        color: $orange;
+        display: block;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    &__so-far-feature {
+        display: inline-block;
+        width: 50%;
+    }
+
+    &__so-far-image {
+        border: 1px solid $blue;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px 0 0 20px;
+        vertical-align: top;
+    }
+
     &__most-popular {
         background: $blue;
         border-radius: 5px 5px 0 0;
@@ -37,7 +78,7 @@
     border-radius: 10px;
     color: #FFF;
     left: 50%;
-    margin: 0 -117px 20px;
+    margin: 15px -117px;
     padding: 5px 12px;
     position: relative;
 

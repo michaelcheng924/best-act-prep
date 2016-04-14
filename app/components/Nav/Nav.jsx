@@ -132,6 +132,9 @@ export class Nav extends React.Component {
             <div>
                 <div className="log-in-box__overlay" onClick={this.hideContact} />
                 <div className="contact-box">
+                    <div className="contact-box__heading">
+                        <em>Having trouble? Contact us any time!</em>
+                    </div>
                     <strong>Email:</strong> <a href="mailto:support@bestactprep.co">support@bestactprep.co</a><br />
                     <strong>Number:</strong> (630) 532-0154
                 </div>

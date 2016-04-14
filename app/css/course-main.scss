@@ -39,6 +39,13 @@
         text-align: center;
     }
 
+    &__instructions {
+        color: $gold;
+        display: block;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
     &__content {
         padding: 0 20px;
     }
