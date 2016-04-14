@@ -5,6 +5,7 @@ import Home from 'components/Pages/Home';
 import WhyBestACTPrep from 'components/Pages/WhyBestActPrep';
 import Dashboard from 'components/Pages/Dashboard';
 import Course from 'components/Pages/Course';
+import PracticeTests from 'components/Pages/PracticeTests';
 import Welcome from 'components/Pages/Welcome';
 import Admin from 'components/Pages/Admin';
 
@@ -14,6 +15,7 @@ export default (
         <Route component={WhyBestACTPrep} path="why-best-act-prep" />
         <Route component={Dashboard} path="dashboard" />
         <Route component={Course} path="course" />
+        <Route component={PracticeTests} path="tests" />
         <Route component={Welcome} path="welcome" />
         <Route component={Admin} path="admin" />
         <Route component={Course} path="10" />

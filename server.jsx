@@ -31,6 +31,12 @@ app.use(session({
 serverRoutes(app);
 
 app.use((req, res) => {
+    let url = req.url;
+    if (url.length > 1 && url.slice(url.length - 1) === '/') {
+        url = url.slice(0,url.length - 1);
+        res.redirect(url);
+    }
+
     const { user, adminUser } = req.session;
     const location = createLocation(req.url);
     const store = makeStore();
@@ -53,6 +59,7 @@ app.use((req, res) => {
         if (moduleMappings[req.url.slice(1)]) {
             req.url = '/course';
         }
+
         store.dispatch(setActiveTab(req.url));
 
         if (adminUser) {
@@ -74,7 +81,7 @@ app.use((req, res) => {
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
                     <link rel="stylesheet" href="/style.css" />
-                    <link rel="icon" type="image/png" href="/favicon.png" />
+                    <link rel="icon" type="image/png" href="/images/favicon.png" />
 
                     <title>Best ACT Prep</title>
 

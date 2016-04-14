@@ -5,6 +5,7 @@ import adminRoutes from 'server/api/admin';
 export const publicPaths = {
     '/': true,
     '/why-best-act-prep': true,
+    '/tests': true,
     '/welcome': true,
     '/admin': true
 };

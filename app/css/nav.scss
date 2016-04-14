@@ -32,6 +32,7 @@
     position: absolute;
     right: 69px;
     top: 50px;
+    z-index: 999;
 }
 
 .log-in-box {
@@ -43,6 +44,7 @@
     right: 0;
     top: 50px;
     width: 280px;
+    z-index: 999;
 
     &__overlay {
         height: 99vh;

@@ -10,6 +10,7 @@ body {
     text-align: center;
     top: 75px;
     width: 100%;
+    z-index: 1000;
 
     &__image {
         background: url('../images/spinner.gif');

@@ -1,0 +1,30 @@
+.practice-tests {
+    &__tests {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    &__header {
+        margin-top: 10px;
+    }
+
+    &__button {
+        background: #FFF;
+        border: 1px solid $blue;
+        margin: 0 10px 10px 0;
+        padding: 5px 12px;
+
+        &:hover {
+            background: lighten($blue, 55%);
+        }
+    }
+
+    &__cover-image {
+        border: 1px solid #CCC;
+        display: inline-block;
+        height: 273px;
+        margin: 40px 0 0 40px;
+        vertical-align: top;
+        width: 227px;
+    }
+}

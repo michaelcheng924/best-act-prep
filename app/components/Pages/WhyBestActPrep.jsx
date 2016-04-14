@@ -40,7 +40,7 @@ export class WhyBestActPrep extends React.Component {
                     name="Best ACT Prep"
                     description="Online Course"
                     amount={AMOUNT}
-                    image="/act-logo-only.png"
+                    image="/images/act-logo-only.png"
                     allowRememberMe={false}
                     token={this.onToken}
                     stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"

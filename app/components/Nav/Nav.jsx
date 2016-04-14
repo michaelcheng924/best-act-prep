@@ -22,6 +22,7 @@ export class Nav extends React.Component {
         this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
         this.setActiveTabDashboard = this.setActiveTab.bind(this, '/dashboard');
         this.setActiveTabCourse = this.setActiveTab.bind(this, '/course');
+        this.setActiveTabPracticeTests = this.setActiveTab.bind(this, '/tests');
         this.setActiveTabContact = this.setActiveTab.bind(this, 'contact');
         this.setActiveTabLogin = this.setActiveTab.bind(this, 'login');
     }
@@ -88,6 +89,14 @@ export class Nav extends React.Component {
         return (
             <li className={activeTab === '/course' ? 'active' : ''} onClick={this.setActiveTabCourse}>
                 <Link to="course">Course Home</Link>
+            </li>
+        );
+    }
+
+    renderPracticeTests(activeTab) {
+        return (
+            <li className={activeTab === '/tests' ? 'active' : ''} onClick={this.setActiveTabPracticeTests}>
+                <Link to="tests">Practice Tests</Link>
             </li>
         );
     }
@@ -169,6 +178,7 @@ export class Nav extends React.Component {
                                 {this.renderWhy(activeTab, user)}
                                 {this.renderDashboard(activeTab, user)}
                                 {this.renderCourse(activeTab, user)}
+                                {this.renderPracticeTests(activeTab)}
                                 {this.renderContact(activeTab)}
                                 {this.renderLoginLogout(activeTab, user)}
                             </ul>

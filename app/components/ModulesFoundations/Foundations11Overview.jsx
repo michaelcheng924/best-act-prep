@@ -8,7 +8,7 @@ export default class Foundations11Overview extends React.Component {
                 <h2 className="module__title">ACT Overview/Format</h2>
                 <div className="module__content">
                     <video controls="controls" className="module__video">
-                        <source src="https://drive.google.com/uc?export=download&id=0B2BsXecFN2TxUWZ3bFFmeWUtMEU" type='video/mp4'/>
+                        <source src="https://www.dropbox.com/s/9d5gqalumu0zpuy/Foundations12Overview.mp4?raw=1" type='video/mp4'/>
                     </video>
 
                     <div className="module__transcript-container">
