@@ -7,6 +7,26 @@ const stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
 import { publicPaths } from 'server/routes';
 import initialUserData from 'registries/initial-user-data';
 
+const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
+const MAILGUN_WELCOME_EMAIL_SUBJECT = 'Thanks for purchasing the Best ACT Prep online course!';
+
+function getMailgunWelcomeEmailHtml(email) {
+    return `We are so excited that you chose the Best ACT Prep online course!
+
+    If you haven't done so already, `;
+}
+
+// MAILGUN SAMPLE
+// const MAILGUN_DATA = {
+//     from: 'Michael <michael@bestactprep.co>',
+//     to: 'cheng.c.mike@gmail.com',
+//     subject: 'TEST',
+//     text: 'HELLO'
+// };
+// mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+//     console.log(body);
+// });
+
 router.post('/authenticate', (req, res) => {
     if (!publicPaths[req.body.path] && !req.session.user) {
         res.send({ authenticated: false });
