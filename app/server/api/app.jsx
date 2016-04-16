@@ -162,9 +162,27 @@ router.post('/setpassword', (req, res) => {
 });
 
 router.post('/support', (req, res) => {
-    console.log(req.body);
+    const { supportTopic, email, textarea } = req.body;
 
-    res.send({ success: true });
+    const MAILGUN_DATA = {
+        from: 'Support <support@bestactprep.co>',
+        to: 'cheng.c.mike@gmail.com',
+        subject: `Support Request from ${email} about "${supportTopic}"`,
+        text: `Support Request:
+
+Support Topic: ${supportTopic}
+Email: ${email}
+Textarea: ${textarea}`
+    };
+    mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+        if (error) {
+            console.log(error);
+            res.send(error);
+        } else {
+            res.send({ success: true });
+        }
+    });
+
 });
 
 export default router;
