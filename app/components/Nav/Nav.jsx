@@ -7,14 +7,15 @@ import { connect } from 'react-redux';
 import * as AppActions from 'actions/app';
 import { setCourseData } from 'actions/course';
 import { onLoginSubmit, logout } from 'api/app';
+import SupportBox from 'components/Nav/SupportBox';
 import LogInBox from 'components/Nav/LogInBox';
 
 export class Nav extends React.Component {
     constructor(props) {
         super(props);
 
-        this.toggleContact = this.toggleContact.bind(this);
-        this.hideContact = this.hideContact.bind(this);
+        this.toggleSupport = this.toggleSupport.bind(this);
+        this.hideSupport = this.hideSupport.bind(this);
         this.toggleLogin = this.toggleLogin.bind(this);
         this.logout = this.logout.bind(this);
         this.setActiveTab = this.setActiveTab.bind(this);
@@ -23,7 +24,7 @@ export class Nav extends React.Component {
         this.setActiveTabDashboard = this.setActiveTab.bind(this, '/dashboard');
         this.setActiveTabCourse = this.setActiveTab.bind(this, '/course');
         this.setActiveTabPracticeTests = this.setActiveTab.bind(this, '/tests');
-        this.setActiveTabContact = this.setActiveTab.bind(this, 'contact');
+        this.setActiveTabSupport = this.setActiveTab.bind(this, 'support');
         this.setActiveTabLogin = this.setActiveTab.bind(this, 'login');
     }
 
@@ -31,15 +32,15 @@ export class Nav extends React.Component {
         this.props.setActiveTab(tab);
     }
 
-    toggleContact() {
-        const { toggleContact, showContact } = this.props;
+    toggleSupport() {
+        const { toggleSupport, showSupport } = this.props;
 
-        toggleContact(!showContact);
+        toggleSupport(!showSupport);
     }
 
-    hideContact() {
-        const { toggleContact, setActiveTab, previousTab } = this.props;
-        this.toggleContact(false);
+    hideSupport() {
+        const { toggleSupport, setActiveTab, previousTab } = this.props;
+        this.toggleSupport(false);
         this.setActiveTab(previousTab);
     }
 
@@ -101,10 +102,10 @@ export class Nav extends React.Component {
         );
     }
 
-    renderContact(activeTab) {
+    renderSupport(activeTab) {
         return (
-            <li className={activeTab === 'contact' ? 'active' : ''} onClick={this.setActiveTabContact}>
-                <a className="bap-nav__log-in-link" onClick={this.toggleContact}>Contact</a>
+            <li className={activeTab === 'support' ? 'active' : ''} onClick={this.setActiveTabSupport}>
+                <a className="bap-nav__log-in-link" onClick={this.toggleSupport}>Support</a>
             </li>
         );
     }
@@ -125,20 +126,20 @@ export class Nav extends React.Component {
         );
     }
 
-    renderContactBox() {
-        if (!this.props.showContact) { return null; }
+    renderSupportBox() {
+        if (!this.props.showSupport) { return null; }
+
+        const { supportTopic, setSupportTopic, setSupportMessage, supportMessage, supportMessageType } = this.props;
 
         return (
-            <div>
-                <div className="log-in-box__overlay" onClick={this.hideContact} />
-                <div className="contact-box">
-                    <div className="contact-box__heading">
-                        <em>Having trouble? Contact us any time!</em>
-                    </div>
-                    <strong>Email:</strong> <a href="mailto:support@bestactprep.co">support@bestactprep.co</a><br />
-                    <strong>Number:</strong> (630) 532-0154
-                </div>
-            </div>
+            <SupportBox
+                hideSupport={this.hideSupport}
+                supportTopic={supportTopic}
+                setSupportTopic={setSupportTopic}
+                setSupportMessage={setSupportMessage}
+                supportMessage={supportMessage}
+                supportMessageType={supportMessageType}
+            />
         );
     }
 
@@ -182,12 +183,12 @@ export class Nav extends React.Component {
                                 {this.renderDashboard(activeTab, user)}
                                 {this.renderCourse(activeTab, user)}
                                 {this.renderPracticeTests(activeTab)}
-                                {this.renderContact(activeTab)}
+                                {this.renderSupport(activeTab)}
                                 {this.renderLoginLogout(activeTab, user)}
                             </ul>
                         </div>
                     </div>
-                    {this.renderContactBox()}
+                    {this.renderSupportBox()}
                     {this.renderLoginBox()}
                 </nav>
         );

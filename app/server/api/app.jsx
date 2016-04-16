@@ -161,4 +161,10 @@ router.post('/setpassword', (req, res) => {
     });
 });
 
+router.post('/support', (req, res) => {
+    console.log(req.body);
+
+    res.send({ success: true });
+});
+
 export default router;

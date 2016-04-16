@@ -5,11 +5,26 @@ export function setActiveTab(tab) {
     };
 }
 
-export function toggleContact(showContact) {
+export function toggleSupport(showSupport) {
     return {
-        type: 'TOGGLE_CONTACT',
-        showContact
-    }
+        type: 'TOGGLE_SUPPORT',
+        showSupport
+    };
+}
+
+export function setSupportTopic(supportTopic) {
+    return {
+        type: 'SET_SUPPORT_TOPIC',
+        supportTopic
+    };
+}
+
+export function setSupportMessage(supportMessage, supportMessageType) {
+    return {
+        type: 'SET_SUPPORT_MESSAGE',
+        supportMessage,
+        supportMessageType
+    };
 }
 
 export function toggleLogin(showLogin) {

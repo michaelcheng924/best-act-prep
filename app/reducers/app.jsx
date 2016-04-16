@@ -2,7 +2,10 @@ import { Map } from 'immutable';
 
 const defaultState = Map({
     activeTab: null,
-    showContact: false,
+    showSupport: false,
+    supporTopic: null,
+    supportMessage: null,
+    supportMessageType: null,
     showLogin: false,
     user: null
 });
@@ -11,8 +14,12 @@ export default function appReducer(state = defaultState, action) {
     switch(action.type) {
         case 'SET_ACTIVE_TAB':
             return state.set('previousTab', state.get('activeTab')).set('activeTab', action.tab);
-        case 'TOGGLE_CONTACT':
-            return state.set('showContact', action.showContact);
+        case 'TOGGLE_SUPPORT':
+            return state.set('showSupport', action.showSupport);
+        case 'SET_SUPPORT_TOPIC':
+            return state.set('supportTopic', action.supportTopic);
+        case 'SET_SUPPORT_MESSAGE':
+            return state.set('supportMessage', action.supportMessage).set('supportMessageType', action.supportMessageType);
         case 'TOGGLE_LOGIN':
             return state.set('showLogin', action.showLogin);
         case 'SET_USER':

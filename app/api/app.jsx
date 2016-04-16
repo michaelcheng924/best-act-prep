@@ -41,3 +41,12 @@ export function onSetPasswordSubmit(email, password) {
         data: JSON.stringify({ email, password })
     });
 }
+
+export function onSupportSubmit(supportTopic, email, textarea) {
+    return $.ajax({
+        type: 'POST',
+        url: 'api/app/support',
+        contentType: 'application/json',
+        data: JSON.stringify({ supportTopic, email, textarea })
+    });
+}
