@@ -14,18 +14,22 @@ var options = {
 var app = require('./server');
 var PORT = process.env.PORT || 80;
 
-if (process.env.NODE_ENV === 'production') {
-    http.createServer(function(req, res) {
-        res.writeHead(301, { Location: 'https://' + req.headers['host'] + req.url });
-        res.end();
-    }).listen(PORT, function() {
-        console.log('HTTP on port ', PORT);
-    });
-    https.createServer(options, app).listen(443, function() {
-        console.log('HTTPS on port ', 443);
-    });
-} else {
-    app.listen(PORT, function() {
-        console.log('Development server running');
-    });
-}
+app.listen(PORT, function() {
+    console.log('Server on port ' + PORT);
+})
+
+// if (process.env.NODE_ENV === 'production') {
+//     http.createServer(function(req, res) {
+//         res.writeHead(301, { Location: 'https://' + req.headers['host'] + req.url });
+//         res.end();
+//     }).listen(PORT, function() {
+//         console.log('HTTP on port ', PORT);
+//     });
+//     https.createServer(options, app).listen(443, function() {
+//         console.log('HTTPS on port ', 443);
+//     });
+// } else {
+//     app.listen(PORT, function() {
+//         console.log('Development server running');
+//     });
+// }
