@@ -9,12 +9,14 @@ import initialUserData from 'registries/initial-user-data';
 
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 const MAILGUN_WELCOME_EMAIL_SUBJECT = 'Thanks for purchasing the Best ACT Prep online course!';
+const MAILGUN_WELCOME_EMAIL_TEXT = `We are so excited that you chose the Best ACT Prep online course! We're working hard to make this the absolute best ACT prep course out there.
 
-function getMailgunWelcomeEmailHtml(email) {
-    return `We are so excited that you chose the Best ACT Prep online course!
+If you haven't done so already, please set your password at http://course.bestactprep.co/welcome.
 
-    If you haven't done so already, `;
-}
+Since the course is still in development, we apologize in advance for any problems or craziness you may experience. Feel free to contact us at support@bestactprep.co at any time for help!
+
+Sincerely,
+The Best ACT Prep Team`;
 
 // MAILGUN SAMPLE
 // const MAILGUN_DATA = {
@@ -118,6 +120,19 @@ router.post('/buycourse', (req, res) => {
                                 console.log(err);
                                 res.send(err);
                             } else {
+                                const MAILGUN_DATA = {
+                                    from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
+                                    to: email,
+                                    subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
+                                    text: MAILGUN_WELCOME_EMAIL_TEXT
+                                };
+
+                                mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+                                    if (error) {
+                                        console.log(error);
+                                    }
+                                });
+
                                 req.session.user = email;
                                 res.send({
                                     email,
@@ -182,7 +197,6 @@ Textarea: ${textarea}`
             res.send({ success: true });
         }
     });
-
 });
 
 export default router;
