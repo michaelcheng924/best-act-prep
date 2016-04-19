@@ -34,8 +34,8 @@ export default class SidebarSection extends React.Component {
     render() {
         const { id, name, modules, collapsed, toggleSection } = this.props;
         const arrowClassNames = classNames('glyphicon', {
-            'glyphicon-chevron-down': collapsed,
-            'glyphicon-chevron-up': !collapsed
+            'glyphicon-chevron-right': collapsed,
+            'glyphicon-chevron-down': !collapsed
         });
 
         return (
