@@ -7,8 +7,8 @@ export default class English2A1Overview extends React.Component {
                 <h4 className="module__title--category">2.A.1) ACT English Basics</h4>
                 <h2 className="module__title">Overview/Format</h2>
                 <div className="module__content">
-                    <video controls="controls" className="module__video">
-                        <source src="https://drive.google.com/uc?export=download&id=0B2BsXecFN2TxUWZ3bFFmeWUtMEU" type='video/mp4'/>
+                    <video controls="controls" className="module__video" poster="/images/poster-English2B1Overview.png">
+                        <source src="https://www.dropbox.com/s/tjg7mzyf7ftwje4/English2B1Overview.mp4?raw=1" type="video/mp4"/>
                     </video>
 
                     <div className="module__transcript-container">
