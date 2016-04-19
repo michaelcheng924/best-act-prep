@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteUser, resetPassword } from 'api/admin';
+import { deleteUser, resetPassword, resetData } from 'api/admin';
 
 export default class AdminUser extends React.Component {
     constructor(props) {
@@ -7,6 +7,7 @@ export default class AdminUser extends React.Component {
 
         this.onDelete = this.onDelete.bind(this);
         this.onResetPassword = this.onResetPassword.bind(this);
+        this.onResetData = this.onResetData.bind(this);
     }
 
     onDelete() {
@@ -17,6 +18,10 @@ export default class AdminUser extends React.Component {
         resetPassword(this.props.email, this.refs.passwordReset.value);
     }
 
+    onResetData() {
+        resetData(this.props.email);
+    }
+
     render() {
         return (
             <tr>
@@ -24,6 +29,7 @@ export default class AdminUser extends React.Component {
                 <td>
                     <input className="form-control admin__user-reset-input" ref="passwordReset" />
                     <button className="btn btn-warning" onClick={this.onResetPassword}>RESET PASSWORD</button>
+                    <button className="btn btn-warning" onClick={this.onResetData}>RESET DATA</button>
                     <button className="btn btn-danger" onClick={this.onDelete}>DELETE</button>
                 </td>
             </tr>

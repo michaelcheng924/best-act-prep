@@ -120,13 +120,13 @@ const sections = [
         { id: '73', displayId: '7.3', name: 'Full ACT Practice Test #2' }
     ]
 },
-// {
-//     id: '8',
-//     name: 'Miscellaneous',
-//     modules: [
-//         { id: '81', displayId: '8.1', name: 'Videos from Old Course' }
-//     ]
-// }
+{
+    id: '8',
+    name: 'Miscellaneous',
+    modules: [
+        { id: '81', displayId: '8.1', name: 'Videos from Old Course' }
+    ]
+}
 ];
 
 export default sections;

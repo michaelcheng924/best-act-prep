@@ -48,3 +48,12 @@ export function resetPassword(email, password) {
         data: JSON.stringify({ email, password })
     });
 }
+
+export function resetData(email) {
+    return $.ajax({
+        type: 'POST',
+        url: '/api/admin/resetdata',
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
+    });
+}

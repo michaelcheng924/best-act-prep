@@ -63,6 +63,8 @@ import Full71Preparation from 'components/ModulesFull/Full71Preparation';
 import Full72Test1 from 'components/ModulesFull/Full72Test1';
 import Full73Test2 from 'components/ModulesFull/Full73Test2';
 
+import Miscellaneous81Videos from 'components/ModulesMiscellaneous/Miscellaneous81Videos';
+
 const modules = {
     // FOUNDATIONS
     '10': {
@@ -309,8 +311,14 @@ const modules = {
     },
     '73': {
         component: Full73Test2,
-        next: '73'
+        next: '81'
     },
+
+    // Miscellaneous
+    '81': {
+        component: Miscellaneous81Videos,
+        next: '81'
+    }
 };
 
 export default modules;

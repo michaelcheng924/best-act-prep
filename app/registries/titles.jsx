@@ -85,7 +85,10 @@ const titles = {
         // FULL
         '71': 'Full ACT Test Preparation',
         '72': 'Full ACT Practice Test #1',
-        '73': 'Full ACT Practice Test #2'
+        '73': 'Full ACT Practice Test #2',
+
+        // Miscellaneous
+        '81': 'Videos from Old Course'
     }
 };
 

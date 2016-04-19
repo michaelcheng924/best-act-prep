@@ -6,7 +6,8 @@ const initialUserData = {
         '4': { collapsed: false },
         '5': { collapsed: false },
         '6': { collapsed: false },
-        '7': { collapsed: false }
+        '7': { collapsed: false },
+        '8': { collapsed: false }
     },
     modules: {
         // ENGLISH SECTIONS
@@ -107,6 +108,9 @@ const initialUserData = {
         '71': { completed: false},
         '72': { completed: false},
         '73': { completed: false},
+
+        // MISCELLANEOUS
+        '81': { completed: false }
     },
     currentModule: '10'
 };

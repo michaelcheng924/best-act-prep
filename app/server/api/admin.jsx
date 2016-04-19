@@ -3,6 +3,7 @@ import db from 'server/db/db';
 import { AdminUser, User } from 'server/db/users';
 import express from 'express';
 const router = express.Router();
+import initialUserData from 'registries/initial-user-data';
 
 router.post('/authenticate', (req, res) => {
     if (!req.session.adminUser) {
@@ -80,6 +81,14 @@ router.post('/resetpassword', (req, res) => {
         User.update({ email }, { $set: { password: hash } }, err => {
             res.send('Password updated!');
         });
+    });
+});
+
+router.post('/resetdata', (req, res) => {
+    const email = req.body.email;
+
+    User.update({ email }, { $set: { data: initialUserData } }, err => {
+        res.send('User data reset!');
     });
 });
 
