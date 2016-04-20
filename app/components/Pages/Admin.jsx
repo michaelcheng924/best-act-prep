@@ -95,7 +95,7 @@ export class Admin extends React.Component {
         
         return this.props.users.map((user, index) => {
             return (
-                <AdminUser key={index} email={user.email} />
+                <AdminUser key={index} email={user.email} data={user.data} />
             );
         });
     }
