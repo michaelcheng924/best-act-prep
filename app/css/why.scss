@@ -109,6 +109,23 @@
     &__youtube-video {
         margin-right: 10px;
     }
+
+    &__stripe-container {
+        border: 1px solid #333;
+        border-radius: 5px;
+        margin: 0 auto 20px;
+        width: 450px;
+    }
+
+    &__stripe-images-container {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__stripe-image {
+        margin-right: 20px;
+    }
 }
 
 .stripe-checkout-button {

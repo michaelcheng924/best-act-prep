@@ -40,19 +40,28 @@ export class WhyBestActPrep extends React.Component {
                 </div>
 
                 <div className="why__so-far">
-                    <StripeCheckout
-                        name="Best ACT Prep"
-                        description="Online Course"
-                        amount={AMOUNT}
-                        image="/images/act-logo-only.png"
-                        allowRememberMe={false}
-                        token={this.onToken}
-                        stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
-                    >
-                        <button className="stripe-checkout-button">
-                            Special Beta Lifetime Access ($49)
-                        </button>
-                    </StripeCheckout>
+                    <div className="why__stripe-container">
+                        <StripeCheckout
+                            name="Best ACT Prep"
+                            description="Online Course"
+                            amount={AMOUNT}
+                            image="/images/act-logo-only.png"
+                            allowRememberMe={false}
+                            token={this.onToken}
+                            stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
+                        >
+                            <button className="stripe-checkout-button">
+                                Special Beta Lifetime Access ($49)
+                            </button>
+                        </StripeCheckout>
+                        <br />
+                        <div className="why__stripe-images-container">
+                            <span>
+                                <img src="/images/stripe-secure.png" className="why__stripe-image" />
+                                <img src="/images/money-back.png" />
+                            </span>
+                        </div>
+                    </div>
                     <h3 className="why__so-far-heading">Current Features:</h3>
                     <div className="why__so-far-tagline">Get all of this for <strong><em>just $49</em></strong>! What?! Click above to get started.</div>
                     <div className="why__so-far-everything">Plus, get <strong><em>EVERYTHING</em></strong> we add in the future (and we're working quite hard on this) without paying a cent more!</div>
