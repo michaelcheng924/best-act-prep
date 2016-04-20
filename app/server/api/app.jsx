@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt-nodejs';
+import jwt from 'jwt-simple';
 import db from 'server/db/db';
 import { User } from 'server/db/users';
 import express from 'express';
@@ -30,11 +31,19 @@ The Best ACT Prep Team`;
 // });
 
 router.post('/authenticate', (req, res) => {
-    if (!publicPaths[req.body.path] && !req.session.user) {
-        res.send({ authenticated: false });
-    } else {
-        res.send({ authenticated: true });
-    }
+    const email = req.body.token && jwt.decode(req.body.token, process.env.SECRET);
+
+    User.findOne({ email }, (err, user) => {
+        if (user) {
+            req.session.user = email;
+        }
+
+        if (!publicPaths[req.body.path] && !req.session.user) {
+            res.send({ authenticated: false });
+        } else {
+            res.send({ email, authenticated: true });
+        }
+    });
 });
 
 router.post('/login', (req, res) => {
@@ -56,7 +65,11 @@ router.post('/login', (req, res) => {
                     res.send(err);
                 } else {
                     req.session.user = email;
+
+                    const token = jwt.encode(email, process.env.SECRET);
+
                     res.send({
+                        token,
                         authenticated,
                         userData: user.data
                     });
@@ -134,7 +147,11 @@ router.post('/buycourse', (req, res) => {
                                 });
 
                                 req.session.user = email;
+
+                                const token = jwt.encode(email, process.env.SECRET);
+
                                 res.send({
+                                    token,
                                     email,
                                     userData: initialUserData
                                 });

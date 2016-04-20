@@ -1,9 +1,9 @@
-export function authenticate(path) {
+export function authenticate(path, token) {
     return $.ajax({
         type: 'POST',
         url: '/api/app/authenticate',
         contentType: 'application/json',
-        data: JSON.stringify({ path })
+        data: JSON.stringify({ path, token })
     });
 }
 

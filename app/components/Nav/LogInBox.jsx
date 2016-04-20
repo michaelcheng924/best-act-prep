@@ -37,6 +37,7 @@ export default class LogInBox extends React.Component {
                     spinnerEl.addClass('hidden');
                     router.push('/course');
                     setActiveTab('/course');
+                    localStorage.setItem('bap-token', response.token);
                 }
             });
     }

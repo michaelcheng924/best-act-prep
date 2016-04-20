@@ -26,6 +26,7 @@ export class WhyBestActPrep extends React.Component {
                 this.props.setCourseData(response.userData);
                 spinnerEl.addClass('hidden');
                 this.context.router.push('/welcome');
+                localStorage.setItem('bap-token', response.token);
             }
         });
     }

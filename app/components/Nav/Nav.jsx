@@ -62,6 +62,8 @@ export class Nav extends React.Component {
         });
         setActiveTab('/');
         this.context.router.push('/');
+
+        localStorage.removeItem('bap-token');
     }
 
     renderWhy(activeTab, user) {
