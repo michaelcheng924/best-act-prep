@@ -11,15 +11,24 @@ export default class AdminUser extends React.Component {
     }
 
     onDelete() {
-        deleteUser(this.props.email);
+        const hasConfirmed = confirm(`Are you sure you want to delete ${this.props.email}?`)
+        if (hasConfirmed) {
+            deleteUser(this.props.email);
+        }
     }
 
     onResetPassword() {
-        resetPassword(this.props.email, this.refs.passwordReset.value);
+        const hasConfirmed = confirm(`Are you sure you want to reset ${this.props.email}'s password?`)
+        if (hasConfirmed) {
+            resetPassword(this.props.email, this.refs.passwordReset.value);
+        }
     }
 
     onResetData() {
-        resetData(this.props.email);
+        const hasConfirmed = confirm(`Are you sure you want to reset ${this.props.email}'s data?`)
+        if (hasConfirmed) {
+            resetData(this.props.email);
+        }
     }
 
     render() {
