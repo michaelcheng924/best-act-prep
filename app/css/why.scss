@@ -48,6 +48,13 @@
         vertical-align: top;
     }
 
+    &__so-far-poster {
+        border: 1px solid #CCC;
+        border-radius: 5px;
+        height: 90px;
+        margin: 0 5px 5px 0;
+    }
+
     &__most-popular {
         background: $blue;
         border-radius: 5px 5px 0 0;
@@ -58,13 +65,45 @@
     &__most-popular-text {
         color: #FFF;
         font-size: 25px;
-        margin-bottom: 20px;
+        margin: 0 0 20px;
 
-        &--smaller {
-            color: $orange;
+        &--bigger {
+            color: $yellow;
             font-size: 40px;
             margin: 20px 0;
         }
+    }
+
+    &__course-screenshots {
+        background: #FFF;
+        border: $border-color;
+        padding: 20px;
+    }
+
+    &__course-screenshots-heading {
+        &--main {
+            color: $blue;
+            margin: 0;
+            text-align: center;
+
+            &--orange {
+                color: $orange;
+            }
+        }
+
+        &--tagline {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    }
+
+    &__course-screenshots-image {
+        border: 1px solid #333;
+        border-radius: 10px;
+        display: block;
+        height: 550px;
+        margin: 0 auto;
     }
 
     &__youtube-video {

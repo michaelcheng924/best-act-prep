@@ -121,10 +121,18 @@ const sections = [
     ]
 },
 {
-    id: '8',
-    name: 'Miscellaneous',
+    id: 'Z',
+    name: 'Old Course Videos',
     modules: [
-        { id: '81', displayId: '8.1', name: 'Videos from Old Course' }
+        { id: 'Z1', displayId: 'Z.1', name: 'ACT Basics' },
+        { id: 'Z2', displayId: 'Z.2', name: 'English Strategies' },
+        { id: 'Z3', displayId: 'Z.3', name: 'English Guided Practice' },
+        { id: 'Z4', displayId: 'Z.4', name: 'Math Strategies' },
+        { id: 'Z5', displayId: 'Z.5', name: 'Math Guided Practice' },
+        { id: 'Z6', displayId: 'Z.6', name: 'Reading Strategies' },
+        { id: 'Z7', displayId: 'Z.7', name: 'Reading Guided Practice' },
+        { id: 'Z8', displayId: 'Z.8', name: 'Science Strategies' },
+        { id: 'Z9', displayId: 'Z.9', name: 'Science Guided Practice' },
     ]
 }
 ];

@@ -63,7 +63,15 @@ import Full71Preparation from 'components/ModulesFull/Full71Preparation';
 import Full72Test1 from 'components/ModulesFull/Full72Test1';
 import Full73Test2 from 'components/ModulesFull/Full73Test2';
 
-import Miscellaneous81Videos from 'components/ModulesMiscellaneous/Miscellaneous81Videos';
+import OldCourse81Basics from 'components/ModulesOldCourse/OldCourse81Basics';
+import OldCourse82EnglishStrategies from 'components/ModulesOldCourse/OldCourse82EnglishStrategies';
+import OldCourse83EnglishGuidedPractice from 'components/ModulesOldCourse/OldCourse83EnglishGuidedPractice';
+import OldCourse84MathStrategies from 'components/ModulesOldCourse/OldCourse84MathStrategies';
+import OldCourse85MathGuidedPractice from 'components/ModulesOldCourse/OldCourse85MathGuidedPractice';
+import OldCourse86ReadingStrategies from 'components/ModulesOldCourse/OldCourse86ReadingStrategies';
+import OldCourse87ReadingGuidedPractice from 'components/ModulesOldCourse/OldCourse87ReadingGuidedPractice';
+import OldCourse88ScienceStrategies from 'components/ModulesOldCourse/OldCourse88ScienceStrategies';
+import OldCourse89ScienceGuidedPractice from 'components/ModulesOldCourse/OldCourse89ScienceGuidedPractice';
 
 const modules = {
     // FOUNDATIONS
@@ -311,13 +319,45 @@ const modules = {
     },
     '73': {
         component: Full73Test2,
-        next: '81'
+        next: 'A1'
     },
 
     // Miscellaneous
-    '81': {
-        component: Miscellaneous81Videos,
-        next: '81'
+    'Z1': {
+        component: OldCourse81Basics,
+        next: 'Z2'
+    },
+    'Z2': {
+        component: OldCourse82EnglishStrategies,
+        next: 'Z3'
+    },
+    'Z3': {
+        component: OldCourse83EnglishGuidedPractice,
+        next: 'Z4'
+    },
+    'Z4': {
+        component: OldCourse84MathStrategies,
+        next: 'Z5'
+    },
+    'Z5': {
+        component: OldCourse85MathGuidedPractice,
+        next: 'Z6'
+    },
+    'Z6': {
+        component: OldCourse86ReadingStrategies,
+        next: 'Z7'
+    },
+    'Z7': {
+        component: OldCourse87ReadingGuidedPractice,
+        next: 'Z8'
+    },
+    'Z8': {
+        component: OldCourse88ScienceStrategies,
+        next: 'Z9'
+    },
+    'Z9': {
+        component: OldCourse89ScienceGuidedPractice,
+        next: 'Z9'
     }
 };
 

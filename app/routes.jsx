@@ -28,6 +28,7 @@ export default (
         <Route component={Course} path="2A2" />
         <Route component={Course} path="2A3" />
         <Route component={Course} path="2A4" />
+        <Route component={Course} path="2A5" />
         <Route component={Course} path="2B1" />
         <Route component={Course} path="2B2" />
         <Route component={Course} path="2B3" />
@@ -41,6 +42,7 @@ export default (
         <Route component={Course} path="3A2" />
         <Route component={Course} path="3A3" />
         <Route component={Course} path="3A4" />
+        <Route component={Course} path="3A5" />
         <Route component={Course} path="3B1" />
         <Route component={Course} path="3B2" />
         <Route component={Course} path="3B3" />
@@ -55,6 +57,7 @@ export default (
         <Route component={Course} path="4A2" />
         <Route component={Course} path="4A3" />
         <Route component={Course} path="4A4" />
+        <Route component={Course} path="4A5" />
         <Route component={Course} path="4B1" />
         <Route component={Course} path="4B2" />
         <Route component={Course} path="4B3" />
@@ -68,6 +71,7 @@ export default (
         <Route component={Course} path="5A2" />
         <Route component={Course} path="5A3" />
         <Route component={Course} path="5A4" />
+        <Route component={Course} path="5A5" />
         <Route component={Course} path="5B1" />
         <Route component={Course} path="5B2" />
         <Route component={Course} path="5B3" />
@@ -78,5 +82,15 @@ export default (
         <Route component={Course} path="71" />
         <Route component={Course} path="72" />
         <Route component={Course} path="73" />
+
+        <Route component={Course} path="Z1" />
+        <Route component={Course} path="Z2" />
+        <Route component={Course} path="Z3" />
+        <Route component={Course} path="Z4" />
+        <Route component={Course} path="Z5" />
+        <Route component={Course} path="Z6" />
+        <Route component={Course} path="Z7" />
+        <Route component={Course} path="Z8" />
+        <Route component={Course} path="Z9" />
     </Route>
 );

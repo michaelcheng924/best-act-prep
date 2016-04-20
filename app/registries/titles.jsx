@@ -7,6 +7,7 @@ const titles = {
         '5': 'ACT Science',
         '6': 'ACT Writing',
         '7': 'The Full ACT',
+        'Z': 'Old Course Videos',
         'A': 'Basics',
         'B': 'Specific Strategies',
         'C': 'Practice Plan',
@@ -88,7 +89,15 @@ const titles = {
         '73': 'Full ACT Practice Test #2',
 
         // Miscellaneous
-        '81': 'Videos from Old Course'
+        'Z1': 'ACT Basics',
+        'Z2': 'ACT Basics',
+        'Z3': 'ACT Basics',
+        'Z4': 'ACT Basics',
+        'Z5': 'ACT Basics',
+        'Z6': 'ACT Basics',
+        'Z7': 'ACT Basics',
+        'Z8': 'ACT Basics',
+        'Z9': 'ACT Basics',
     }
 };
 

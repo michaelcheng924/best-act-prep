@@ -20,11 +20,9 @@ export default class SidebarSection extends React.Component {
         optimisticSetCurrentModule(id);
         router.push(id);
 
-        setCurrentModule(id).then(response => {
-            if (!response.userData) {
-                router.push(id);
-            }
-        });
+        setCurrentModule(id);
+
+        $('body').animate({ scrollTop: 0 });
     }
 
     render() {

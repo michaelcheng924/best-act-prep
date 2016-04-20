@@ -7,7 +7,7 @@ const initialUserData = {
         '5': { collapsed: false },
         '6': { collapsed: false },
         '7': { collapsed: false },
-        '8': { collapsed: false }
+        'Z': { collapsed: false }
     },
     modules: {
         // ENGLISH SECTIONS
@@ -110,7 +110,15 @@ const initialUserData = {
         '73': { completed: false},
 
         // MISCELLANEOUS
-        '81': { completed: false }
+        'Z1': { completed: false },
+        'Z2': { completed: false },
+        'Z3': { completed: false },
+        'Z4': { completed: false },
+        'Z5': { completed: false },
+        'Z6': { completed: false },
+        'Z7': { completed: false },
+        'Z8': { completed: false },
+        'Z9': { completed: false }
     },
     currentModule: '10'
 };
