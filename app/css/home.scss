@@ -22,13 +22,16 @@
     }
 
     &__banner-button {
+        background: $blue;
+        border-radius: 3px;
+        color: #FFF;
         font-size: 20px;
         margin-top: 30px;
     }
 
     &__banner-button:hover {
         background: #FFF;
-        border: 1px solid #5cb85c;
-        color: #5cb85c;
+        border: 1px solid $blue;
+        color: $blue;
     }
 }

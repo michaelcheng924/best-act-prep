@@ -34,13 +34,28 @@ export class WhyBestActPrep extends React.Component {
     render() {
         return (
             <div className="page">
-                <div className="why__beta-explanation">
-                    <p>Get lifetime access to the Best ACT Prep online course while we continue building it! The price will go up as we add more to the course. This $49 includes every video in the course we used to sell for $149! Ask for a refund anytime. Easy.</p>
-                    <p><strong>Note:</strong> While we continue building the course, you may notice problems and crazy things happening. That's why it's only $49 for everything right now :). Feel free to contact us any time for help at <a href="mailto:support@bestactprep.co">support@bestactprep.co.</a></p>
-                </div>
-
                 <div className="why__so-far">
                     <div className="why__stripe-container">
+                        <div className="why__beta-explanation-heading">Limited Time: Lifetime Beta Access!</div>
+                        <div className="why__beta-explanation-tagline">No risk, lifetime access as we continue building the course. Ask for a refund whenever you want&mdash;no strings attached.</div>
+                        <div className="why__beta-pricing">
+                            <div className="why__beta-pricing-section">
+                                <div className="why__beta-pricing-future-price"><strike>$249</strike></div>
+                                <div className="why__beta-pricing-future-text">Future Price</div>
+                            </div>
+                            <div className="why__beta-pricing-section">
+                                <div className="why__beta-pricing-beta-price">$49</div>
+                                <div className="why__beta-pricing-beta-text">Beta Access Price</div>
+                            </div>
+                        </div>
+                        <center><strong>What you get:</strong></center>
+                        <div className="why__beta-explanation">
+                            <ul>
+                                <li>Over 70 videos (including every video in our old $149 course!)</li>
+                                <li>Printable PDF study guides for every grammar rule and every math concept covered by the ACT</li>
+                                <li>Lifetime access to the course, which includes everything we add in the future</li>
+                            </ul>
+                        </div>
                         <StripeCheckout
                             name="Best ACT Prep"
                             description="Online Course"
@@ -51,7 +66,7 @@ export class WhyBestActPrep extends React.Component {
                             stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
                         >
                             <button className="stripe-checkout-button">
-                                Special Beta Lifetime Access ($49)
+                                Buy Now! ($49)
                             </button>
                         </StripeCheckout>
                         <br />
@@ -62,10 +77,16 @@ export class WhyBestActPrep extends React.Component {
                             </span>
                         </div>
                     </div>
-                    <h3 className="why__so-far-heading">Current Features:</h3>
-                    <div className="why__so-far-tagline">Get all of this for <strong><em>just $49</em></strong>! What?! Click above to get started.</div>
+                    <h2 className="why__so-far-heading">Current Features:</h2>
                     <div className="why__so-far-everything">Plus, get <strong><em>EVERYTHING</em></strong> we add in the future (and we're working quite hard on this) without paying a cent more!</div>
-                        <h4>Every Video from the Old Best ACT Prep Course (Over 65 Videos)!! (Modules Z1-Z9)</h4>
+                        <h3>New Best ACT Prep Course Videos</h3>
+                        <img src="/images/poster-Foundations12Overview.png" className="why__so-far-poster" />
+                        <img src="/images/poster-English2B1Overview.png" className="why__so-far-poster" />
+                        <img src="/images/poster-Math3B1Overview.png" className="why__so-far-poster" />
+                        <img src="/images/poster-Reading4B1Overview.png" className="why__so-far-poster" />
+                        <img src="/images/poster-Science5B1Overview.png" className="why__so-far-poster" />
+
+                        <h3>Every Video from the Old Best ACT Prep Course (Over 65 Videos)!! (Modules Z1-Z9)</h3>
                         <p>Most of these videos (including some of our best/favorite strategies) are not available on YouTube!</p>
                         <img src="/images/poster-0-1-motivated.png" className="why__so-far-poster" />
                         <img src="/images/poster-0-2-format.png" className="why__so-far-poster" />
@@ -137,14 +158,14 @@ export class WhyBestActPrep extends React.Component {
                         <img src="/images/poster-4p-6-timer-full-test.png" className="why__so-far-poster" />
                     <hr />
                     <div className="why__so-far-feature">
-                        <h4>All Grammar Rules PDF (3 pages) - Module 2.D.1</h4>
+                        <h3>All Grammar Rules PDF (3 pages) - Module 2.D.1</h3>
                         <p>All of the major grammar rules the ACT English test covers (with explanations and examples for each) in a convenient PDF file, which you can download and print out. Use it to learn/study new grammar concepts or as a way to quickly review everything you need to know for the English test!</p>
                         <p>Commas, apostrophes, semicolons, dashes, run-ons, similar words, avoiding wordiness, prepositions, verb tense, transitions, subject-verb agreement, pronoun-antecedent agreement, misplaced modifiers, and more!</p>
                     </div>
                     <img src="/images/review-guide-grammar.png" className="why__so-far-image" />
                     <hr />
                     <div className="why__so-far-feature">
-                        <h4>All Math Concepts PDF (22 pages) - Module 3.D.1</h4>
+                        <h3>All Math Concepts PDF (22 pages) - Module 3.D.1</h3>
                         <p>All of the major math concepts the ACT Math test covers (with explanations and examples for each) in a convenient PDF file, which you can download and print out. Use it to learn/study new math concepts or as a way to quickly review everything you need to know for the Math test!</p>
                         <p>General number concepts, divisibility, fractions and decimals, ratios/proportions/rates, averages, roots, algebra, factoring, solving equations, coordinate geometry, plane geometry, shapes, trigonometry, and more!</p>
                     </div>

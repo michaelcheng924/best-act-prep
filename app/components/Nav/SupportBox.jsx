@@ -85,6 +85,8 @@ export default class SupportBox extends React.Component {
                         />
                         <button className="btn btn-primary support-box__button">{buttonText}</button>
                     </form>
+                    <br />
+                    <strong>Email:</strong> <a href="mailto:support@bestactprep.co">support@bestactprep.co</a>
                 </div>
             </div>
         );
