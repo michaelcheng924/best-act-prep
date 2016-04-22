@@ -7,6 +7,7 @@ export default class Miscellaneous81Videos extends React.Component {
                 <h4 className="module__title--category">A.1) Old Course Videos</h4>
                 <h2 className="module__title">ACT Basics</h2>
                 <div className="module__content">
+                    If the videos are not working, try visiting this page for now. Sorry! <a href="https://www.dropbox.com/sh/keajrwm3hx4kh0t/AADzpF8GYQbroaEMtThd3lMwa?dl=0" target="_blank">Best ACT Prep Videos</a><br /><br />
                     <video controls="controls" className="module__video-small" poster="/images/poster-0-1-motivated.png">
                         <source src="https://www.dropbox.com/s/stf1gpts6a3zjni/0-1-motivated.mp4?raw=1" type="video/mp4"/>
                     </video>
