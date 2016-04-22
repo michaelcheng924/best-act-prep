@@ -44,23 +44,26 @@ export default class Course extends React.Component {
         }
 
         return (
-            <div className="course">
-                <CourseSidebar
-                    sectionsData={sectionsData}
-                    modulesData={modulesData}
-                    toggleSection={toggleSection}
-                    toggleModules={toggleModules}
-                    currentModule={currentModule}
-                    optimisticSetCurrentModule={optimisticSetCurrentModule}
-                    router={router}
-                />
-                <CourseMain
-                    currentModule={currentModule}
-                    modulesData={modulesData}
-                    optimisticMarkComplete={optimisticMarkComplete}
-                    optimisticSetCurrentModule={optimisticSetCurrentModule}
-                    router={router}
-                />
+            <div>
+                <div className="direct-link">If the videos are not working, try visiting this page. Sorry for any inconvenience! <a href="https://www.dropbox.com/sh/keajrwm3hx4kh0t/AADzpF8GYQbroaEMtThd3lMwa?dl=0" target="_blank">Best ACT Prep Videos</a></div>
+                <div className="course">
+                    <CourseSidebar
+                        sectionsData={sectionsData}
+                        modulesData={modulesData}
+                        toggleSection={toggleSection}
+                        toggleModules={toggleModules}
+                        currentModule={currentModule}
+                        optimisticSetCurrentModule={optimisticSetCurrentModule}
+                        router={router}
+                    />
+                    <CourseMain
+                        currentModule={currentModule}
+                        modulesData={modulesData}
+                        optimisticMarkComplete={optimisticMarkComplete}
+                        optimisticSetCurrentModule={optimisticSetCurrentModule}
+                        router={router}
+                    />
+                </div>
             </div>
         );
     }
