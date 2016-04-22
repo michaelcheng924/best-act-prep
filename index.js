@@ -12,7 +12,7 @@ var options = {
 };
 
 var app = require('./server');
-var PORT = process.env.PORT || 80;
+var PORT = process.env.NODE_ENV === 'production' ? 80 : 3000;
 
 app.listen(PORT, function() {
     console.log('Server on port ' + PORT);

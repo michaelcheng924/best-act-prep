@@ -13,9 +13,7 @@ export class Home extends React.Component {
     }
 
     componentDidMount() {
-        $('.home__title').fadeIn();
-        $('.home__call-to-action').fadeIn();
-        $('.home__call-to-action-button').fadeIn();
+        $('.home__call-to-action-fading-container').fadeIn();
     }
 
     setActiveTab(tab) {
@@ -24,23 +22,25 @@ export class Home extends React.Component {
 
     render() {
         return (
-            <div className="home__page">
+            <div>
                 <div className="home__call-to-action-container">
-                    <h1 className="home__title">The Best ACT Prep Online Course</h1>
-                    <div className="home__call-to-action">
-                        <img src="/images/michael.png" />
-                        <div className="home__call-to-action-text-container">
-                            <div className="home__call-to-action-text--odd">The most popular ACT instructor.</div>
-                            <div className="home__call-to-action-text--even">The best ACT strategies.</div>
-                            <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
+                    <div className="home__call-to-action-fading-container">
+                        <h1 className="home__title">The Best ACT Prep Online Course</h1>
+                        <div className="home__call-to-action">
+                            <img src="/images/michael.png" />
+                            <div className="home__call-to-action-text-container">
+                                <div className="home__call-to-action-text--odd">The most popular ACT instructor.</div>
+                                <div className="home__call-to-action-text--even">The best ACT strategies.</div>
+                                <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
+                            </div>
                         </div>
+                        <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
                     </div>
-                    <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
                 </div>
 
                 <div className="home__testimonials-container">
                     <div className="home__testimonials-main">
-                        <span className="home__testimonials-main-icon glyphicon glyphicon-heart-empty" />
+                        <span className="home__testimonials-main-icon glyphicon glyphicon-heart" />
                         <h2 className="home__testimonials-main-heading">Testimonials</h2>
                         <div className="home__testimonials-main-tagline">
                             See what students have said about us!

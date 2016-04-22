@@ -12,7 +12,21 @@ export class WhyBestActPrep extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            oldVideoList: false,
+            newVideoList: false,
+            PDFList: false
+        };
+
+        this.toggleOldVideoList = this.toggleVideoList.bind(this, 'oldVideoList');
+        this.toggleNewVideoList = this.toggleVideoList.bind(this, 'newVideoList');
+        this.togglePDFList = this.toggleVideoList.bind(this, 'PDFList');
         this.onToken = this.onToken.bind(this);
+    }
+
+    toggleVideoList(type) {
+        $(this.refs[type]).slideToggle();
+        this.setState({ [type]: !this.state[type] });
     }
 
     onToken(token) {
@@ -33,29 +47,23 @@ export class WhyBestActPrep extends React.Component {
 
     render() {
         return (
-            <div className="page">
-                <div className="why__so-far">
-                    <div className="why__stripe-container">
-                        <div className="why__beta-explanation-heading">Limited Time: Lifetime Beta Access!</div>
-                        <div className="why__beta-explanation-tagline">No risk, lifetime access as we continue building the course. Ask for a refund whenever you want&mdash;no strings attached.</div>
-                        <div className="why__beta-pricing">
-                            <div className="why__beta-pricing-section">
-                                <div className="why__beta-pricing-future-price"><strike>$249</strike></div>
-                                <div className="why__beta-pricing-future-text">Future Price</div>
+            <div>
+                <section className="why__title-container">
+                    <h1 className="why__title">10 Reasons to Choose the Best ACT Prep Online Course</h1>
+                </section>
+                <section className="why__buy-container">
+                    <div className="why__buy-call-to-action-container">
+                        <div className="why__buy-prices">
+                            <div className="why__buy-price-section">
+                                <div className="why__buy-price-future">$249</div>
+                                <div className="why__buy-price-future-text">Future Price</div>
                             </div>
-                            <div className="why__beta-pricing-section">
-                                <div className="why__beta-pricing-beta-price">$49</div>
-                                <div className="why__beta-pricing-beta-text">Beta Access Price</div>
+                            <div className="why__buy-price-section">
+                                <div className="why__buy-price-current">$49</div>
+                                <div className="why__buy-price-current-text">Limited Time Beta Price!</div>
                             </div>
                         </div>
-                        <center><strong>What you get:</strong></center>
-                        <div className="why__beta-explanation">
-                            <ul>
-                                <li>Over 70 videos (including every video in our old $149 course!)</li>
-                                <li>Printable PDF study guides for every grammar rule and every math concept covered by the ACT</li>
-                                <li>Lifetime access to the course, which includes everything we add in the future</li>
-                            </ul>
-                        </div>
+                        <div className="why__buy-increase-price">Price will increase after the first 20 purchases!</div>
                         <StripeCheckout
                             name="Best ACT Prep"
                             description="Online Course"
@@ -65,11 +73,8 @@ export class WhyBestActPrep extends React.Component {
                             token={this.onToken}
                             stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
                         >
-                            <button className="stripe-checkout-button">
-                                Buy Now! ($49)
-                            </button>
+                            <button className="why__buy-button">Secure Checkout</button>
                         </StripeCheckout>
-                        <br />
                         <div className="why__stripe-images-container">
                             <span>
                                 <img src="/images/stripe-secure.png" className="why__stripe-image" />
@@ -77,120 +82,206 @@ export class WhyBestActPrep extends React.Component {
                             </span>
                         </div>
                     </div>
-                    <h2 className="why__so-far-heading">Current Features:</h2>
-                    <div className="why__so-far-everything">Plus, get <strong><em>EVERYTHING</em></strong> we add in the future (and we're working quite hard on this) without paying a cent more!</div>
-                        <h3>New Best ACT Prep Course Videos</h3>
-                        <img src="/images/poster-Foundations12Overview.png" className="why__so-far-poster" />
-                        <img src="/images/poster-English2B1Overview.png" className="why__so-far-poster" />
-                        <img src="/images/poster-Math3B1Overview.png" className="why__so-far-poster" />
-                        <img src="/images/poster-Reading4B1Overview.png" className="why__so-far-poster" />
-                        <img src="/images/poster-Science5B1Overview.png" className="why__so-far-poster" />
-
-                        <h3>Every Video from the Old Best ACT Prep Course (Over 65 Videos)!! (Modules Z1-Z9)</h3>
-                        <p>Most of these videos (including some of our best/favorite strategies) are not available on YouTube!</p>
-                        <img src="/images/poster-0-1-motivated.png" className="why__so-far-poster" />
-                        <img src="/images/poster-0-2-format.png" className="why__so-far-poster" />
-                        <img src="/images/poster-0-3-most-important.png" className="why__so-far-poster" />
-                        <img src="/images/poster-0-4-recommended-reading.png" className="why__so-far-poster" />
-                        <img src="/images/poster-0-5-watch.png" className="why__so-far-poster" />
-                        <img src="/images/poster-0-6-tips.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-0-intro.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-1-less-is-better.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-2-reading-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-3-context.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-4-out-loud.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-5-types-of-questions.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-6-skipping-circling.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1s-7-bubbling.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1p-0-analyze.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1p-1-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1p-1-timer-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1p-2-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-1p-2-timer-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-0-intro.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-1-faster-beginning.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-2-answer-choices.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-3-random-easy.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-4-test-twice.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-5-diagrams.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-6-calculator.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2s-7-bubbling.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-0-analyze.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-1-first-30.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-1-timer-first-30.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-2-last-30.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-2-timer-last-30.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-3-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-2p-3-timer-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-0-intro.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-1-passage-first.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-2-how-fast.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-3-key-info.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-4-time-limits.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-5-using-finger.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-6-skipping.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-7-prose-fiction.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-8-types-of-questions.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-9-wrong-choices.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3s-10-bubbling.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-0-analyze.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-1-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-1-timer-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-3-2-passages.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-4-timer-2-passages.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-5-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-3p-5-timer-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-0-intro.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-1-format.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-2-finger.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-3-managing-time.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-4-non-conflicting.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-5-conflicting.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-6-skipping.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4s-7-bubbling.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-0-analyze.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-1-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-1-timer-1-passage.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-3-two-parts.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-4a-timer-6-passages.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-4b-timer-conflicting.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-5-full-test.png" className="why__so-far-poster" />
-                        <img src="/images/poster-4p-6-timer-full-test.png" className="why__so-far-poster" />
-                    <hr />
-                    <div className="why__so-far-feature">
-                        <h3>All Grammar Rules PDF (3 pages) - Module 2.D.1</h3>
-                        <p>All of the major grammar rules the ACT English test covers (with explanations and examples for each) in a convenient PDF file, which you can download and print out. Use it to learn/study new grammar concepts or as a way to quickly review everything you need to know for the English test!</p>
-                        <p>Commas, apostrophes, semicolons, dashes, run-ons, similar words, avoiding wordiness, prepositions, verb tense, transitions, subject-verb agreement, pronoun-antecedent agreement, misplaced modifiers, and more!</p>
+                    <div className="why__buy-details">
+                        <p className="why__buy-details-heading">Get lifetime access while we continue building the course!</p>
+                        <p className="why__buy-details-text">What you get so far:</p>
+                        <ul className="why__buy-details-list">
+                            <li>
+                                Every video (over 65) from our original course, which we sold for $149 (Modules Z1-Z9). Most of these videos (including some of our best/favorite strategies) are not available on YouTube!<br />
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleOldVideoList}>{this.state.oldVideoList ? 'Hide' : 'Show'} video list</button>
+                                <div className="why__buy-details-video-list" ref="oldVideoList">
+                                    <img src="/images/poster-0-1-motivated.png" className="why__video-poster" />
+                                    <img src="/images/poster-0-2-format.png" className="why__video-poster" />
+                                    <img src="/images/poster-0-3-most-important.png" className="why__video-poster" />
+                                    <img src="/images/poster-0-4-recommended-reading.png" className="why__video-poster" />
+                                    <img src="/images/poster-0-5-watch.png" className="why__video-poster" />
+                                    <img src="/images/poster-0-6-tips.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-0-intro.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-1-less-is-better.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-2-reading-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-3-context.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-4-out-loud.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-5-types-of-questions.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-6-skipping-circling.png" className="why__video-poster" />
+                                    <img src="/images/poster-1s-7-bubbling.png" className="why__video-poster" />
+                                    <img src="/images/poster-1p-0-analyze.png" className="why__video-poster" />
+                                    <img src="/images/poster-1p-1-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-1p-1-timer-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-1p-2-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-1p-2-timer-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-0-intro.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-1-faster-beginning.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-2-answer-choices.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-3-random-easy.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-4-test-twice.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-5-diagrams.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-6-calculator.png" className="why__video-poster" />
+                                    <img src="/images/poster-2s-7-bubbling.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-0-analyze.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-1-first-30.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-1-timer-first-30.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-2-last-30.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-2-timer-last-30.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-3-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-2p-3-timer-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-0-intro.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-1-passage-first.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-2-how-fast.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-3-key-info.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-4-time-limits.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-5-using-finger.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-6-skipping.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-7-prose-fiction.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-8-types-of-questions.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-9-wrong-choices.png" className="why__video-poster" />
+                                    <img src="/images/poster-3s-10-bubbling.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-0-analyze.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-1-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-1-timer-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-3-2-passages.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-4-timer-2-passages.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-5-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-3p-5-timer-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-0-intro.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-1-format.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-2-finger.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-3-managing-time.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-4-non-conflicting.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-5-conflicting.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-6-skipping.png" className="why__video-poster" />
+                                    <img src="/images/poster-4s-7-bubbling.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-0-analyze.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-1-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-1-timer-1-passage.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-3-two-parts.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-4a-timer-6-passages.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-4b-timer-conflicting.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-5-full-test.png" className="why__video-poster" />
+                                    <img src="/images/poster-4p-6-timer-full-test.png" className="why__video-poster" />
+                                </div>
+                            </li>
+                            <li>
+                                Every new Best ACT Prep video as we continue releasing them (5 so far)<br />
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleNewVideoList}>{this.state.newVideoList ? 'Hide' : 'Show'} video list</button>
+                                <div className="why__buy-details-video-list" ref="newVideoList">
+                                    <img src="/images/poster-Foundations12Overview.png" className="why__video-poster" />
+                                    <img src="/images/poster-English2B1Overview.png" className="why__video-poster" />
+                                    <img src="/images/poster-Math3B1Overview.png" className="why__video-poster" />
+                                    <img src="/images/poster-Reading4B1Overview.png" className="why__video-poster" />
+                                    <img src="/images/poster-Science5B1Overview.png" className="why__video-poster" />
+                                </div>
+                            </li>
+                            <li>
+                                Printable PDF study guides for every grammar rule and every math concept covered by the ACT<br />
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.togglePDFList}>{this.state.PDFList ? 'Hide' : 'Show'} Images</button>
+                                <div className="why__buy-details-video-list" ref="PDFList">
+                                    <img src="/images/review-guide-grammar.png" className="why__PDF-image" />
+                                    <img src="/images/review-guide-math.png" className="why__PDF-image" />
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <img src="/images/review-guide-grammar.png" className="why__so-far-image" />
-                    <hr />
-                    <div className="why__so-far-feature">
-                        <h3>All Math Concepts PDF (22 pages) - Module 3.D.1</h3>
-                        <p>All of the major math concepts the ACT Math test covers (with explanations and examples for each) in a convenient PDF file, which you can download and print out. Use it to learn/study new math concepts or as a way to quickly review everything you need to know for the Math test!</p>
-                        <p>General number concepts, divisibility, fractions and decimals, ratios/proportions/rates, averages, roots, algebra, factoring, solving equations, coordinate geometry, plane geometry, shapes, trigonometry, and more!</p>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #1</div>
+                        <div className="why__reason-odd-title">Strategies</div>
+                        <span className="why__reason-odd-icon glyphicon glyphicon-eye-open" />
                     </div>
-                    <img src="/images/review-guide-math.png" className="why__so-far-image" />
-                </div>
-
-                <div className="page__why-content">
-                    <div className="why__most-popular">
-                        <div className="why__most-popular-text">The most popular ACT prep videos and instructor in the world...</div>
-                        <iframe width="373" height="210" src="https://www.youtube.com/embed/8euL7Z8FVL4" frameBorder="0" allowFullScreen className="why__youtube-video"></iframe>
-                        <iframe width="373" height="210" src="https://www.youtube.com/embed/y9zCjGHkwWM" frameBorder="0" allowFullScreen className="why__youtube-video"></iframe>
-                        <iframe width="373" height="210 " src="https://www.youtube.com/embed/y9zCjGHkwWM" frameBorder="0" allowFullScreen></iframe>
-                        <div className="why__most-popular-text--bigger">just got <em><strong>better</strong></em>.</div>
+                    <div className="why__reason-content-container">
+                        Coming soon :)
                     </div>
-                    <div className="why__course-screenshots">
-                        <h3 className="why__course-screenshots-heading--main">
-                            <em>Introducing the <span className="why__course-screenshots-heading--main--orange">NEW</span>...</em>
-                        </h3>
-                        <h2 className="why__course-screenshots-heading--main">Best ACT Prep Online Course</h2>
-                        <h4 className="why__course-screenshots-heading--tagline">
-                            A completely custom online ACT prep course built from the ground up.
-                        </h4>
-                        <img src="/images/screenshot-app.png" className="why__course-screenshots-image" />
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-content-container">
+                        Coming soon :)
                     </div>
-                </div>
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #2</div>
+                        <div className="why__reason-even-title">Instructor</div>
+                        <span className="why__reason-even-icon glyphicon glyphicon-education" />
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #3</div>
+                        <div className="why__reason-odd-title">Real ACT Practice Tests</div>
+                        <span className="why__reason-odd-icon glyphicon glyphicon-duplicate" />
+                    </div>
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #4</div>
+                        <div className="why__reason-even-title">Guided Practice</div>
+                        <span className="why__reason-even-icon glyphicon glyphicon-wrench" />
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #5</div>
+                        <div className="why__reason-odd-title">Content Review/Practice</div>
+                        <span className="why__reason-odd-icon glyphicon glyphicon-pencil" />
+                    </div>
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #6</div>
+                        <div className="why__reason-even-title">Price</div>
+                        <span className="why__reason-even-icon glyphicon glyphicon-piggy-bank" />
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #7</div>
+                        <div className="why__reason-odd-title">Support</div>
+                        <span className="why__reason-odd-icon glyphicon glyphicon-envelope" />
+                    </div>
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #8</div>
+                        <div className="why__reason-even-title">Lifetime Access</div>
+                        <span className="why__reason-even-icon glyphicon glyphicon-fast-forward" />
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #9</div>
+                        <div className="why__reason-odd-title">Features</div>
+                        <span className="why__reason-odd-icon glyphicon glyphicon-star-empty" />
+                    </div>
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                </section>
+                <section className="why__reason-container">
+                    <div className="why__reason-content-container">
+                        Coming soon :)
+                    </div>
+                    <div className="why__reason-title-container">
+                        <div className="why__reason-number">Reason #10</div>
+                        <div className="why__reason-even-title">We Care</div>
+                        <span className="why__reason-even-icon glyphicon glyphicon-heart" />
+                    </div>
+                </section>
             </div>
         );
     }

@@ -50,7 +50,7 @@ module.exports = {
     devServer: {
         hot: true,
         proxy: {
-            '*': 'http://127.0.0.1'
+            '*': 'http://127.0.0.1:3000'
         },
         host: '127.0.0.1'
     }

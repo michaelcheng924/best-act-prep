@@ -5,9 +5,12 @@
         width: 100%;
     }
 
+    &__call-to-action-fading-container {
+        display: none;
+    }
+
     &__title {
         color: $blue;
-        display: none;
         font-size: 55px;
         font-weight: 300;
         margin: 0 0 30px;
@@ -15,7 +18,6 @@
     }
 
     &__call-to-action {
-        display: none;
         margin-bottom: 40px;
         text-align: center;
     }
@@ -43,9 +45,8 @@
     &__call-to-action-button {
         background: $blue;
         border: 1px solid $blue;
-        border-radius: 0;
+        border-radius: 3px;
         color: #FFF;
-        display: none;
         font-size: 28px;
         font-weight: 300;
         left: 50%;
