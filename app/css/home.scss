@@ -12,14 +12,12 @@
         font-weight: 300;
         margin: 0 0 30px;
         text-align: center;
-        transition: display 3s;
     }
 
     &__call-to-action {
         display: none;
         margin-bottom: 40px;
         text-align: center;
-        transition: display 3s;
     }
 
     &__call-to-action-text-container {
@@ -53,7 +51,6 @@
         left: 50%;
         margin-left: -49px;
         position: relative;
-        transition: display 3s;
 
         &:hover {
             background: #FFF;

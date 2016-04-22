@@ -13,9 +13,9 @@ export class Home extends React.Component {
     }
 
     componentDidMount() {
-        $('.home__title').show();
-        $('.home__call-to-action').show();
-        $('.home__call-to-action-button').show();
+        $('.home__title').fadeIn();
+        $('.home__call-to-action').fadeIn();
+        $('.home__call-to-action-button').fadeIn();
     }
 
     setActiveTab(tab) {
