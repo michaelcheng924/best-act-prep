@@ -12,22 +12,29 @@ export class Home extends React.Component {
         this.setActiveTabWhy = this.setActiveTab.bind(this, '/why-best-act-prep');
     }
 
+    componentDidMount() {
+        $('.home__title').show();
+        $('.home__call-to-action').show();
+        $('.home__call-to-action-button').show();
+    }
+
     setActiveTab(tab) {
         this.props.setActiveTab(tab);
     }
 
     render() {
         return (
-            <div>
-                <div className="home__banner">
-                    <h2 className="home__banner-heading"><em>Step 1:</em> Maximize ACT Score</h2>
-                    <h2 className="home__banner-heading"><em>Step 2:</em> Attend Dream College</h2>
-                    <h2 className="home__banner-heading"><em>Step 3:</em> Enjoy Greater Opportunities</h2>
-                    <h2 className="home__banner-heading--important">The Best ACT Prep Online Course: Your Starting Point</h2>
-                    <Link to="why-best-act-prep">
-                        <button className="home__banner-button btn" onClick={this.setActiveTabWhy}>Learn More</button>
-                    </Link>
+            <div className="home__page">
+                <h1 className="home__title">The Best ACT Prep Online Course</h1>
+                <div className="home__call-to-action">
+                    <img src="/images/michael.png" />
+                    <div className="home__call-to-action-text-container">
+                        <div className="home__call-to-action-text--odd">The most popular ACT instructor.</div>
+                        <div className="home__call-to-action-text--even">The best ACT strategies.</div>
+                        <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
+                    </div>
                 </div>
+                <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
             </div>
         );
     }

@@ -1,37 +1,67 @@
 .home {
-    &__banner {
-        background: url('../images/slider-students.jpg');
-        background-repeat: no-repeat;
-        height: 600px;
-        margin: -20px auto;
-        padding-top: 80px;
-        text-align: center;
-        max-width: 100%;
+    &__page-container {
+        position: relative;
     }
 
-    &__banner-heading {
-        color: #FFF;
-        font-size: 25px;
-
-        &--important {
-            color: $yellow;
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 40px;
-        }
+    &__page {
+        background: lighten($blue, 61%);
+        height: 100vh;
+        padding: 30px;
     }
 
-    &__banner-button {
-        background: $blue;
-        border-radius: 3px;
-        color: #FFF;
-        font-size: 20px;
-        margin-top: 30px;
-    }
-
-    &__banner-button:hover {
-        background: #FFF;
-        border: 1px solid $blue;
+    &__title {
         color: $blue;
+        display: none;
+        font-size: 55px;
+        font-weight: 300;
+        margin: 0 0 30px;
+        text-align: center;
+        transition: display 3s;
+    }
+
+    &__call-to-action {
+        display: none;
+        margin-bottom: 40px;
+        text-align: center;
+        transition: display 3s;
+    }
+
+    &__call-to-action-text-container {
+        margin-left: 25px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &__call-to-action-text--odd,
+    &__call-to-action-text--even {
+        font-size: 32px;
+        margin-bottom: 6px;
+    }
+
+    &__call-to-action-text--odd {
+        color: darken($orange, 15%);
+    }
+
+    &__call-to-action-text--even {
+        color: darken($blue, 15%);
+    }
+
+    &__call-to-action-button {
+        background: $blue;
+        border: 1px solid $blue;
+        border-radius: 0;
+        color: #FFF;
+        display: none;
+        font-size: 28px;
+        left: 50%;
+        margin-left: -49px;
+        position: relative;
+        transition: display 3s;
+
+        &:hover {
+            background: #FFF;
+            border: 1px solid $blue;
+            color: $blue;
+        }
     }
 }

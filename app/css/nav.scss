@@ -1,5 +1,8 @@
 .navbar {
     background: #FFF;
+    border: 0;
+    border-bottom: 1px solid $border-color;
+    border-radius: 0;
     margin-bottom: 0;
     position: relative;
 }

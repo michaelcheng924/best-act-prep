@@ -5,6 +5,31 @@ body {
     margin: 0;
 }
 
+.app-container {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.page-container {
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    right: 0;
+    top: 51px;
+}
+
+.page-container-scrollable {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .spinner {
     position: absolute;
     text-align: center;
