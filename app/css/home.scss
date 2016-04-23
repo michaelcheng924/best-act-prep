@@ -1,12 +1,10 @@
 .home {
+    display: none;
+
     &__call-to-action-container {
         background: lighten($blue, 61%);
         padding: 30px 0;
         width: 100%;
-    }
-
-    &__call-to-action-fading-container {
-        display: none;
     }
 
     &__title {

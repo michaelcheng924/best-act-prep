@@ -13,7 +13,7 @@ export class Home extends React.Component {
     }
 
     componentDidMount() {
-        $('.home__call-to-action-fading-container').fadeIn();
+        $('.home').fadeIn();
     }
 
     setActiveTab(tab) {
@@ -22,20 +22,18 @@ export class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="home">
                 <div className="home__call-to-action-container">
-                    <div className="home__call-to-action-fading-container">
-                        <h1 className="home__title">The Best ACT Prep Online Course</h1>
-                        <div className="home__call-to-action">
-                            <img src="/images/michael.png" />
-                            <div className="home__call-to-action-text-container">
-                                <div className="home__call-to-action-text--odd">The most popular ACT instructor.</div>
-                                <div className="home__call-to-action-text--even">The best ACT strategies.</div>
-                                <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
-                            </div>
+                    <h1 className="home__title">The Best ACT Prep Online Course</h1>
+                    <div className="home__call-to-action">
+                        <img src="/images/michael.png" />
+                        <div className="home__call-to-action-text-container">
+                            <div className="home__call-to-action-text--odd">The most popular ACT instructor.</div>
+                            <div className="home__call-to-action-text--even">The best ACT strategies.</div>
+                            <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
                         </div>
-                        <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
                     </div>
+                    <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
                 </div>
 
                 <div className="home__testimonials-container">
