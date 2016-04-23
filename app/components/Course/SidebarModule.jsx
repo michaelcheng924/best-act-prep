@@ -22,7 +22,7 @@ export default class SidebarSection extends React.Component {
 
         setCurrentModule(id);
 
-        $('body').animate({ scrollTop: 0 });
+        $('.page-container').animate({ scrollTop: 0 });
     }
 
     render() {

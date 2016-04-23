@@ -7,9 +7,7 @@ export default class Math3A1Overview extends React.Component {
                 <h4 className="module__title--category">3.A.1) ACT Math Basics</h4>
                 <h2 className="module__title">Overview/Format</h2>
                 <div className="module__content">
-                    <video controls="controls" className="module__video" poster="/images/poster-Math3B1Overview.png">
-                        <source src="https://www.dropbox.com/s/nnm4q96hsu3f49a/Math3B1Overview.mp4?raw=1" type="video/mp4"/>
-                    </video>
+                    <iframe src="https://player.vimeo.com/video/163876885" className="module__video" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowFullScreen></iframe>
 
                     <div className="module__transcript-container">
                         <h3 className="module__transcript-title">Transcript</h3>

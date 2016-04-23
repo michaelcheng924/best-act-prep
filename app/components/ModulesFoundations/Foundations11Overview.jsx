@@ -7,9 +7,7 @@ export default class Foundations11Overview extends React.Component {
                 <h4 className="module__title--category">1.1) ACT Foundations</h4>
                 <h2 className="module__title">ACT Overview/Format</h2>
                 <div className="module__content">
-                    <video controls="controls" className="module__video" poster="/images/poster-Foundations12Overview.png">
-                        <source src="https://www.dropbox.com/s/9d5gqalumu0zpuy/Foundations12Overview.mp4?raw=1" type="video/mp4"/>
-                    </video>
+                    <iframe src="https://player.vimeo.com/video/163876888" className="module__video" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowFullScreen></iframe>
 
                     <div className="module__transcript-container">
                         <h3 className="module__transcript-title">Transcript</h3>

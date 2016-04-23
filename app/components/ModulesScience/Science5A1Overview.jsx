@@ -7,9 +7,7 @@ export default class Science5A1Overview extends React.Component {
                 <h4 className="module__title--category">5.A.1) ACT Science Basics</h4>
                 <h2 className="module__title">Overview/Format</h2>
                 <div className="module__content">
-                    <video controls="controls" className="module__video" poster="/images/poster-Science5B1Overview.png">
-                        <source src="https://www.dropbox.com/s/ij622makq2s9rwc/Science5B1Overview.mp4?raw=1" type="video/mp4"/>
-                    </video>
+                    <iframe src="https://player.vimeo.com/video/163876887" className="module__video" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowFullScreen></iframe>
 
                     <div className="module__transcript-container">
                         <h3 className="module__transcript-title">Transcript</h3>
