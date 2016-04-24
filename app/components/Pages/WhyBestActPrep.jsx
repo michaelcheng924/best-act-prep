@@ -1,3 +1,4 @@
+import { delay } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -27,7 +28,8 @@ export class WhyBestActPrep extends React.Component {
     }
 
     componentDidMount() {
-        $('.why').fadeIn();     
+        $('.why').fadeIn();
+        $('.page-container').scrollTop(0);
     }
 
     toggleVideoList(type) {

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -14,6 +13,7 @@ export class Home extends React.Component {
 
     componentDidMount() {
         $('.home').fadeIn();
+        $('.page-container').scrollTop(0);
     }
 
     setActiveTab(tab) {
