@@ -1,4 +1,6 @@
 .why {
+    display: none;
+
     &__title-container {
         background: lighten($blue, 61%);
         padding: 30px;
@@ -134,16 +136,38 @@
     }
 
     &__reason-container {
+        align-items: center;
         background: #FFF;
         border-top: 1px solid $muted-text-color;
         display: flex;
+        position: relative;
         width: 100%;
     }
 
     &__reason-title-container {
-        padding: 20px;
         text-align: center;
-        width: 50%;
+        width: 30%;
+        z-index: 1;
+    }
+
+    &__reason-title-container-background--odd,
+    &__reason-title-container-background--even {
+        bottom: 0;
+        position: absolute;
+        top: 0;
+        width: 30%;
+    }
+
+    &__reason-title-container-background--odd {
+        background: lighten($blue, 59%);
+        border-right: 1px solid $muted-text-color;
+        left: 0;
+    }
+
+    &__reason-title-container-background--even {
+        background: lighten($orange, 37%);
+        border-left: 1px solid $muted-text-color;
+        right: 0;
     }
 
     &__reason-number {
@@ -175,8 +199,85 @@
     }
 
     &__reason-content-container {
+        font-size: 18px;
         padding: 20px;
+        width: 70%;
+    }
+
+    &__testimonials-container {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__testimonial-container {
+        border: 1px solid $gold;
+        border-radius: 15px;
+        color: $gold;
+        display: inline-block;
+        font-style: italic;
+        margin: 0 20px 10px 0;
+        max-width: 47%;
+        padding: 5px 10px;
+    }
+
+    &__testimonial {
+        display: block;
+        text-align: center;
+    }
+
+    &__testimonial-author {
+        display: block;
+        text-align: right;
+    }
+
+    &__image-container {
+        display: flex;
+        width: 100%;
+    }
+
+    &__image-2-container {
         text-align: center;
         width: 50%;
+    }
+
+    &__image-practice-tests {
+        border: 1px solid #333;
+        border-radius: 5px;
+        height: 200px;
+    }
+
+    &__PDF-image-reason-container {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__PDF-image-reason {
+        border: 1px solid #333;
+        border-radius: 10px;
+        margin: 0 15px 15px 0;
+    }
+
+    &__price {
+        margin-bottom: 0;
+    }
+
+    &__price-row {
+        color: $blue;
+    }
+
+    &__current-videos-tagline {
+        color: $muted-text-color;
+        font-size: 12px;
+        margin: -5px 0 10px;
+    }
+
+    &__price-future {
+        color: $muted-text-color;
+    }
+
+    &__price-sale {
+        color: red;
     }
 }

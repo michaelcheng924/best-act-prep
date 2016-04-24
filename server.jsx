@@ -83,7 +83,7 @@ app.use((req, res) => {
                     <link rel="stylesheet" href="/style.css" />
                     <link rel="icon" type="image/png" href="/images/favicon.png" />
 
-                    <title>Best ACT Prep</title>
+                    <title>Online ACT Prep Course - Higher Score Guaranteed</title>
 
                     <script>
                         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
