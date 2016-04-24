@@ -16,14 +16,22 @@ export class WhyBestActPrep extends React.Component {
         this.state = {
             oldVideoList: false,
             newVideoList: false,
-            PDFList: false
+            oldVideoListReasons: false,
+            newVideoListReasons: false,
+            oldVideoListBottom: false,
+            newVideoListBottom: false,
+            PDFList: false,
+            PDFListBottom: false
         };
 
         this.toggleOldVideoList = this.toggleVideoList.bind(this, 'oldVideoList');
         this.toggleNewVideoList = this.toggleVideoList.bind(this, 'newVideoList');
         this.toggleNewVideoListReasons = this.toggleVideoList.bind(this, 'newVideoListReasons');
         this.toggleOldVideoListReasons = this.toggleVideoList.bind(this, 'oldVideoListReasons');
+        this.toggleOldVideoListBottom = this.toggleVideoList.bind(this, 'oldVideoListBottom');
+        this.toggleNewVideoListBottom = this.toggleVideoList.bind(this, 'newVideoListBottom');
         this.togglePDFList = this.toggleVideoList.bind(this, 'PDFList');
+        this.togglePDFListBottom = this.toggleVideoList.bind(this, 'PDFListBottom');
         this.onToken = this.onToken.bind(this);
     }
 
@@ -550,8 +558,8 @@ export class WhyBestActPrep extends React.Component {
                         <ul className="why__buy-details-list">
                             <li>
                                 Every video (over 65) from our original course, which we sold for $149 (Modules Z1-Z9). Most of these videos (including some of our best/favorite strategies) are not available on YouTube!<br />
-                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleOldVideoList}>{this.state.oldVideoList ? 'Hide' : 'Show'} video list</button>
-                                <div className="why__buy-details-video-list" ref="oldVideoList">
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleOldVideoListBottom}>{this.state.oldVideoListBottom ? 'Hide' : 'Show'} video list</button>
+                                <div className="why__buy-details-video-list" ref="oldVideoListBottom">
                                     <img src="/images/poster-0-1-motivated.png" className="why__video-poster" />
                                     <img src="/images/poster-0-2-format.png" className="why__video-poster" />
                                     <img src="/images/poster-0-3-most-important.png" className="why__video-poster" />
@@ -624,8 +632,8 @@ export class WhyBestActPrep extends React.Component {
                             </li>
                             <li>
                                 Every new Best ACT Prep video as we continue releasing them (5 so far)<br />
-                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleNewVideoList}>{this.state.newVideoList ? 'Hide' : 'Show'} video list</button>
-                                <div className="why__buy-details-video-list" ref="newVideoList">
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleNewVideoListBottom}>{this.state.newVideoListBottom ? 'Hide' : 'Show'} video list</button>
+                                <div className="why__buy-details-video-list" ref="newVideoListBottom">
                                     <img src="/images/poster-Foundations12Overview.png" className="why__video-poster" />
                                     <img src="/images/poster-English2B1Overview.png" className="why__video-poster" />
                                     <img src="/images/poster-Math3B1Overview.png" className="why__video-poster" />
@@ -635,8 +643,8 @@ export class WhyBestActPrep extends React.Component {
                             </li>
                             <li>
                                 Printable PDF study guides for every grammar rule and every math concept covered by the ACT<br />
-                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.togglePDFList}>{this.state.PDFList ? 'Hide' : 'Show'} Images</button>
-                                <div className="why__buy-details-video-list" ref="PDFList">
+                                <button className="why__buy-details-show-videos btn btn-default" onClick={this.togglePDFListBottom}>{this.state.PDFListBottom ? 'Hide' : 'Show'} Images</button>
+                                <div className="why__buy-details-video-list" ref="PDFListBottom">
                                     <img src="/images/review-guide-grammar.png" className="why__PDF-image" />
                                     <img src="/images/review-guide-math.png" className="why__PDF-image" />
                                 </div>
