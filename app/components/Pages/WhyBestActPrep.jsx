@@ -7,7 +7,7 @@ import { onToken } from 'api/app';
 import { setUser } from 'actions/app';
 import { setCourseData } from 'actions/course';
 
-const AMOUNT = 4900;
+export const AMOUNT = 4900;
 
 export class WhyBestActPrep extends React.Component {
     constructor(props) {
