@@ -232,7 +232,7 @@ export class WhyBestActPrep extends React.Component {
                             </span>
                             <span className="why__testimonial-container">
                                 <div className="why__testiominal">"I initially got a 28, but then I employed this strategy, cleared my mind, and got a 35! I have never been so focused in my life! Haha thanks!"</div>
-                                <div className="why__testimonial-author">- (Non-English name)</div>
+                                <div className="why__testimonial-author">- Азор_Ахай</div>
                             </span>
                         </div>
                     </div>

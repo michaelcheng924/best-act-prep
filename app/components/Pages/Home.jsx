@@ -233,7 +233,7 @@ export class Home extends React.Component {
                         </div>
                         <div className="home__testimonials-quote-container">
                             <div className="home__testimonials-quote">I initially got a 28, but then I employed this strategy, cleared my mind, and got a 35! I have never been so focused in my life! Haha thanks!</div>
-                            <div className="home__testimonials-author">- (Non-English name)</div>
+                            <div className="home__testimonials-author">- Азор_Ахай</div>
                         </div>
                         <div className="home__testimonials-quote-container">
                             <div className="home__testimonials-quote">How do you sleep at night knowing you helped people? I love you.</div>
@@ -342,6 +342,78 @@ export class Home extends React.Component {
                         <div className="home__testimonials-quote-container">
                             <div className="home__testimonials-quote">Dude this video is the best or should I say these videos are the best :-D</div>
                             <div className="home__testimonials-author">- Keiron Baptiste</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you, I improved my score on English by 6 points! Helped to increase my composite by 3 points thank you! The digital watch is really a must!</div>
+                            <div className="home__testimonials-author">- DJ KHALED</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">You are so much more helpful than this program my school pays a lot of money for and no student likes. I think they should pay you instead. </div>
+                            <div className="home__testimonials-author">- TheAddictedtoshoppin</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Your vids are great! I feel more prepared already.</div>
+                            <div className="home__testimonials-author">- Jessica Paul</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">These videos are just loaded with information...so helpful! </div>
+                            <div className="home__testimonials-author">- Francis Lau</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">I was really struggling in the ACT. You helped me double my score.</div>
+                            <div className="home__testimonials-author">- phantomphoenix</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you so much! My scores were raised 5 bands on math</div>
+                            <div className="home__testimonials-author">- Yousra Salama</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you so much!!!!! When I first took my ACT it was not a good time. I was very stressed out over other issues and I didn’t really study and embarrassingly got a 17............ I finally got my score back for my second test and studied for a good 2 months straight and watched this video before I took the test again and I kid you not I got a 28!!!!!! I am beyond happy oh my gosh! I thought I would probably go up to maybe a 25 if I was lucky but it went up so much more!!! Thank you for your tips.</div>
+                            <div className="home__testimonials-author">- Amie Koster</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">I just wanted to say I appreciate your videos so much. I first took the ACT in September at got a 28. After watching (literally all of) your videos, I realized I needed a lot of improvement in time management! I took the ACT again this October and I got a 33. I didn't study or buy any prep books - all I did was watch my time more efficiently. I bought a digital watch, began reading the reading passages entirely BEFORE trying the questions, used the finger method in science, and skipped math problems that took too long so I could come back to them later. And I guess you could say these little strategies really paid off. Thanks so much for your videos, I LOVE them. Keep up the good work!!</div>
+                            <div className="home__testimonials-author">- Carolyn Hanson-Lee</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">YOU ARE MY SAVIOR!!</div>
+                            <div className="home__testimonials-author">- MaximumVolume1000</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">I got a 34 in reading.</div>
+                            <div className="home__testimonials-author">- Bruni</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Your tips on taking the ACT are extremely helpful. I watched your video on taking the science portion just before the April test and that video helped me bring my science score up 6 points. Thank you so much for helping me!</div>
+                            <div className="home__testimonials-author">- Cocoabean</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">My science score escalated from a 16 to a 26! Thanks!</div>
+                            <div className="home__testimonials-author">- blahblahblahangie</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you! I went from a 20 on the Writing ACT to a 26. On the reading, I went from a 22 to a 26.</div>
+                            <div className="home__testimonials-author">- candyapple4242</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you so much for your videos! Highly recommend his videos for anyone taking the ACT! Best information and advice out there, thanks so much!</div>
+                            <div className="home__testimonials-author">- zena zeidan</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">THANK YOU!!!! Your tips helped my ACT score go up 5 points!! I owe it all to you.</div>
+                            <div className="home__testimonials-author">- Ula L</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">This is the best video! I passed my act with a 20 ☺️ thank you so much for the tips!</div>
+                            <div className="home__testimonials-author">- Vanessa Achille</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you! I went from a 20 on the Writing ACT to a 26. On the reading, I went from a 22 to a 26.</div>
+                            <div className="home__testimonials-author">- candyapple4242</div>
+                        </div>
+                        <div className="home__testimonials-quote-container">
+                            <div className="home__testimonials-quote">Thank you! I went from a 20 on the Writing ACT to a 26. On the reading, I went from a 22 to a 26.</div>
+                            <div className="home__testimonials-author">- candyapple4242</div>
                         </div>
                     </div>
                 </div>
