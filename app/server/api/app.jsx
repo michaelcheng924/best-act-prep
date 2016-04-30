@@ -92,7 +92,7 @@ router.post('/buycourse', (req, res) => {
         from: 'COURSE BOUGHT <dev@bestactprep.co>',
         to: 'cheng.c.mike@gmail.com',
         subject: 'COURSE BOUGHT',
-        text: req.body
+        text: `Course bought - ${req.body}`
     };
 
     mailgun.messages().send(MAILGUN_LOGGING_DATA, (error, body) => {
