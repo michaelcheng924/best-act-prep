@@ -86,6 +86,21 @@ router.post('/logout', (req, res) => {
 });
 
 router.post('/buycourse', (req, res) => {
+    // LOGGING
+    console.log('BUY COURSE START', req.body);
+    const MAILGUN_LOGGING_DATA = {
+        from: 'COURSE BOUGHT <dev@bestactprep.co>',
+        to: 'cheng.c.mike@gmail.com',
+        subject: 'COURSE BOUGHT',
+        text: req.body
+    };
+
+    mailgun.messages().send(MAILGUN_LOGGING_DATA, (error, body) => {
+        if (error) {
+            console.log(error);
+        }
+    });
+
     const token = req.body.token.id;
     const email = req.body.token.email;
     const amount = req.body.amount;
@@ -100,12 +115,14 @@ router.post('/buycourse', (req, res) => {
             console.log(err);
             res.send(err);
         } else {
+            console.log('BUY COURSE FINDONE START');
             User.findOne({ email }, (err, result) => {
                 if (err) {
                     console.log(err);
                     res.send(err);
                 } else {
                     if (result) {
+                        console.log('BUY COURSE USER EXISTS');
                         const uniqueEmail = result.email + (Math.random() * 1000);
                         const dupUser = new User({
                             email: uniqueEmail,
@@ -116,6 +133,7 @@ router.post('/buycourse', (req, res) => {
                                 console.log(err);
                                 res.send(err);
                             } else {
+                                console.log('BUY COURSE USER EXISTS RESPONSE');
                                 req.session.user = uniqueEmail;
                                 res.send({
                                     email: uniqueEmail,
@@ -124,6 +142,7 @@ router.post('/buycourse', (req, res) => {
                             }
                         });
                     } else {
+                        console.log('BUY COURSE NEW USER');
                         const user = new User({
                             email,
                             data: initialUserData
@@ -133,6 +152,7 @@ router.post('/buycourse', (req, res) => {
                                 console.log(err);
                                 res.send(err);
                             } else {
+                                console.log('BUY COURSE NEW USER RESPONSE');
                                 const MAILGUN_DATA = {
                                     from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
                                     to: email,
