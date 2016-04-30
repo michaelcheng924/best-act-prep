@@ -65,7 +65,7 @@ export class WhyBestActPrep extends React.Component {
         return (
             <div className="why">
                 <section className="why__title-container">
-                    <h1 className="why__title">10 Reasons to Choose the Best ACT Prep Online Course</h1>
+                    <h1 className="why__title">11 Reasons to Choose the Best ACT Prep Online Course</h1>
                 </section>
                 <section className="why__buy-container">
                     <div className="why__buy-call-to-action-container">
@@ -520,6 +520,10 @@ export class WhyBestActPrep extends React.Component {
                         <div className="why__reason-even-title">We Care</div>
                         <span className="why__reason-even-icon glyphicon glyphicon-heart" />
                     </div>
+                </section>
+                <section className="why__reason-full-container">
+                    <h2 className="why__reason-full-container-heading">Reason #11: It's a custom-built, modern web-app!</h2>
+                    <center><img src="/images/screenshot-app.png" className="why__screenshot-app" /></center>
                 </section>
                 <section className="why__buy-container">
                     <div className="why__buy-call-to-action-container">

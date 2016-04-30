@@ -204,6 +204,23 @@
         width: 70%;
     }
 
+    &__reason-full-container {
+        background: #FFF;
+        border-top: 1px solid $muted-text-color;
+        padding: 20px 0;
+    }
+
+    &__reason-full-container-heading {
+        font-weight: 300;
+        margin: 0 0 20px;
+        text-align: center;
+    }
+
+    &__screenshot-app {
+        border: 1px solid $muted-text-color;
+        border-radius: 10px;
+    }
+
     &__testimonials-container {
         display: block;
         margin: 0 auto;

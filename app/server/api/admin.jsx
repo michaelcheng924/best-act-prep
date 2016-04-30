@@ -71,6 +71,7 @@ router.get('/getusers', (req, res) => {
 router.delete('/deleteuser', (req, res) => {
     const email = req.body.email;
     User.remove({ email }, err => {
+        req.session.user = null;
         res.send(`Deleted ${email}!`);
     });
 });

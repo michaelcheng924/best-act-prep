@@ -51,6 +51,7 @@ router.post('/setcurrentmodule/:id', (req, res) => {
             console.log(err);
             res.send(err);
         } else {
+            console.log('USER SET CURRENT MODULE', req.session.user);
             const userData = result.data;
             userData.currentModule = currentModuleId;
 
@@ -74,6 +75,7 @@ router.post('/markcomplete/:id', (req, res) => {
     const currentModuleId = req.params.id;
 
     User.findOne({ email: req.session.user }, (err, result) => {
+        console.log('USER MARK COMPLETE', req.session.user);
         const userData = result.data;
         let currentModule = userData.modules[currentModuleId];
         currentModule.completed = !currentModule.completed;
