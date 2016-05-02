@@ -236,4 +236,15 @@ Textarea: ${textarea}`
     });
 });
 
+// LOGGING
+router.get('/ontoken', (req, res) => {
+    console.log('ON TOKEN CALLED');
+    res.send('onToken called');
+});
+
+router.post('/buyresponse', (req, res) => {
+    console.log('BUY RESPONSE', JSON.stringify(req.body));
+    res.send('buy response');
+});
+
 export default router;

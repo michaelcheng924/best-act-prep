@@ -46,11 +46,24 @@ export class WhyBestActPrep extends React.Component {
     }
 
     onToken(token) {
+        // LOGGING
+        $.ajax({
+            url: '/api/app/ontoken',
+            contentType: 'application/json'
+        });
+
         const spinnerEl = $('.spinner');
 
         spinnerEl.removeClass('hidden');
 
         onToken(token, AMOUNT).then(response => {
+            $.ajax({
+                type: 'POST',
+                url: '/api/app/buyresponse',
+                contentType: 'application/json',
+                data: JSON.stringify({ response })
+            });
+
             if (response.email) {
                 this.props.setUser(response.email);
                 this.props.setCourseData(response.userData);
