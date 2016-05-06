@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setActiveTab } from 'actions/app';
-import WhyPayment from 'components/Pages/WhyPayment';
+import Payment from 'components/Shared/Payment';
 
 export class Home extends React.Component {
     constructor(props) {
@@ -65,7 +65,7 @@ export class Home extends React.Component {
                     <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
                 </div>
 
-                <WhyPayment />
+                <Payment />
 
                 <div className="home__testimonials-container">
                     <div className="home__testimonials-main">

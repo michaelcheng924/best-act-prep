@@ -1,5 +1,5 @@
 import React from 'react';
-import WhyPayment from 'components/Pages/WhyPayment';
+import Payment from 'components/Shared/Payment';
 
 export default class WhyBestActPrep extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ export default class WhyBestActPrep extends React.Component {
                 <section className="why__title-container">
                     <h1 className="why__title">11 Reasons to Choose the Best ACT Prep Online Course</h1>
                 </section>
-                <WhyPayment />
+                <Payment />
                 <section className="why__reason-container">
                     <div className="why__reason-content-container">
                         <p>There's a reason why <strong>Michael's ACT prep videos are at the top of YouTube</strong>. Countless students can testify that using his strategies helped them significantly increase their ACT score.</p>
@@ -321,7 +321,7 @@ export default class WhyBestActPrep extends React.Component {
                     <h2 className="why__reason-full-container-heading">Reason #11: It's a custom-built, modern web-app!</h2>
                     <center><img src="/images/screenshot-app.png" className="why__screenshot-app" /></center>
                 </section>
-                <WhyPayment />
+                <Payment />
             </div>
         );
     }

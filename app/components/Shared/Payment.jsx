@@ -8,7 +8,7 @@ import { setCourseData } from 'actions/course';
 
 export const AMOUNT = 4900;
 
-export class WhyPayment extends React.Component {
+export class Payment extends React.Component {
     constructor(props) {
         super(props);
 
@@ -197,7 +197,7 @@ export class WhyPayment extends React.Component {
     }
 }
 
-WhyPayment.contextTypes = {
+Payment.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
@@ -211,4 +211,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(WhyPayment);
+export default connect(null, mapDispatchToProps)(Payment);
