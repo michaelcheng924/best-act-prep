@@ -1,6 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import StripeCheckout from 'react-stripe-checkout';
+import { onToken } from 'api/app';
+import { setUser } from 'actions/app';
+import { setCourseData } from 'actions/course';
 
-export default class WhyPayment export React.Component {
+export const AMOUNT = 4900;
+
+export class WhyPayment extends React.Component {
     constructor(props) {
         super(props);
 
@@ -10,12 +18,46 @@ export default class WhyPayment export React.Component {
             PDFList: false
         };
 
-        this.toggleVideoList = this.toggleList.bind(this, 'videoList');
+        this.toggleNewVideoList = this.toggleList.bind(this, 'newVideoList');
+        this.toggleOldVideoList = this.toggleList.bind(this, 'oldVideoList');
         this.togglePDFList = this.toggleList.bind(this, 'PDFList');
+        this.onToken = this.onToken.bind(this);
     }
 
     toggleList(type) {
+        $(this.refs[type]).slideToggle();
+        this.setState({ [type]: !this.state[type] });
+    }
 
+    onToken(token) {
+        const { setUser, setCourseData } = this.props;
+
+        // LOGGING
+        $.ajax({
+            url: '/api/app/ontoken',
+            contentType: 'application/json'
+        });
+
+        const spinnerEl = $('.spinner');
+
+        spinnerEl.removeClass('hidden');
+
+        onToken(token, AMOUNT).then(response => {
+            $.ajax({
+                type: 'POST',
+                url: '/api/app/buyresponse',
+                contentType: 'application/json',
+                data: JSON.stringify({ response })
+            });
+
+            if (response.email) {
+                setUser(response.email);
+                setCourseData(response.userData);
+                spinnerEl.addClass('hidden');
+                this.context.router.push('/welcome');
+                localStorage.setItem('bap-token', response.token);
+            }
+        });
     }
 
     render() {
@@ -151,45 +193,22 @@ export default class WhyPayment export React.Component {
                     </ul>
                 </div>
             </section>
-            <section className="why__reason-container">
-                <div className="why__reason-title-container-background--odd" />
-                <div className="why__reason-title-container">
-                    <div className="why__reason-number">Reason #1</div>
-                    <div className="why__reason-odd-title">Strategies</div>
-                    <span className="why__reason-odd-icon glyphicon glyphicon-eye-open" />
-                </div>
-                <div className="why__reason-content-container">
-                    <p>Learn strategies you <strong>won't find anywhere else</strong>, which <strong>Michael himself used to score a 34</strong> on the ACT.</p>
-                    <p>These strategies have helped students raise their score by <strong>up to 8 points</strong>!</p>
-                    <button className="why__buy-details-show-videos btn btn-default" onClick={this.toggleNewVideoListReasons}>{this.state.newVideoListReasons ? 'Hide' : 'Show'} current video list</button><br />
-                    <div className="why__current-videos-tagline">(We're still working on them!)</div>
-                    <div className="why__buy-details-video-list" ref="newVideoListReasons">
-                        <img src="/images/poster-Foundations12Overview.png" className="why__video-poster" />
-                        <img src="/images/poster-English2B1Overview.png" className="why__video-poster" />
-                        <img src="/images/poster-Math3B1Overview.png" className="why__video-poster" />
-                        <img src="/images/poster-Reading4B1Overview.png" className="why__video-poster" />
-                        <img src="/images/poster-Science5B1Overview.png" className="why__video-poster" />
-                    </div>
-                    <div className="why__testimonials-container">
-                        <span className="why__testimonial-container">
-                            <div className="why__testiominal">"Dude, your tips blow my mind. They work soooooo well! All the tips I have ever research don't even compare to his advice!"</div>
-                            <div className="why__testimonial-author">- Graham L.</div>
-                        </span>
-                        <span className="why__testimonial-container">
-                            <div className="why__testiominal">"More helpful than the princeton review books. I was following their tips, my score got worse, whereas your advice is more like my method and works much better."</div>
-                            <div className="why__testimonial-author">- Haris dehwar</div>
-                        </span>
-                        <span className="why__testimonial-container">
-                            <div className="why__testiominal">"With Princeton Review's strategy I got 25 but with yours 33!"</div>
-                            <div className="why__testimonial-author">- aloe vera</div>
-                        </span>
-                        <span className="why__testimonial-container">
-                            <div className="why__testiominal">"I initially got a 28, but then I employed this strategy, cleared my mind, and got a 35! I have never been so focused in my life! Haha thanks!"</div>
-                            <div className="why__testimonial-author">- Азор_Ахай</div>
-                        </span>
-                    </div>
-                </div>
-            </section>
         );
     }
 }
+
+WhyPayment.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+function mapDispatchToProps(dispatch) {
+    const boundAppActions = bindActionCreators({ setUser }, dispatch);
+    const boundCourseActions = bindActionCreators({ setCourseData }, dispatch);
+
+    return {
+        setUser: boundAppActions.setUser,
+        setCourseData: boundCourseActions.setCourseData
+    };
+}
+
+export default connect(null, mapDispatchToProps)(WhyPayment);
