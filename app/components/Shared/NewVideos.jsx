@@ -30,9 +30,13 @@ export default class NewVideos extends React.Component {
                 <div className="why__buy-details-video-list" ref="list">
                     <img src="/images/poster-Foundations12Overview.png" className="why__video-poster" />
                     <img src="/images/poster-English2B1Overview.png" className="why__video-poster" />
+                    <img src="/images/poster-English2B2Time.png" className="why__video-poster" />
                     <img src="/images/poster-Math3B1Overview.png" className="why__video-poster" />
+                    <img src="/images/poster-Math3B2Time.png" className="why__video-poster" />
                     <img src="/images/poster-Reading4B1Overview.png" className="why__video-poster" />
+                    <img src="/images/poster-Reading4B2Time.png" className="why__video-poster" />
                     <img src="/images/poster-Science5B1Overview.png" className="why__video-poster" />
+                    <img src="/images/poster-Science5B2Time.png" className="why__video-poster" />
                 </div>
             </div>
         );
