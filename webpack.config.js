@@ -23,7 +23,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.scss$/,
-                loader: extractCSS.extract(['css','sass','autoprefixer?browsers=last 3 versions'])
+                loader: extractCSS.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')
             },
             {
                 test: /\.jsx?$/,

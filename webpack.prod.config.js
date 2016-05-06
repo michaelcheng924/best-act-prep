@@ -28,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: extractCSS.extract(['css','sass'])
+                loader: extractCSS.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
