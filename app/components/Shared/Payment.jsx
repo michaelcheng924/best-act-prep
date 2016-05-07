@@ -102,7 +102,7 @@ export class Payment extends React.Component {
                             <OldVideos />
                         </li>
                         <li>
-                            Every new Best ACT Prep video as we continue releasing them (9 so far)<br />
+                            Every new Best ACT Prep video as we continue releasing them (13 so far)<br />
                             <NewVideos />
                         </li>
                         <li>

@@ -8,10 +8,45 @@ export default class Foundations10Welcome extends React.Component {
                 <h2 className="module__title">Welcome and Instructions</h2>
                 <div className="module__content">
                     <p>Available videos so far:</p>
-                    <p><strong>Z) Old Course Videos - </strong> 65-70 videos (scroll down to the bottom of the sidebar)</p>
-                    <p><strong>Overview/Format Videos (1.1, 2.A.1, 3.A.1, 4.A.1, 5.A.1) -</strong> 5 videos (click on the specific links in the sidebar)</p>
-                    <p><strong>Managing Time Videos (2.A.2, 3.A.2, 4.A.2., 5.A.2) -</strong> 4 videos</p>
-                    <p><strong>English and Math PDF Study Guides (2.D.1, 3.D.1) -</strong> 2 printable PDFs (click on the specific links in the sidebar)</p>
+                    <u><h3>Z) Old Course Videos</h3></u>
+                    65-70 videos (scroll down to the bottom of the sidebar)
+
+                    <u><h3>New Course Videos (click on the specific links in the sidebar)</h3></u>
+
+                    <p>
+                        <strong>1) ACT Foundations</strong><br />
+                        1.1) ACT Overview/Format
+                    </p>
+
+                    <p>
+                        <strong>2) ACT English</strong><br />
+                        2.A.1) Overview/Format<br />
+                        2.A.2) Managing Time<br />
+                        2.A.4) Bubbling<br />
+                        2.D.1) All Grammar Rules PDF
+                    </p>
+
+                    <p>
+                        <strong>3) ACT Math</strong><br />
+                        3.A.1) Overview/Format<br />
+                        3.A.2) Managing Time<br />
+                        3.A.4) Bubbling<br />
+                        3.D.1) All Math Concepts PDF
+                    </p>
+
+                    <p>
+                        <strong>4) ACT Reading</strong><br />
+                        4.A.1) Overview/Format<br />
+                        4.A.2) Managing Time<br />
+                        4.A.4) Bubbling<br />
+                    </p>
+
+                    <p>
+                        <strong>5) ACT Science</strong><br />
+                        5.A.1) Overview/Format<br />
+                        5.A.2) Managing Time<br />
+                        5.A.4) Bubbling<br />
+                    </p>
                 </div>
             </div>
         );
