@@ -7,7 +7,7 @@ export default class Reading4B1Prose extends React.Component {
                 <h4 className="module__title--category">4.B.1) ACT Reading Strategies</h4>
                 <h2 className="module__title">Do the Prose Passage Last</h2>
                 <div className="module__content">
-                    CONTENT
+                    This video hasn't been produced yet. We're working on it, though!
                 </div>
             </div>
         );

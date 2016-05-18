@@ -7,7 +7,7 @@ export default class Foundations12Read extends React.Component {
                 <h4 className="module__title--category">1.2) ACT Foundations</h4>
                 <h2 className="module__title">Read, Read, Read!</h2>
                 <div className="module__content">
-                    CONTENT
+                    This video hasn't been produced yet. We're working on it, though!
                 </div>
             </div>
         );

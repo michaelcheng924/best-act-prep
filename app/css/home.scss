@@ -116,4 +116,16 @@
         display: block;
         text-align: right;
     }
+
+    &__footer {
+        background: $blue;
+        color: #FFF;
+        padding: 10px 20px;
+        text-align: center;
+        width: 100%;
+
+        a {
+            color: #FFF;
+        }
+    }
 }

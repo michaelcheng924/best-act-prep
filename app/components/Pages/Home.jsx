@@ -62,7 +62,9 @@ export class Home extends React.Component {
                             <div className="home__call-to-action-text--odd">Higher score guaranteed. No risk, no strings.</div>
                         </div>
                     </div>
-                    <a href="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></a>
+                    <div onClick={this.setActiveTabWhy}>
+                        <Link to="/why-best-act-prep"><button className="home__call-to-action-button btn">Learn More</button></Link>
+                    </div>
                 </div>
 
                 <Payment />
@@ -285,6 +287,10 @@ export class Home extends React.Component {
                             <div className="home__testimonials-author">- candyapple4242</div>
                         </div>
                     </div>
+                </div>
+
+                <div className="home__footer">
+                    &copy; Best ACT Prep 2016. All Rights Reserved. | <Link to="blog">Blog</Link>
                 </div>
             </div>
         );

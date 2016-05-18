@@ -7,7 +7,7 @@ export default class Full72Test1 extends React.Component {
                 <h4 className="module__title--category">7.2) The Full ACT</h4>
                 <h2 className="module__title">Full ACT Practice Test #1</h2>
                 <div className="module__content">
-                    CONTENT
+                    This video hasn't been produced yet. We're working on it, though!
                 </div>
             </div>
         );

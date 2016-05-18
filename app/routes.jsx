@@ -6,6 +6,8 @@ import WhyBestACTPrep from 'components/Pages/WhyBestActPrep';
 import Dashboard from 'components/Pages/Dashboard';
 import Course from 'components/Pages/Course';
 import PracticeTests from 'components/Pages/PracticeTests';
+import Blog from 'components/Pages/Blog';
+import BlogPost from 'components/Blog/BlogPost';
 import Welcome from 'components/Pages/Welcome';
 import Admin from 'components/Pages/Admin';
 
@@ -92,5 +94,8 @@ export default (
         <Route component={Course} path="Z7" />
         <Route component={Course} path="Z8" />
         <Route component={Course} path="Z9" />
+
+        <Route component={Blog} path="blog" />
+        <Route component={BlogPost} path="blog/printable-act-practice-tests-pdf" />
     </Route>
 );
