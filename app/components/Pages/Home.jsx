@@ -290,7 +290,7 @@ export class Home extends React.Component {
                 </div>
 
                 <div className="home__footer">
-                    &copy; Best ACT Prep 2016. All Rights Reserved. | <Link to="blog">Blog</Link>
+                    &copy; Best ACT Prep 2016. All Rights Reserved.
                 </div>
             </div>
         );
