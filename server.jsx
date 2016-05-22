@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import path from 'path';
+import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
@@ -13,6 +14,23 @@ import { Provider } from 'react-redux';
 import moduleMappings from 'registries/module-mappings';
 import { setActiveTab, setUser } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
+const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
+
+process.on('uncaughtException', err => {
+    console.log(err);
+
+    const MAILGUN_DATA = {
+        from: 'Michael <michael@bestactprep.co>',
+        to: 'cheng.c.mike@gmail.com',
+        subject: 'APP ERROR',
+        text: JSON.stringify(err)
+    };
+    mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+        console.log(body);
+    });
+
+    fs.appendFile('logs.txt', err + '\n');
+});
 
 var app = express();
 
