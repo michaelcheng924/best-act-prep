@@ -7,7 +7,11 @@ export default class Math3B2Answers extends React.Component {
                 <h4 className="module__title--category">3.B.3) ACT Math Strategies</h4>
                 <h2 className="module__title">"Cheat" Using the Answers</h2>
                 <div className="module__content">
-                    This video hasn't been produced yet. We're working on it, though! For the video from the old course on this topic, click <strong>Z.4) Math Strategies</strong> near the bottom of the sidebar.
+                    We're still working on making a new video for this topic, but here is the related video from the old course!
+
+                    <br /><br />
+
+                    <iframe src="https://player.vimeo.com/video/163876764" className="module__video-small" frameBorder="0" webkitAllowFullScreen mozAllowFullscreen allowFullScreen></iframe>
                 </div>
             </div>
         );

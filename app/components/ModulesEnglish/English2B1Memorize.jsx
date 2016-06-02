@@ -7,7 +7,7 @@ export default class English2B1Memorize extends React.Component {
                 <h4 className="module__title--category">2.B.1) ACT English Strategies</h4>
                 <h2 className="module__title">Memorize Grammar Rules</h2>
                 <div className="module__content">
-                    This video hasn't been produced yet. We're working on it, though! For the video from the old course on this topic, click <strong>Z.2) English Strategies</strong> near the bottom of the sidebar.
+                    This video hasn't been produced yet. We're working on it, though! For related videos from the old course, click <strong>Z.4) Math Strategies</strong> near the bottom of the sidebar.
                 </div>
             </div>
         );
