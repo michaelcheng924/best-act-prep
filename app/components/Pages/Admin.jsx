@@ -86,6 +86,8 @@ export class Admin extends React.Component {
                         {this.renderUsers()}
                     </tbody>
                 </table>
+
+                {this.renderEmailList()}
             </div>
         );
     }
@@ -95,9 +97,13 @@ export class Admin extends React.Component {
         
         return this.props.users.map((user, index) => {
             return (
-                <AdminUser key={index} email={user.email} data={user.data} />
+                <AdminUser key={index} number={index + 1} email={user.email} data={user.data} />
             );
         });
+    }
+
+    renderEmailList() {
+        return this.props.users.map(user => user.email).join(', ');
     }
 
     render() {
