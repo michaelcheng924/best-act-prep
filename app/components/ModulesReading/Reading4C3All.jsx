@@ -7,7 +7,7 @@ export default class Reading4C3All extends React.Component {
                 <h4 className="module__title--category">4.C.3) ACT Reading Practice Plan</h4>
                 <h2 className="module__title">All Four Passages</h2>
                 <div className="module__content">
-                    This video hasn't been produced yet. We're working on it, though!
+                    This video hasn't been produced yet. We're working on it, though! For the video from the old course on this topic, click <strong>Z.7) Reading Guided Practice</strong> near the bottom of the sidebar.
                 </div>
             </div>
         );

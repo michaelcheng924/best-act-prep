@@ -17,13 +17,13 @@ import { setAdminUser } from 'actions/admin';
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 
 process.on('uncaughtException', err => {
-    console.log(err);
+    console.log(err, typeof err);
 
     const MAILGUN_DATA = {
         from: 'Michael <michael@bestactprep.co>',
         to: 'cheng.c.mike@gmail.com',
         subject: 'APP ERROR',
-        text: JSON.stringify(err)
+        text: err
     };
     mailgun.messages().send(MAILGUN_DATA, (error, body) => {
         console.log(body);
