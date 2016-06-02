@@ -32,7 +32,11 @@ export default class Course extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.currentModule && !prevProps.currentModule) {
             $('.spinner').addClass('hidden');
-        }     
+        }
+
+        if (!this.props.user) {
+            this.context.router.push('/');
+        }
     }
 
     render() {
