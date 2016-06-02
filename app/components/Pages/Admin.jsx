@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { onAdminLoginSubmit, logout, getUsers } from 'api/admin';
+import { onAdminLoginSubmit, logout, getUsers, updateModules } from 'api/admin';
 import * as AdminActions from 'actions/admin';
 import AdminUser from 'components/Pages/AdminUser';
 
@@ -13,6 +13,7 @@ export class Admin extends React.Component {
 
         this.onLoginSubmit = this.onLoginSubmit.bind(this);
         this.logout = this.logout.bind(this);
+        this.updateModules = this.updateModules.bind(this);
     }
 
     componentDidMount() {
@@ -41,6 +42,15 @@ export class Admin extends React.Component {
     logout() {
         logout();
         this.props.setAdminUser(null);
+    }
+
+    updateModules() {
+        const hasConfirmed = confirm(`Are you sure you want to reset users' modules?`);
+        if (hasConfirmed) {
+            this.props.users.forEach(user => {
+                updateModules(user.email);
+            });
+        }
     }
 
     renderLogin() {
@@ -74,6 +84,8 @@ export class Admin extends React.Component {
             <div>
                 <button className="btn btn-warning" onClick={this.logout}>Log Out</button>
                 <h1>Admin Panel</h1>
+
+                <button className="btn btn-danger" onClick={this.updateModules}>UPDATE MODULES</button>
 
                 <table className="table table-striped">
                     <thead>

@@ -33,6 +33,7 @@ export default (
         <Route component={Course} path="2B2" />
         <Route component={Course} path="2B3" />
         <Route component={Course} path="2B4" />
+        <Route component={Course} path="2C0" />
         <Route component={Course} path="2C1" />
         <Route component={Course} path="2C2" />
         <Route component={Course} path="2C3" />
@@ -48,6 +49,7 @@ export default (
         <Route component={Course} path="3B3" />
         <Route component={Course} path="3B4" />
         <Route component={Course} path="3B5" />
+        <Route component={Course} path="3C0" />
         <Route component={Course} path="3C1" />
         <Route component={Course} path="3C2" />
         <Route component={Course} path="3C3" />
@@ -63,6 +65,7 @@ export default (
         <Route component={Course} path="4B3" />
         <Route component={Course} path="4B4" />
         <Route component={Course} path="4B5" />
+        <Route component={Course} path="4C0" />
         <Route component={Course} path="4C1" />
         <Route component={Course} path="4C2" />
         <Route component={Course} path="4C3" />
@@ -75,6 +78,7 @@ export default (
         <Route component={Course} path="5B1" />
         <Route component={Course} path="5B2" />
         <Route component={Course} path="5B3" />
+        <Route component={Course} path="5C0" />
         <Route component={Course} path="5C1" />
         <Route component={Course} path="5C2" />
         <Route component={Course} path="5C3" />

@@ -106,4 +106,26 @@ router.get('/refresh', (req, res) => {
     });
 });
 
+router.post('/updatemodules', (req, res) => {
+    const email = req.body.email;
+
+    User.findOne({ email }, (err, user) => {
+        let userData = user.data;
+        if (userData.modules['2C0']) {
+            console.log('User is already fully updated.');
+            res.send('User is already fully updated.');
+        } else {
+            userData.modules['2C0'] = { completed: false };
+            userData.modules['3C0'] = { completed: false };
+            userData.modules['4C0'] = { completed: false };
+            userData.modules['5C0'] = { completed: false };
+
+            User.update({ email }, { $set: { data: userData } }, err => {
+                console.log(email, ' - User modules updated!');
+                res.send('User modules updated!');
+            });
+        }
+    });
+});
+
 export default router;
