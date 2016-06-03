@@ -103,6 +103,8 @@ export class Admin extends React.Component {
     }
 
     renderEmailList() {
+        if (!this.props.users) { return null; }
+
         return this.props.users.map(user => user.email).join(', ');
     }
 
