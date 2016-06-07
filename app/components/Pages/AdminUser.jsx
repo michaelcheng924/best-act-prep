@@ -78,7 +78,7 @@ export default class AdminUser extends React.Component {
     render() {
         return (
             <tr>
-                <td onClick={this.toggleUserData}>{`${this.props.number}) ${this.props.email}`}</td>
+                <td onClick={this.toggleUserData}>{`${this.props.number}) ${this.props.email}${this.props.password ? '*' : ''}`}</td>
                 <td>
                     <input className="form-control admin__user-reset-input" ref="passwordReset" />
                     <button className="btn btn-warning" onClick={this.onResetPassword}>RESET PASSWORD</button>

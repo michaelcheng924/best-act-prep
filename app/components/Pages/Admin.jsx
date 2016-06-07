@@ -94,10 +94,10 @@ export class Admin extends React.Component {
 
     renderUsers() {
         if (!this.props.users) { return <tr><td>No users</td></tr>; }
-        
+
         return this.props.users.map((user, index) => {
             return (
-                <AdminUser key={index} number={index + 1} email={user.email} data={user.data} />
+                <AdminUser key={index} number={index + 1} {...user} />
             );
         });
     }
