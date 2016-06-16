@@ -51,7 +51,7 @@ router.post('/setcurrentmodule/:id', (req, res) => {
             console.log(err);
             res.send(err);
         } else {
-            console.log('USER SET CURRENT MODULE', req.session.user);
+            console.log('USER SET CURRENT MODULE', currentModuleId, req.session.user);
             const userData = result.data;
             userData.currentModule = currentModuleId;
 
