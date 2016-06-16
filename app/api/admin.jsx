@@ -57,3 +57,12 @@ export function resetData(email) {
         data: JSON.stringify({ email })
     });
 }
+
+export function updateModules(email) {
+    return $.ajax({
+        type: 'POST',
+        url: '/api/admin/updatemodules',
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
+    });
+}

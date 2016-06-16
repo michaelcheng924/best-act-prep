@@ -26,6 +26,7 @@ const sections = [
         { id: '2B3', displayId: 'B.3', name: 'Skim and Look Above/Below' },
         { id: '2B4', displayId: 'B.4', name: 'Read "Out Loud"' },
         { id: '2C', displayId: '2.C', title: 'Practice Plan' },
+        { id: '2C0', displayId: 'C.0', name: 'Analyzing English Practice Tests' },
         { id: '2C1', displayId: 'C.1', name: 'One Passage at a Time' },
         { id: '2C2', displayId: 'C.2', name: 'Two/Three Passages Together' },
         { id: '2C3', displayId: 'C.3', name: 'All Five Passages' },
@@ -50,6 +51,7 @@ const sections = [
         { id: '3B4', displayId: 'B.4', name: 'Draw the Problem' },
         { id: '3B5', displayId: 'B.5', name: 'Use a Graphing Calculator' },
         { id: '3C', displayId: '3.C', title: 'Practice Plan' },
+        { id: '3C0', displayId: 'C.0', name: 'Analyzing Math Practice Tests' },
         { id: '3C1', displayId: 'C.1', name: 'First 30 Questions' },
         { id: '3C2', displayId: 'C.2', name: 'Last 30 Questions' },
         { id: '3C3', displayId: 'C.3', name: 'All 60 Questions' },
@@ -74,6 +76,7 @@ const sections = [
         { id: '4B4', displayId: 'B.4', name: 'Guess the Answer First' },
         { id: '4B5', displayId: 'B.5', name: 'Narrowing Down the Choices' },
         { id: '4C', displayId: '4.C', title: 'Practice Plan' },
+        { id: '4C0', displayId: 'C.0', name: 'Analyzing Reading Practice Tests' },
         { id: '4C1', displayId: 'C.1', name: 'One Passage at a Time' },
         { id: '4C2', displayId: 'C.2', name: 'Two Passages Together' },
         { id: '4C3', displayId: 'C.3', name: 'All Four Passages' }
@@ -94,6 +97,7 @@ const sections = [
         { id: '5B2', displayId: 'B.2', name: 'Use Your Finger(s)' },
         { id: '5B3', displayId: 'B.3', name: 'Reading Charts Faster' },
         { id: '5C', displayId: '5.C', title: 'Practice Plan' },
+        { id: '5C0', displayId: 'C.0', name: 'Analyzing Science Practice Tests' },
         { id: '5C1', displayId: 'C.1', name: 'One Passage at a Time' },
         { id: '5C2', displayId: 'C.2', name: 'Three, Three, One' },
         { id: '5C3', displayId: 'C.3', name: 'All Seven Passages' }

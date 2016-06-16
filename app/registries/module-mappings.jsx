@@ -13,6 +13,7 @@ import English2B1Memorize from 'components/ModulesEnglish/English2B1Memorize';
 import English2B2Shorter from 'components/ModulesEnglish/English2B2Shorter';
 import English2B3Skim from 'components/ModulesEnglish/English2B3Skim';
 import English2B4OutLoud from 'components/ModulesEnglish/English2B4OutLoud';
+import English2C0Analyze from 'components/ModulesEnglish/English2C0Analyze';
 import English2C1One from 'components/ModulesEnglish/English2C1One';
 import English2C2TwoThree from 'components/ModulesEnglish/English2C2TwoThree';
 import English2C3All from 'components/ModulesEnglish/English2C3All';
@@ -28,6 +29,7 @@ import Math3B2Answers from 'components/ModulesMath/Math3B2Answers';
 import Math3B3Plugging from 'components/ModulesMath/Math3B3Plugging';
 import Math3B4Draw from 'components/ModulesMath/Math3B4Draw';
 import Math3B5Calculator from 'components/ModulesMath/Math3B5Calculator';
+import Math3C0Analyze from 'components/ModulesMath/Math3C0Analyze';
 import Math3C1First30 from 'components/ModulesMath/Math3C1First30';
 import Math3C2Last30 from 'components/ModulesMath/Math3C2Last30';
 import Math3C3All from 'components/ModulesMath/Math3C3All';
@@ -43,6 +45,7 @@ import Reading4B2Finger from 'components/ModulesReading/Reading4B2Finger';
 import Reading4B3Main from 'components/ModulesReading/Reading4B3Main';
 import Reading4B4Guess from 'components/ModulesReading/Reading4B4Guess';
 import Reading4B5Narrow from 'components/ModulesReading/Reading4B5Narrow';
+import Reading4C0Analyze from 'components/ModulesReading/Reading4C0Analyze';
 import Reading4C1One from 'components/ModulesReading/Reading4C1One';
 import Reading4C2Two from 'components/ModulesReading/Reading4C2Two';
 import Reading4C3All from 'components/ModulesReading/Reading4C3All';
@@ -55,6 +58,7 @@ import Science5A5Score from 'components/ModulesScience/Science5A5Score';
 import Science5B1Conflicting from 'components/ModulesScience/Science5B1Conflicting';
 import Science5B2Finger from 'components/ModulesScience/Science5B2Finger';
 import Science5B3Charts from 'components/ModulesScience/Science5B3Charts';
+import Science5C0Analyze from 'components/ModulesScience/Science5C0Analyze';
 import Science5C1One from 'components/ModulesScience/Science5C1One';
 import Science5C2ThreeThreeOne from 'components/ModulesScience/Science5C2ThreeThreeOne';
 import Science5C3All from 'components/ModulesScience/Science5C3All';
@@ -131,6 +135,10 @@ const modules = {
     },
     '2B4': {
         component: English2B4OutLoud,
+        next: '2C0'
+    },
+    '2C0': {
+        component: English2C0Analyze,
         next: '2C1'
     },
     '2C1': {
@@ -189,6 +197,10 @@ const modules = {
     },
     '3B5': {
         component: Math3B5Calculator,
+        next: '3C0'
+    },
+    '3C0': {
+        component: Math3C0Analyze,
         next: '3C1'
     },
     '3C1': {
@@ -247,6 +259,10 @@ const modules = {
     },
     '4B5': {
         component: Reading4B5Narrow,
+        next: '4C0'
+    },
+    '4C0': {
+        component: Reading4C0Analyze,
         next: '4C1'
     },
     '4C1': {
@@ -293,6 +309,10 @@ const modules = {
     },
     '5B3': {
         component: Science5B3Charts,
+        next: '5C0'
+    },
+    '5C0': {
+        component: Science5C0Analyze,
         next: '5C1'
     },
     '5C1': {
