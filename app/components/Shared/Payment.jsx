@@ -74,7 +74,7 @@ export class Payment extends React.Component {
                             <div className="why__buy-price-current-text">Limited Time Beta Price!</div>
                         </div>
                     </div>
-                    <div className="why__buy-increase-price">Price will increase after the first <strike>20</strike> <strong>15</strong> purchases!</div>
+                    <div className="why__buy-increase-price">Price will increase after <strike>20</strike> <strike>15</strike> <strike>10</strike> <strong>5</strong> more purchases!</div>
                     <StripeCheckout
                         name="Best ACT Prep"
                         description="Online Course"
