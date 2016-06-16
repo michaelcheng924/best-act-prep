@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import course from 'registries/course';
 import * as CourseActions from 'actions/course';
-import { fetchCourseData } from 'api/course';
+import { fetchCourseData, setCurrentModule } from 'api/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
@@ -30,12 +30,21 @@ export default class Course extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.currentModule && !prevProps.currentModule) {
+        const { modulesData, currentModule, user, optimisticSetCurrentModule } = this.props;
+        const router = this.context.router;
+
+        if (!modulesData[currentModule]) {
+            optimisticSetCurrentModule('10');
+            router.push('10');
+            setCurrentModule('10');
+        }
+
+        if (currentModule && !prevProps.currentModule) {
             $('.spinner').addClass('hidden');
         }
 
-        if (!this.props.user) {
-            this.context.router.push('/');
+        if (!user) {
+            router.push('/');
         }
     }
 
