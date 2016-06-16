@@ -31,15 +31,22 @@ export default class NewVideos extends React.Component {
                     <img src="/images/poster-Foundations12Overview.png" className="why__video-poster" />
                     <img src="/images/poster-English2B1Overview.png" className="why__video-poster" />
                     <img src="/images/poster-English2B2Time.png" className="why__video-poster" />
+                    <img src="/images/poster-English2A3Skipping.png" className="why__video-poster" />
                     <img src="/images/poster-English2A4Bubbling.png" className="why__video-poster" />
+
                     <img src="/images/poster-Math3B1Overview.png" className="why__video-poster" />
                     <img src="/images/poster-Math3B2Time.png" className="why__video-poster" />
+                    <img src="/images/poster-Math3A3Skipping.png" className="why__video-poster" />
                     <img src="/images/poster-Math3A4Bubbling.png" className="why__video-poster" />
+
                     <img src="/images/poster-Reading4B1Overview.png" className="why__video-poster" />
                     <img src="/images/poster-Reading4B2Time.png" className="why__video-poster" />
+                    <img src="/images/poster-Reading4A3Skipping.png" className="why__video-poster" />
                     <img src="/images/poster-Reading4A4Bubbling.png" className="why__video-poster" />
+
                     <img src="/images/poster-Science5B1Overview.png" className="why__video-poster" />
                     <img src="/images/poster-Science5B2Time.png" className="why__video-poster" />
+                    <img src="/images/poster-Science5A3Skipping.png" className="why__video-poster" />
                     <img src="/images/poster-Science5A4Bubbling.png" className="why__video-poster" />
                 </div>
             </div>
