@@ -14,7 +14,7 @@ export default class MainHeader extends React.Component {
         const { modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router } = this.props;
 
         const nextModule = moduleMappings[currentModule].next;
-        const completed = modulesData[currentModule].completed;
+        const completed = modulesData[currentModule] && modulesData[currentModule].completed;
 
         optimisticMarkComplete(currentModule);
         if (!completed) {
