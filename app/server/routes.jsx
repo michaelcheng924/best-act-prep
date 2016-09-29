@@ -7,6 +7,7 @@ export const publicPaths = {
     '/why-best-act-prep': true,
     '/tests': true,
     '/welcome': true,
+    '/password-reset': true,
     '/blog': true,
     '/admin': true
 };

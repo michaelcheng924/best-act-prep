@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const DEFAULT_ERROR_MESSAGE = 'Incorrect password!'
 
@@ -8,11 +9,17 @@ export default class LogInBox extends React.Component {
 
         this.hideLogin = this.hideLogin.bind(this);
         this.onLoginSubmit = this.onLoginSubmit.bind(this);
+        this.onPasswordResetClick = this.onPasswordResetClick.bind(this);
     }
 
     hideLogin() {
         this.props.toggleLogin(false);
         this.props.setActiveTab(this.props.previousTab);
+    }
+
+    onPasswordResetClick() {
+        this.props.toggleLogin(false);
+        this.props.setActiveTab("");
     }
 
     onLoginSubmit(event) {
@@ -64,6 +71,7 @@ export default class LogInBox extends React.Component {
                         <input type="password" className="form-control" id="password" ref="password" />
                       </fieldset>
                       <button className="btn btn-primary log-in-box__button">Log In</button>
+                      <Link to="password-reset" className="log-in-box__forgot-password" onClick={this.onPasswordResetClick}>Forgot password?</Link>
                     </form>
                 </div>
             </div>

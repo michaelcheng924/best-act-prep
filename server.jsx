@@ -9,10 +9,11 @@ import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import routes from 'routes';
 import serverRoutes from 'server/routes';
+import { User } from 'server/db/users';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import moduleMappings from 'registries/module-mappings';
-import { setActiveTab, setUser } from 'actions/app';
+import { setActiveTab, setUser, setPasswordResetHash } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 
@@ -48,6 +49,9 @@ app.use(session({
 
 serverRoutes(app);
 
+let passwordResetHashForStore;
+let passwordResetEmail;
+
 app.use((req, res) => {
     let url = req.url;
     if (url.length > 1 && url.slice(url.length - 1) === '/') {
@@ -58,6 +62,26 @@ app.use((req, res) => {
     const { user, adminUser } = req.session;
     const location = createLocation(req.url);
     const store = makeStore();
+
+    if (url.indexOf('password-reset/') !== -1) {
+        const passwordResetHash = url.split('password-reset/')[1];
+
+        User.findOne({ passwordResetHash }, (err, result) => {
+            if (!result) {
+                url = '/password-reset';
+                res.redirect(url);
+            } else {
+                passwordResetHashForStore = passwordResetHash;
+                passwordResetEmail = result.email;
+
+                url = '/password-reset';
+                res.redirect(url);
+            }
+        });
+
+        return;
+    }
+
     match({ routes, location }, (err, redirectLocation, renderProps) => {
         if (err) {
             console.log(err);
@@ -85,6 +109,9 @@ app.use((req, res) => {
         }
         if (user) {
             store.dispatch(setUser(user));
+        }
+        if (passwordResetHashForStore) {
+            store.dispatch(setPasswordResetHash(passwordResetHashForStore, passwordResetEmail));
         }
 
         const initialState = store.getState();

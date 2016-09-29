@@ -7,7 +7,7 @@ import { fetchCourseData, setCurrentModule } from 'api/course';
 import CourseSidebar from 'components/Course/Sidebar';
 import CourseMain from 'components/Course/Main';
 
-export default class Course extends React.Component {
+export class Course extends React.Component {
     componentWillMount() {
         if (!this.props.user) {
             this.context.router.push('/');

@@ -26,6 +26,8 @@ export default function appReducer(state = defaultState, action) {
             return state.set('user', action.email);
         case 'SET_LOGIN_ERROR_MESSAGE':
             return state.set('loginErrorMessage', action.message);
+        case 'SET_PASSWORD_RESET_HASH':
+            return state.set('passwordResetHash', action.hash).set('passwordResetEmail', action.email);
         default:
             return state;
     }

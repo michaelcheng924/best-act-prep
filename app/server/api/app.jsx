@@ -7,6 +7,7 @@ const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
 import { publicPaths } from 'server/routes';
 import initialUserData from 'registries/initial-user-data';
+import crypto from 'crypto';
 
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 const MAILGUN_WELCOME_EMAIL_SUBJECT = 'Thanks for purchasing the Best ACT Prep online course!';
@@ -38,7 +39,7 @@ router.post('/authenticate', (req, res) => {
             req.session.user = email;
         }
 
-        if (!publicPaths[req.body.path] && !req.session.user) {
+        if (!publicPaths[req.body.path] && !req.session.user && req.body.path.indexOf('password-reset') === -1) {
             res.send({ authenticated: false });
         } else {
             res.send({ email, authenticated: true });
@@ -232,6 +233,91 @@ Textarea: ${textarea}`
             res.send(error);
         } else {
             res.send({ success: true });
+        }
+    });
+});
+
+router.post('/passwordresetrequest', (req, res) => {
+    const email = req.body.email;
+
+    User.findOne({ email }, (err, result) => {
+        if (!result) {
+            res.send({
+                success: false,
+                message: 'Email not found. Perhaps you registered with a different email, or you have not purchased the course.'
+            });
+        } else {
+            const hash = crypto.randomBytes(10).toString('hex');
+
+            const MAILGUN_DATA = {
+                from: 'Support <support@bestactprep.co>',
+                to: email,
+                subject: 'Best ACT Prep Support - Instructions for resetting your password',
+                text: `To reset your password, click on the link below and then follow the instructions:
+
+http://bestactprep.co/app/password-reset/${hash}`
+            };
+            mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+                if (error) {
+                    console.log(error);
+                    res.send({
+                        success: false,
+                        message: 'Sorry, something went wrong.'
+                    });
+                } else {
+                    User.update({ email }, { $set: { passwordResetHash: hash }}, (err, result) => {
+                        if (err) {
+                            console.log(err);
+                            res.send({
+                                success: false,
+                                message: 'Sorry, something went wrong.'
+                            });
+                        } else {
+                            console.log(`RESET EMAIL PASSWORD SENT TO ${email}`);
+
+                            res.send({
+                                success: true,
+                                message: `An email has been sent to ${email} with instructions for resetting your password. If you do not receive this email immediately, please wait up to 24 hours.`
+                            });
+                        }
+                    });
+
+                }
+            })
+        }
+    });
+});
+
+router.post('/passwordreset', (req, res) => {
+    const { password, email } = req.body;
+console.log(email);
+    User.update({ email }, (err, result) => {
+        if (!result) {
+            res.send({
+                success: false,
+                message: 'Sorry, something went wrong. Please contact us at support@bestactprep.co, or try again.'
+            });
+        } else {
+            bcrypt.hash(password, null, null, (err, hash) => {
+                User.update({ email }, { $set: {
+                    password: hash,
+                    passwordResetHash: null
+                }}, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                        res.send({
+                            success: false,
+                            message: 'Sorry, something went wrong. Please contact us at support@bestactprep.co, or try again.'
+                        });
+                    } else {
+                        console.log(`PASSWORD RESET FOR ${email}`);
+                        res.send({
+                            success: true,
+                            message: 'Your password has been successfully reset. You may now log in using this new password.'
+                        });
+                    }
+                });
+            });
         }
     });
 });
