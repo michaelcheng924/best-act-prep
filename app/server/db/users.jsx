@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 export const User = mongoose.model('User', {
     email: String,
     password: String,
-    data: Object
+    data: Object,
+    passwordResetHash: String
 });
 
 export const AdminUser = mongoose.model('AdminUser', {

@@ -47,3 +47,11 @@ export function setLoginErrorMessage(message) {
         message
     };
 }
+
+export function setPasswordResetHash(hash, email) {
+    return {
+        type: 'SET_PASSWORD_RESET_HASH',
+        hash,
+        email
+    }
+}

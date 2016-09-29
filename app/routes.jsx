@@ -7,6 +7,7 @@ import Dashboard from 'components/Pages/Dashboard';
 import Course from 'components/Pages/Course';
 import PracticeTests from 'components/Pages/PracticeTests';
 import Welcome from 'components/Pages/Welcome';
+import PasswordReset from 'components/Pages/PasswordReset';
 import Admin from 'components/Pages/Admin';
 
 export default (
@@ -17,6 +18,7 @@ export default (
         <Route component={Course} path="course" />
         <Route component={PracticeTests} path="tests" />
         <Route component={Welcome} path="welcome" />
+        <Route component={PasswordReset} path="password-reset" />
         <Route component={Admin} path="admin" />
         <Route component={Course} path="10" />
         <Route component={Course} path="11" />

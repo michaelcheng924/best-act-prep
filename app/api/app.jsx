@@ -50,3 +50,21 @@ export function onSupportSubmit(supportTopic, email, textarea) {
         data: JSON.stringify({ supportTopic, email, textarea })
     });
 }
+
+export function onPasswordResetRequestSubmit(email) {
+    return $.ajax({
+        type: 'POST',
+        url: 'api/app/passwordresetrequest',
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
+    });
+}
+
+export function onPasswordResetSubmit(password, email) {
+    return $.ajax({
+        type: 'POST',
+        url: 'api/app/passwordreset',
+        contentType: 'application/json',
+        data: JSON.stringify({ password, email })
+    });
+}

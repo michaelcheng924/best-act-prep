@@ -75,4 +75,10 @@
         display: block;
         margin: 0 auto;
     }
+
+    &__forgot-password {
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 8px;
+    }
 }
