@@ -15,12 +15,12 @@ export default class SidebarSection extends React.Component {
     }
 
     navigateToModule() {
-        const { id, optimisticSetCurrentModule, router } = this.props;
+        const { id, optimisticSetCurrentModule, router, email } = this.props;
 
         optimisticSetCurrentModule(id);
         router.push(id);
 
-        setCurrentModule(id);
+        setCurrentModule(id, email);
 
         $('.page-container').animate({ scrollTop: 0 });
     }

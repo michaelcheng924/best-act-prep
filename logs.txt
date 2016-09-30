@@ -12,3 +12,17 @@ Error: Can't set headers after they are sent.
 Error: Can't set headers after they are sent.
 Error: Can't set headers after they are sent.
 ReferenceError: hash is not defined
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+Error: listen EADDRINUSE :::80
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null
+TypeError: Cannot read property 'data' of null

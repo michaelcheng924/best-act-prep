@@ -11,7 +11,7 @@ export default class MainHeader extends React.Component {
     }
 
     markComplete(currentModule) {
-        const { modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router } = this.props;
+        const { modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router, email } = this.props;
 
         const nextModule = moduleMappings[currentModule].next;
         const completed = modulesData[currentModule] && modulesData[currentModule].completed;
@@ -22,7 +22,7 @@ export default class MainHeader extends React.Component {
             router.push(nextModule);
         }
 
-        markComplete(currentModule).then(response => {
+        markComplete(currentModule, email).then(response => {
             if (!response.userData) {
                 router.push('/');
             }

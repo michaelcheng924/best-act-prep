@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { onToken } from 'api/app';
-import { setUser } from 'actions/app';
+import { setEmail } from 'actions/app';
 import { setCourseData } from 'actions/course';
 import OldVideos from 'components/Shared/OldVideos';
 import NewVideos from 'components/Shared/NewVideos';
@@ -30,7 +30,7 @@ export class Payment extends React.Component {
     }
 
     onToken(token) {
-        const { setUser, setCourseData } = this.props;
+        const { setEmail, setCourseData } = this.props;
 
         // LOGGING
         $.ajax({
@@ -51,7 +51,7 @@ export class Payment extends React.Component {
             });
 
             if (response.email) {
-                setUser(response.email);
+                setEmail(response.email);
                 setCourseData(response.userData);
                 spinnerEl.addClass('hidden');
                 this.context.router.push('/welcome');
@@ -125,11 +125,11 @@ Payment.contextTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-    const boundAppActions = bindActionCreators({ setUser }, dispatch);
+    const boundAppActions = bindActionCreators({ setEmail }, dispatch);
     const boundCourseActions = bindActionCreators({ setCourseData }, dispatch);
 
     return {
-        setUser: boundAppActions.setUser,
+        setEmail: boundAppActions.setEmail,
         setCourseData: boundCourseActions.setCourseData
     };
 }

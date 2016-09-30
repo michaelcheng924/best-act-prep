@@ -51,10 +51,10 @@ export class Nav extends React.Component {
     }
 
     logout() {
-        const { setUser, setCourseData, setActiveTab } = this.props;
+        const { setEmail, setCourseData, setActiveTab } = this.props;
 
         logout();
-        setUser(null);
+        setEmail(null);
         setCourseData({
             sections: null,
             modules: null,
@@ -66,8 +66,8 @@ export class Nav extends React.Component {
         localStorage.removeItem('bap-token');
     }
 
-    renderWhy(activeTab, user) {
-        if (user) { return null; }
+    renderWhy(activeTab, email) {
+        if (email) { return null; }
 
         return (
             <li className={activeTab === '/why-best-act-prep' ? 'active' : ''} onClick={this.setActiveTabWhy}>
@@ -76,8 +76,8 @@ export class Nav extends React.Component {
         );
     }
 
-    renderDashboard(activeTab, user) {
-        if (!user) { return null; }
+    renderDashboard(activeTab, email) {
+        if (!email) { return null; }
 
         return (
             <li className={activeTab === '/dashboard' ? 'active' : ''} onClick={this.setActiveTabDashboard}>
@@ -86,8 +86,8 @@ export class Nav extends React.Component {
         );
     }
 
-    renderCourse(activeTab, user) {
-        if (!user) { return null; }
+    renderCourse(activeTab, email) {
+        if (!email) { return null; }
 
         return (
             <li className={activeTab === '/course' ? 'active' : ''} onClick={this.setActiveTabCourse}>
@@ -112,8 +112,8 @@ export class Nav extends React.Component {
         );
     }
 
-    renderLoginLogout(activeTab, user) {
-        if (!user) {
+    renderLoginLogout(activeTab, email) {
+        if (!email) {
             return (
                 <li className={activeTab === 'login' ? 'active' : ''} onClick={this.setActiveTabLogin}>
                     <a className="bap-nav__log-in-link" onClick={this.toggleLogin}>Log In</a>
@@ -148,13 +148,13 @@ export class Nav extends React.Component {
     renderLoginBox() {
         if (!this.props.showLogin) { return null; }
 
-        const { toggleLogin, setUser, setCourseData, setLoginErrorMessage, loginErrorMessage, previousTab } = this.props;
+        const { toggleLogin, setEmail, setCourseData, setLoginErrorMessage, loginErrorMessage, previousTab } = this.props;
 
         return <LogInBox
             router={this.context.router}
             toggleLogin={toggleLogin}
             onLoginSubmit={onLoginSubmit}
-            setUser={setUser}
+            setEmail={setEmail}
             setCourseData={setCourseData}
             setLoginErrorMessage={setLoginErrorMessage}
             loginErrorMessage={loginErrorMessage}
@@ -164,7 +164,7 @@ export class Nav extends React.Component {
     }
 
     render() {
-        const { activeTab, user } = this.props;
+        const { activeTab, email } = this.props;
 
         return (
                 <nav className="navbar navbar-default">
@@ -181,12 +181,12 @@ export class Nav extends React.Component {
 
                         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul className="nav navbar-nav navbar-right">
-                                {this.renderWhy(activeTab, user)}
-                                {this.renderDashboard(activeTab, user)}
-                                {this.renderCourse(activeTab, user)}
+                                {this.renderWhy(activeTab, email)}
+                                {this.renderDashboard(activeTab, email)}
+                                {this.renderCourse(activeTab, email)}
                                 {this.renderPracticeTests(activeTab)}
                                 {this.renderSupport(activeTab)}
-                                {this.renderLoginLogout(activeTab, user)}
+                                {this.renderLoginLogout(activeTab, email)}
                             </ul>
                         </div>
                     </div>

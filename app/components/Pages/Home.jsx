@@ -40,7 +40,7 @@ export class Home extends React.Component {
 
         onToken(token, AMOUNT).then(response => {
             if (response.email) {
-                this.props.setUser(response.email);
+                this.props.setEmail(response.email);
                 this.props.setCourseData(response.userData);
                 spinnerEl.addClass('hidden');
                 this.context.router.push('/welcome');

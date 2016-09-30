@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { authenticate } from 'api/app';
-import { setUser } from 'actions/app';
+import { setEmail } from 'actions/app';
 import Nav from 'components/Nav/Nav';
 
 export class AppView extends React.Component {
@@ -13,7 +13,7 @@ export class AppView extends React.Component {
             if (!response.authenticated) {
                 this.context.router.push('/');
             } else {
-                this.props.setUser(response.email);
+                this.props.setEmail(response.email);
             }
         });
     }
@@ -44,7 +44,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    const appActions = bindActionCreators({ setUser }, dispatch);    
+    const appActions = bindActionCreators({ setEmail }, dispatch);    
     return appActions;
 }
 

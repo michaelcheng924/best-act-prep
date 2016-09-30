@@ -34,9 +34,9 @@ export function toggleLogin(showLogin) {
     };
 }
 
-export function setUser(email) {
+export function setEmail(email) {
     return {
-        type: 'SET_USER',
+        type: 'SET_EMAIL',
         email
     };
 }

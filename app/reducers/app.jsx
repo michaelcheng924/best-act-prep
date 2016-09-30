@@ -7,7 +7,7 @@ const defaultState = Map({
     supportMessage: null,
     supportMessageType: null,
     showLogin: false,
-    user: null
+    email: null
 });
 
 export default function appReducer(state = defaultState, action) {
@@ -22,8 +22,8 @@ export default function appReducer(state = defaultState, action) {
             return state.set('supportMessage', action.supportMessage).set('supportMessageType', action.supportMessageType);
         case 'TOGGLE_LOGIN':
             return state.set('showLogin', action.showLogin);
-        case 'SET_USER':
-            return state.set('user', action.email);
+        case 'SET_EMAIL':
+            return state.set('email', action.email);
         case 'SET_LOGIN_ERROR_MESSAGE':
             return state.set('loginErrorMessage', action.message);
         case 'SET_PASSWORD_RESET_HASH':

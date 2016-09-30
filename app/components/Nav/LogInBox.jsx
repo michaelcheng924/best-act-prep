@@ -28,7 +28,7 @@ export default class LogInBox extends React.Component {
         const spinnerEl = $('.spinner');
         spinnerEl.removeClass('hidden');
 
-        const { router, onLoginSubmit, setUser, setCourseData, setLoginErrorMessage, setActiveTab } = this.props;
+        const { router, onLoginSubmit, setEmail, setCourseData, setLoginErrorMessage, setActiveTab } = this.props;
         const { email, password } = this.refs;
 
         return onLoginSubmit(email.value, password.value)
@@ -38,7 +38,7 @@ export default class LogInBox extends React.Component {
                     setLoginErrorMessage(response.reason || DEFAULT_ERROR_MESSAGE);
                 } else {
                     setLoginErrorMessage(null);
-                    setUser(email.value);
+                    setEmail(email.value);
                     setCourseData(response.userData);
                     this.hideLogin();
                     spinnerEl.addClass('hidden');
