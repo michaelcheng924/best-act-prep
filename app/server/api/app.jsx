@@ -290,7 +290,7 @@ http://bestactprep.co/app/password-reset/${hash}`
 
 router.post('/passwordreset', (req, res) => {
     const { password, email } = req.body;
-console.log(email);
+
     User.update({ email }, (err, result) => {
         if (!result) {
             res.send({
@@ -311,6 +311,10 @@ console.log(email);
                         });
                     } else {
                         console.log(`PASSWORD RESET FOR ${email}`);
+
+                        req.session.passwordResetHashForStore = null;
+                        req.session.passwordResetEmail = null;
+
                         res.send({
                             success: true,
                             message: 'Your password has been successfully reset. You may now log in using this new password.'

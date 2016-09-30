@@ -49,9 +49,6 @@ app.use(session({
 
 serverRoutes(app);
 
-let passwordResetHashForStore;
-let passwordResetEmail;
-
 app.use((req, res) => {
     let url = req.url;
     if (url.length > 1 && url.slice(url.length - 1) === '/') {
@@ -71,8 +68,8 @@ app.use((req, res) => {
                 url = '/password-reset';
                 res.redirect(url);
             } else {
-                passwordResetHashForStore = passwordResetHash;
-                passwordResetEmail = result.email;
+                req.session.passwordResetHashForStore = passwordResetHash;
+                req.session.passwordResetEmail = result.email;
 
                 url = '/password-reset';
                 res.redirect(url);
@@ -110,6 +107,8 @@ app.use((req, res) => {
         if (user) {
             store.dispatch(setUser(user));
         }
+
+        const { passwordResetHashForStore, passwordResetEmail } = req.session;
         if (passwordResetHashForStore) {
             store.dispatch(setPasswordResetHash(passwordResetHashForStore, passwordResetEmail));
         }

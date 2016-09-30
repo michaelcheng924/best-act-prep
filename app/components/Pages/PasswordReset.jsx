@@ -9,7 +9,9 @@ const PasswordReset = React.createClass({
 
     getInitialState() {
         return {
-            responseMessage: null
+            responseMessage: null,
+            requestSubmitted: false,
+            resetSubmitted: false
         };
     },
 
@@ -23,6 +25,10 @@ const PasswordReset = React.createClass({
             spinnerEl.addClass('hidden');
 
             this.setState({ responseMessage: response.message });
+
+            if (response.success) {
+                this.setState({ requestSubmitted: true });
+            }
         });
     },
 
@@ -48,6 +54,7 @@ const PasswordReset = React.createClass({
 
                 if (response.success) {
                     this.props.setPasswordResetHash(null, null);
+                    this.setState({ resetSubmitted: true });
                 }
             });
         }
@@ -65,7 +72,16 @@ const PasswordReset = React.createClass({
                 <h3>Forgot your password?</h3>
 
                 {this.renderResponseMessage()}
+                {this.renderPasswordResetRequestInput()}
+            </div>
+        );
+    },
 
+    renderPasswordResetRequestInput() {
+        if (this.state.requestSubmitted || this.state.resetSubmitted) { return null; }
+
+        return (
+            <div>
                 <div>Enter your email below and we will send you instructions to reset your password!</div>
 
                 <form onSubmit={this.onPasswordResetRequestSubmit}>
@@ -85,7 +101,16 @@ const PasswordReset = React.createClass({
                 <h3>Reset your password</h3>
 
                 {this.renderResponseMessage()}
+                {this.renderPasswordResetInput()}                
+            </div>
+        );
+    },
 
+    renderPasswordResetInput() {
+        if (this.state.resetSubmitted) { return null; }
+
+        return (
+            <div>
                 <div>Enter your new password for <strong>{this.props.passwordResetEmail}</strong> below:</div>
 
                 <form onSubmit={this.onPasswordResetSubmit}>
