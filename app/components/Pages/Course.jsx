@@ -9,19 +9,19 @@ import CourseMain from 'components/Course/Main';
 
 export class Course extends React.Component {
     componentWillMount() {
-        if (!this.props.user) {
+        if (!this.props.email) {
             this.context.router.push('/');
         }
     }
 
     componentDidMount() {
-        const { user, currentModule } = this.props;
+        const { email, currentModule } = this.props;
 
         if (currentModule) {
             this.context.router.push(currentModule);
         }
 
-        if (user && !currentModule) {
+        if (email && !currentModule) {
             $('.spinner').removeClass('hidden');
             fetchCourseData().then(response => {
                 this.props.setCourseData(response.userData);
@@ -30,26 +30,26 @@ export class Course extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { modulesData, currentModule, user, optimisticSetCurrentModule } = this.props;
+        const { modulesData, currentModule, email, optimisticSetCurrentModule } = this.props;
         const router = this.context.router;
 
         if (!modulesData[currentModule]) {
             optimisticSetCurrentModule('10');
             router.push('10');
-            setCurrentModule('10');
+            setCurrentModule('10', email);
         }
 
         if (currentModule && !prevProps.currentModule) {
             $('.spinner').addClass('hidden');
         }
 
-        if (!user) {
+        if (!email) {
             router.push('/');
         }
     }
 
     render() {
-        const { user, sectionsData, modulesData, toggleSection, toggleModules, currentModule, optimisticMarkComplete, optimisticSetCurrentModule } = this.props;
+        const { email, sectionsData, modulesData, toggleSection, toggleModules, currentModule, optimisticMarkComplete, optimisticSetCurrentModule } = this.props;
         const router = this.context.router;
 
         if (!currentModule) {
@@ -66,6 +66,7 @@ export class Course extends React.Component {
                     currentModule={currentModule}
                     optimisticSetCurrentModule={optimisticSetCurrentModule}
                     router={router}
+                    email={email}
                 />
                 <CourseMain
                     currentModule={currentModule}
@@ -73,6 +74,7 @@ export class Course extends React.Component {
                     optimisticMarkComplete={optimisticMarkComplete}
                     optimisticSetCurrentModule={optimisticSetCurrentModule}
                     router={router}
+                    email={email}
                 />
             </div>
         );
@@ -88,7 +90,7 @@ function mapStateToProps(state) {
     const { sections, modules, currentModule } = course;
 
     return {
-        user: state.app.get('user'),
+        email: state.app.get('email'),
         currentModule,
         sectionsData: course.sections,
         modulesData: course.modules

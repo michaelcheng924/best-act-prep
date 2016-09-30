@@ -5,18 +5,20 @@ export function fetchCourseData() {
     });
 }
 
-export function setCurrentModule(id) {
+export function setCurrentModule(id, email) {
     return $.ajax({
         type: 'POST',
         url: `/api/course/setcurrentmodule/${id}`,
-        contentType: 'application/json'
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
     });
 }
 
-export function markComplete(id) {
+export function markComplete(id, email) {
     return $.ajax({
         type: 'POST',
         url: `/api/course/markcomplete/${id}`,
-        contentType: 'application/json'
+        contentType: 'application/json',
+        data: JSON.stringify({ email })
     });
 }

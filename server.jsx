@@ -13,22 +13,24 @@ import { User } from 'server/db/users';
 import { makeStore } from 'helpers';
 import { Provider } from 'react-redux';
 import moduleMappings from 'registries/module-mappings';
-import { setActiveTab, setUser, setPasswordResetHash } from 'actions/app';
+import { setActiveTab, setEmail, setPasswordResetHash } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 
 process.on('uncaughtException', err => {
     console.log(err, typeof err);
 
-    const MAILGUN_DATA = {
-        from: 'Michael <michael@bestactprep.co>',
-        to: 'cheng.c.mike@gmail.com',
-        subject: 'APP ERROR',
-        text: err
-    };
-    mailgun.messages().send(MAILGUN_DATA, (error, body) => {
-        console.log(body);
-    });
+    if (process.env.NODE_ENV === 'production') {
+        const MAILGUN_DATA = {
+            from: 'Michael <michael@bestactprep.co>',
+            to: 'cheng.c.mike@gmail.com',
+            subject: 'APP ERROR',
+            text: 'App error happened!'
+        };
+        mailgun.messages().send(MAILGUN_DATA, (error, body) => {
+            console.log(body);
+        });
+    }
 
     fs.appendFile('logs.txt', err + '\n');
 });
@@ -105,7 +107,7 @@ app.use((req, res) => {
             store.dispatch(setAdminUser(adminUser));
         }
         if (user) {
-            store.dispatch(setUser(user));
+            store.dispatch(setEmail(user));
         }
 
         const { passwordResetHashForStore, passwordResetEmail } = req.session;

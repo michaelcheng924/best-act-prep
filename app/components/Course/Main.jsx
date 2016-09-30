@@ -4,7 +4,7 @@ import moduleMappings from 'registries/module-mappings';
 
 export default class CourseMain extends React.Component {
     render() {
-        const { currentModule, modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router } = this.props;
+        const { currentModule, modulesData, optimisticMarkComplete, optimisticSetCurrentModule, router, email } = this.props;
         const Module = moduleMappings[currentModule].component;
 
         return (
@@ -15,6 +15,7 @@ export default class CourseMain extends React.Component {
                     optimisticMarkComplete={optimisticMarkComplete}
                     optimisticSetCurrentModule={optimisticSetCurrentModule}
                     router={router}
+                    email={email}
                 />
                 <Module />
             </div>

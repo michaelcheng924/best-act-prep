@@ -45,13 +45,14 @@ router.get('/fetchcoursedata', (req, res) => {
 
 router.post('/setcurrentmodule/:id', (req, res) => {
     const currentModuleId = req.params.id;
+    const email = req.body.email;
 
-    User.findOne({ email: req.session.user }, (err, result) => {
+    User.findOne({ email }, (err, result) => {
         if (err) {
             console.log(err);
             res.send(err);
         } else {
-            console.log('USER SET CURRENT MODULE', currentModuleId, req.session.user);
+            console.log('USER SET CURRENT MODULE', currentModuleId, email);
             const userData = result.data;
             userData.currentModule = currentModuleId;
 
@@ -59,7 +60,7 @@ router.post('/setcurrentmodule/:id', (req, res) => {
                 userData.currentModule = '1.0';
             }
             
-            User.update({ email: req.session.user }, { $set: {data: userData } }, err => {
+            User.update({ email }, { $set: {data: userData } }, err => {
                 if (err) {
                     console.log(err);
                     res.send(err);
@@ -73,9 +74,10 @@ router.post('/setcurrentmodule/:id', (req, res) => {
 
 router.post('/markcomplete/:id', (req, res) => {
     const currentModuleId = req.params.id;
+    const email = req.body.email;
 
-    User.findOne({ email: req.session.user }, (err, result) => {
-        console.log('USER MARK COMPLETE', req.session.user);
+    User.findOne({ email }, (err, result) => {
+        console.log('USER MARK COMPLETE', email);
         const userData = result.data;
         let currentModule = userData.modules[currentModuleId];
         currentModule.completed = !currentModule.completed;
@@ -89,7 +91,7 @@ router.post('/markcomplete/:id', (req, res) => {
             }
         }
 
-        User.update({ email: req.session.user }, { $set: { data: userData } }, err => {
+        User.update({ email }, { $set: { data: userData } }, err => {
             if (err) {
                 console.log(err);
                 res.send(err);
