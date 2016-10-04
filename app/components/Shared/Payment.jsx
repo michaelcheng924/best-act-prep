@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
+
 import { onToken } from 'api/app';
 import { setEmail } from 'actions/app';
 import { setCourseData } from 'actions/course';
+
+
 import OldVideos from 'components/Shared/OldVideos';
 import NewVideos from 'components/Shared/NewVideos';
 
@@ -22,6 +25,7 @@ export class Payment extends React.Component {
         this.toggleNewVideoList = this.toggleList.bind(this, 'newVideoList');
         this.togglePDFList = this.toggleList.bind(this, 'PDFList');
         this.onToken = this.onToken.bind(this);
+        this.onStripeCheckoutClick = this.onStripeCheckoutClick.bind(this);
     }
 
     toggleList(type) {
@@ -60,6 +64,10 @@ export class Payment extends React.Component {
         });
     }
 
+    onStripeCheckoutClick() {
+
+    }
+
     render() {
         return (
             <section className="why__buy-container">
@@ -75,17 +83,18 @@ export class Payment extends React.Component {
                         </div>
                     </div>
                     <div className="why__buy-increase-price">Price will increase after <strike>20</strike> <strike>15</strike> <strike>10</strike> <strong>5</strong> more purchases!</div>
-                    <StripeCheckout
-                        name="Best ACT Prep"
-                        description="Online Course"
-                        amount={AMOUNT}
-                        image="/images/act-logo-only.png"
-                        allowRememberMe={false}
-                        token={this.onToken}
-                        stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
-                    >
-                        <button className="why__buy-button">Secure Checkout</button>
-                    </StripeCheckout>
+                    <div onClick={this.onStripeCheckoutClick}>
+                        <StripeCheckout
+                            name="Best ACT Prep"
+                            description="Online Course"
+                            amount={AMOUNT}
+                            allowRememberMe={false}
+                            token={this.onToken}
+                            stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"
+                        >
+                            <button className="why__buy-button">Secure Checkout</button>
+                        </StripeCheckout>
+                    </div>
                     <div className="why__stripe-images-container">
                         <span>
                             <img src="/images/stripe-secure.png" className="why__stripe-image" />
