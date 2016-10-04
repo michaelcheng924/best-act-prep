@@ -326,6 +326,27 @@ router.post('/passwordreset', (req, res) => {
     });
 });
 
+router.post('/adduser', (req, res) => {
+    const { email, password } = req.body;
+
+    bcrypt.hash(password, null, null, (err, hash) => {
+        const user = new User({
+            email,
+            password: hash,
+            data: initialUserData
+        });
+        user.save((err, result) => {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                console.log(`NEW USER CREATED - ${email}`);
+                res.send('New user created!');
+            }
+        });
+    });
+});
+
 // LOGGING
 router.get('/ontoken', (req, res) => {
     console.log('ON TOKEN CALLED');

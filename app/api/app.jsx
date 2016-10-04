@@ -68,3 +68,12 @@ export function onPasswordResetSubmit(password, email) {
         data: JSON.stringify({ password, email })
     });
 }
+
+export function addUser(email, password) {
+    return $.ajax({
+        type: 'POST',
+        url: 'api/app/adduser',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password })
+    });
+}
