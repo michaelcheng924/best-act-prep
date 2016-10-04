@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { onAdminLoginSubmit, logout, getUsers, updateModules } from 'api/admin';
+import { addUser } from 'api/app';
 import * as AdminActions from 'actions/admin';
 import AdminUser from 'components/Pages/AdminUser';
 
@@ -13,6 +14,7 @@ export class Admin extends React.Component {
 
         this.onLoginSubmit = this.onLoginSubmit.bind(this);
         this.logout = this.logout.bind(this);
+        this.addUser = this.addUser.bind(this);
         this.updateModules = this.updateModules.bind(this);
     }
 
@@ -42,6 +44,18 @@ export class Admin extends React.Component {
     logout() {
         logout();
         this.props.setAdminUser(null);
+    }
+
+    addUser(event) {
+        event.preventDefault();
+
+        const { newEmail, newPassword } = this.refs;
+
+        const hasConfirmed = confirm(`Are you sure you want to add user: ${newEmail.value}?`);
+
+        if (hasConfirmed) {
+            addUser(newEmail.value, newPassword.value);
+        }
     }
 
     updateModules() {
@@ -84,6 +98,16 @@ export class Admin extends React.Component {
             <div>
                 <button className="btn btn-warning" onClick={this.logout}>Log Out</button>
                 <h1>Admin Panel</h1>
+
+                <hr />
+
+                <form onSubmit={this.addUser}>
+                    <input type="text" className="form-control admin__user-reset-input" placeholder="New user email" ref="newEmail" />
+                    <input type="text" className="form-control admin__user-reset-input" placeholder="New user password" ref="newPassword" />
+                    <button className="btn btn-primary">Add User</button>
+                </form>
+
+                <hr />
 
                 <button className="btn btn-danger" onClick={this.updateModules}>UPDATE MODULES</button>
 
