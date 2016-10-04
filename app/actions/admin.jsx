@@ -18,3 +18,10 @@ export function setUsers(users) {
         users
     };
 }
+
+export function setLogs(logs) {
+    return {
+        type: 'SET_LOGS',
+        logs
+    };
+}

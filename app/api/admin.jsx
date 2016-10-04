@@ -66,3 +66,29 @@ export function updateModules(email) {
         data: JSON.stringify({ email })
     });
 }
+
+export function addLog(type, message, user) {
+    return $.ajax({
+        type: 'POST',
+        url: '/api/admin/addlog',
+        contentType: 'application/json',
+        data: JSON.stringify({ type, message, user })
+    });
+}
+
+export function getLogs() {
+    return $.ajax({
+        type: 'GET',
+        url: '/api/admin/getlogs',
+        contentType: 'application/json'
+    });
+}
+
+export function deleteLog(_id) {
+    return $.ajax({
+        type: 'DELETE',
+        url: '/api/admin/deletelog',
+        contentType: 'application/json',
+        data: JSON.stringify({ _id })
+    })
+}

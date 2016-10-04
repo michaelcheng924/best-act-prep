@@ -11,3 +11,10 @@ export const AdminUser = mongoose.model('AdminUser', {
     email: String,
     password: String
 });
+
+export const LogEntry = mongoose.model('LogEntry', {
+    date: { type: Date, default: Date.now },
+    type: String,
+    message: String,
+    user: String
+});

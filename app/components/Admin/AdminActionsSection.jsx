@@ -3,7 +3,7 @@ import React from 'react';
 import { addUser } from 'api/app';
 import { updateModules } from 'api/admin';
 
-import AdminUser from 'components/Pages/AdminUser';
+import AdminUser from 'components/Admin/AdminUser';
 
 const AdminActionsSection = React.createClass({
     displayName: 'AdminActionsSection',
@@ -29,7 +29,7 @@ const AdminActionsSection = React.createClass({
         }
     },
 
-    renderUsersTable() {
+    renderUserRow() {
         if (!this.props.users) { return <tr><td>No users</td></tr>; }
 
         return this.props.users.map((user, index) => {
@@ -66,7 +66,7 @@ const AdminActionsSection = React.createClass({
                         </tr>
                     </thead>
                     <tbody>
-                        {this.renderUsersTable()}
+                        {this.renderUserRow()}
                     </tbody>
                 </table>
 

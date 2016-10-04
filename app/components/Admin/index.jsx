@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { logout, getUsers } from 'api/admin';
+import { logout, getUsers, addLog, getLogs } from 'api/admin';
 import * as AdminActions from 'actions/admin';
 import AdminLoginSection from 'components/Admin/AdminLoginSection';
 import AdminActionsSection from 'components/Admin/AdminActionsSection';
+import AdminLogsSection from 'components/Admin/AdminLogsSection';
 
 const Admin = React.createClass({
     displayName: 'Admin',
@@ -12,6 +13,10 @@ const Admin = React.createClass({
     componentDidMount() {
         getUsers().then(response => {
             this.props.setUsers(response.users);
+        });
+
+        getLogs().then(response => {
+            this.props.setLogs(response.logs);
         });
     },
 
@@ -28,12 +33,6 @@ const Admin = React.createClass({
 
     toggleLogs() {
         this.setState({ showLogs: !this.state.showLogs });
-    },
-
-    renderLogout() {
-        if (!this.props.adminUser) { return null; }
-
-        return <button className="btn btn-warning" onClick={this.logout}>Log Out</button>;
     },
 
     renderLogin() {
@@ -55,6 +54,10 @@ const Admin = React.createClass({
 
         return (
             <div>
+                <button className="btn btn-warning" onClick={this.logout}>Log Out</button>
+
+                <h1>Admin Panel</h1>
+
                 <button className="btn btn-default" onClick={this.toggleLogs}>Toggle Logs</button>
 
                 <hr />
@@ -70,19 +73,11 @@ const Admin = React.createClass({
     },
 
     renderAdminActionsSection() {
-        if (!this.props.adminUser) { return null; }
-
         return <AdminActionsSection users={this.props.users} />;
     },
 
     renderLogs() {
-        if (!this.props.adminUser) { return null; }
-
-        return (
-            <div>
-                <h2>Logs</h2>
-            </div>
-        );
+        return <AdminLogsSection logs={this.props.logs} />;
     },
 
     render() {
@@ -91,11 +86,7 @@ const Admin = React.createClass({
         return (
             <div className="page">
                 <div className="page__content">
-                    {this.renderLogout()}
-
-                    <h1>Admin Panel</h1>
                     {this.renderLogin()}
-
                     {this.renderContent()}
                 </div>
             </div>
