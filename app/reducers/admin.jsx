@@ -13,6 +13,8 @@ export default function adminReducer(state = defaultState, action) {
             return state.set('loginErrorMessage', action.message);
         case 'SET_USERS':
             return state.set('users', List(action.users));
+        case 'SET_LOGS':
+            return state.set('logs', List(action.logs));
         default:
             return state
     }

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt-nodejs';
 import db from 'server/db/db';
-import { AdminUser, User } from 'server/db/users';
+import { AdminUser, User, LogEntry } from 'server/db/users';
 import express from 'express';
 const router = express.Router();
 import initialUserData from 'registries/initial-user-data';
@@ -93,19 +93,6 @@ router.post('/resetdata', (req, res) => {
     });
 });
 
-// FOR DEVELOPMENT ONLY
-router.get('/delete', (req, res) => {
-    User.remove({ email: 'cheng.c.mike@gmail.com' }, err => {
-        res.send('User deleted');
-    });
-});
-
-router.get('/refresh', (req, res) => {
-    User.update({ email: 'cheng.c.mike@gmail.com' }, { $set: { data: initialUserData } }, err => {
-        res.send('User data refreshed');
-    });
-});
-
 router.post('/updatemodules', (req, res) => {
     const email = req.body.email;
 
@@ -125,6 +112,32 @@ router.post('/updatemodules', (req, res) => {
                 res.send('User modules updated!');
             });
         }
+    });
+});
+
+router.post('/addlog', (req, res) => {
+    const { type, message, user } = req.body;
+
+    const logEntry = new LogEntry({ type, message, user });
+
+    logEntry.save((err, result) => {
+        res.send('Log entry added!');
+    });
+});
+
+router.get('/getlogs', (req, res) => {
+    LogEntry.find((err, results) => {
+        res.send({
+            logs: results
+        });
+    });
+});
+
+router.delete('/deletelog', (req, res) => {
+    const _id = req.body._id;
+
+    LogEntry.remove({ _id }, err => {
+        res.send('Log deleted!');
     });
 });
 

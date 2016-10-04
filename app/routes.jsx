@@ -8,7 +8,7 @@ import Course from 'components/Pages/Course';
 import PracticeTests from 'components/Pages/PracticeTests';
 import Welcome from 'components/Pages/Welcome';
 import PasswordReset from 'components/Pages/PasswordReset';
-import Admin from 'components/Pages/Admin';
+import Admin from 'components/Admin';
 
 export default (
     <Route component={App} path="/">
