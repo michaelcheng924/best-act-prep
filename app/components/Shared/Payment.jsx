@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
 
 import { onToken } from 'api/app';
+import { addLog } from 'api/admin';
 import { setEmail } from 'actions/app';
 import { setCourseData } from 'actions/course';
-
 
 import OldVideos from 'components/Shared/OldVideos';
 import NewVideos from 'components/Shared/NewVideos';
@@ -65,7 +65,7 @@ export class Payment extends React.Component {
     }
 
     onStripeCheckoutClick() {
-
+        addLog('Stripe Checkout button clicked');
     }
 
     render() {
