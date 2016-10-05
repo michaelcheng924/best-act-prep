@@ -2,37 +2,26 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import path from 'path';
-import fs from 'fs';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
+
 import routes from 'routes';
 import serverRoutes from 'server/routes';
 import { User } from 'server/db/users';
 import { makeStore } from 'helpers';
-import { Provider } from 'react-redux';
 import moduleMappings from 'registries/module-mappings';
+import { handleError } from 'server/utils';
+
 import { setActiveTab, setEmail, setPasswordResetHash } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
+
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 
 process.on('uncaughtException', err => {
-    console.log(err, typeof err);
-
-    if (process.env.NODE_ENV === 'production') {
-        const MAILGUN_DATA = {
-            from: 'Michael <michael@bestactprep.co>',
-            to: 'cheng.c.mike@gmail.com',
-            subject: 'APP ERROR',
-            text: 'App error happened!'
-        };
-        mailgun.messages().send(MAILGUN_DATA, (error, body) => {
-            console.log(body);
-        });
-    }
-
-    fs.appendFile('logs.txt', err + '\n');
+    handleError(null, 'uncaughtException', err);
 });
 
 var app = express();

@@ -116,9 +116,11 @@ router.post('/updatemodules', (req, res) => {
 });
 
 router.post('/addlog', (req, res) => {
-    const { type, message, user } = req.body;
+    const { message, user } = req.body;
 
-    const logEntry = new LogEntry({ type, message, user });
+    console.log(`action | ${message} | ${user}`);
+
+    const logEntry = new LogEntry({ type: 'action', message, user });
 
     logEntry.save((err, result) => {
         res.send('Log entry added!');
@@ -126,7 +128,7 @@ router.post('/addlog', (req, res) => {
 });
 
 router.get('/getlogs', (req, res) => {
-    LogEntry.find((err, results) => {
+    LogEntry.find({}).sort('-date').exec((err, results) => {
         res.send({
             logs: results
         });

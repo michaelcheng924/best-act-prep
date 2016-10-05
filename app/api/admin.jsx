@@ -67,12 +67,12 @@ export function updateModules(email) {
     });
 }
 
-export function addLog(type, message, user) {
+export function addLog(message, user) {
     return $.ajax({
         type: 'POST',
         url: '/api/admin/addlog',
         contentType: 'application/json',
-        data: JSON.stringify({ type, message, user })
+        data: JSON.stringify({ message, user })
     });
 }
 
