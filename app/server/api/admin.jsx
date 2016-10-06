@@ -115,6 +115,44 @@ router.post('/updatemodules', (req, res) => {
     });
 });
 
+router.post('/adduser', (req, res) => {
+    const { email, password } = req.body;
+
+    if (!password) {
+        const user = new User({
+            email,
+            data: initialUserData
+        });
+        user.save((err, result) => {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                console.log('NEW USER CREATED WITHOUT PASSWORD');
+                res.send('New user created without password!');
+            }
+        });
+        return;
+    }
+
+    bcrypt.hash(password, null, null, (err, hash) => {
+        const user = new User({
+            email,
+            password: hash,
+            data: initialUserData
+        });
+        user.save((err, result) => {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                console.log(`NEW USER CREATED - ${email}`);
+                res.send('New user created!');
+            }
+        });
+    });
+});
+
 router.post('/addlog', (req, res) => {
     const { message, user } = req.body;
 

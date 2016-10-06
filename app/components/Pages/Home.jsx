@@ -33,22 +33,6 @@ export class Home extends React.Component {
         this.setState({ [type]: !this.state[type] });
     }
 
-    onToken(token) {
-        const spinnerEl = $('.spinner');
-
-        spinnerEl.removeClass('hidden');
-
-        onToken(token, AMOUNT).then(response => {
-            if (response.email) {
-                this.props.setEmail(response.email);
-                this.props.setCourseData(response.userData);
-                spinnerEl.addClass('hidden');
-                this.context.router.push('/welcome');
-                localStorage.setItem('bap-token', response.token);
-            }
-        });
-    }
-
     render() {
         return (
             <div className="home">

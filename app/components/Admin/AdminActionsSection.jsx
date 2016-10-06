@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { addUser } from 'api/app';
+import { addUser } from 'api/admin';
 import { updateModules } from 'api/admin';
 
 import AdminUser from 'components/Admin/AdminUser';

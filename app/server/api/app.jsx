@@ -1,49 +1,48 @@
 import bcrypt from 'bcrypt-nodejs';
+import crypto from 'crypto';
+import express from 'express';
 import jwt from 'jwt-simple';
+
+import initialUserData from 'registries/initial-user-data';
+import {
+    COURSE_PRICE,
+    MAILGUN_WELCOME_EMAIL_SUBJECT,
+    MAILGUN_WELCOME_EMAIL_TEXT
+} from 'server/constants';
 import db from 'server/db/db';
 import { User } from 'server/db/users';
-import express from 'express';
+import { publicPaths } from 'server/routes';
+import { logAction, handleError, sendMailgun } from 'server/utils';
+
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
-import { publicPaths } from 'server/routes';
-import initialUserData from 'registries/initial-user-data';
-import crypto from 'crypto';
 
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
-const MAILGUN_WELCOME_EMAIL_SUBJECT = 'Thanks for purchasing the Best ACT Prep online course!';
-const MAILGUN_WELCOME_EMAIL_TEXT = `We are so excited that you chose the Best ACT Prep online course! We're working hard to make this the absolute best ACT prep course out there.
 
-If you haven't done so already, please set your password at http://course.bestactprep.co/welcome.
-
-Since the course is still in development, we apologize in advance for any problems or craziness you may experience. Feel free to contact us at support@bestactprep.co at any time for help!
-
-Sincerely,
-The Best ACT Prep Team`;
-
-// MAILGUN SAMPLE
-// const MAILGUN_DATA = {
-//     from: 'Michael <michael@bestactprep.co>',
-//     to: 'cheng.c.mike@gmail.com',
-//     subject: 'TEST',
-//     text: 'HELLO'
-// };
-// mailgun.messages().send(MAILGUN_DATA, (error, body) => {
-//     console.log(body);
-// });
-
+// Check that user is authenticated for certain routes
 router.post('/authenticate', (req, res) => {
-    const email = req.body.token && jwt.decode(req.body.token, process.env.SECRET);
+    const token = req.body.token;
+    const email = token && token !== 'undefined' && jwt.decode(token, process.env.SECRET);
 
     User.findOne({ email }, (err, user) => {
+        if (err) return handleError(res, 'error_authenticate--findOne', err, email);
+
+        // Store user for authentication
         if (user) {
             req.session.user = email;
         }
 
+        // User is not authenticated if:
+        // 1) path is not public AND
+        // 2) not logged in
+        // Allow access to 'password-reset' route with token
         if (!publicPaths[req.body.path] && !req.session.user && req.body.path.indexOf('password-reset') === -1) {
             res.send({ authenticated: false });
-        } else {
-            res.send({ email, authenticated: true });
+            return;
         }
+
+        // Response for authenticated user
+        res.send({ email, authenticated: true });
     });
 });
 
@@ -51,32 +50,41 @@ router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     User.findOne({ email }, (err, user) => {
-        if (err) {
-            console.log(err);
-            res.send(err);
-        } else if (!user) {
+        if (err) return handleError(res, 'error_login--findOne', err, email);
+
+        // Invalid email
+        if (!user) {
             res.send({
                 authenticated: false,
                 reason: 'Email not found. Have you purchased the course?'
             });
-        } else {
-            bcrypt.compare(password, user.password, (err, authenticated) => {
-                if (err) {
-                    console.log(err);
-                    res.send(err);
-                } else {
-                    req.session.user = email;
-
-                    const token = jwt.encode(email, process.env.SECRET);
-
-                    res.send({
-                        token,
-                        authenticated,
-                        userData: user.data
-                    });
-                }
-            });
+            return;
         }
+        
+        // Check password
+        bcrypt.compare(password, user.password, (err, authenticated) => {
+            if (err) return handleError(res, 'error_login--bcrypt', err, email);
+
+            let token;
+            let userData = {};
+
+            // Not authenticated
+            if (!authenticated) {
+                res.send({ authenticated });
+                return;
+            }
+
+            // If authenticated, send token to stay logged in and user data
+            req.session.user = email;
+            token = jwt.encode(email, process.env.SECRET);
+            
+            logAction(res, 'Logged in', email);
+            res.send({
+                authenticated,
+                token,
+                userData: user.data
+            });
+        });
     });
 });
 
@@ -87,126 +95,131 @@ router.post('/logout', (req, res) => {
 });
 
 router.post('/buycourse', (req, res) => {
-    // LOGGING
-    console.log('BUY COURSE START', req.body);
-    const MAILGUN_LOGGING_DATA = {
-        from: 'COURSE BOUGHT <dev@bestactprep.co>',
-        to: 'cheng.c.mike@gmail.com',
-        subject: 'COURSE BOUGHT',
-        text: `Course bought - ${JSON.stringify(req.body)}`
-    };
-
-    mailgun.messages().send(MAILGUN_LOGGING_DATA, (error, body) => {
-        if (error) {
-            console.log(error);
-        }
-    });
-
     const token = req.body.token.id;
     const email = req.body.token.email;
-    const amount = req.body.amount;
 
+    // Logging for start of buying course
+    logAction(res, 'User bought course - START', email);
+
+    const MAILGUN_DATA = {
+        from: 'COURSE BOUGHT <dev@bestactprep.co>',
+        to: 'cheng.c.mike@gmail.com',
+        subject: `COURSE BOUGHT by ${email}`,
+        text: `Course bought by ${email}`
+    };
+    sendMailgun(MAILGUN_DATA);
+
+    // Send payment information to Stripe
     stripe.charges.create({
-        amount,
+        amount: COURSE_PRICE,
         currency: 'usd',
         source: token
-
     }, (err, charge) => {
         if (err) {
-            console.log(err);
-            res.send(err);
-        } else {
-            console.log('BUY COURSE FINDONE START');
-            User.findOne({ email }, (err, result) => {
-                if (err) {
-                    console.log(err);
-                    res.send(err);
-                } else {
-                    if (result) {
-                        console.log('BUY COURSE USER EXISTS');
-                        const uniqueEmail = result.email + (Math.random() * 1000);
-                        const dupUser = new User({
-                            email: uniqueEmail,
-                            data: initialUserData
-                        });
-                        dupUser.save((err, result) => {
-                            if (err) {
-                                console.log(err);
-                                res.send(err);
-                            } else {
-                                console.log('BUY COURSE USER EXISTS RESPONSE');
-                                req.session.user = uniqueEmail;
-                                res.send({
-                                    email: uniqueEmail,
-                                    userData: initialUserData
-                                });
-                            }
-                        });
-                    } else {
-                        console.log('BUY COURSE NEW USER');
-                        const user = new User({
-                            email,
-                            data: initialUserData
-                        });
-                        user.save((err, result) => {
-                            if (err) {
-                                console.log(err);
-                                res.send(err);
-                            } else {
-                                console.log('BUY COURSE NEW USER RESPONSE');
-                                const MAILGUN_DATA = {
-                                    from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
-                                    to: email,
-                                    subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
-                                    text: MAILGUN_WELCOME_EMAIL_TEXT
-                                };
-
-                                mailgun.messages().send(MAILGUN_DATA, (error, body) => {
-                                    if (error) {
-                                        console.log(error);
-                                    }
-                                });
-
-                                req.session.user = email;
-
-                                const token = jwt.encode(email, process.env.SECRET);
-
-                                res.send({
-                                    token,
-                                    email,
-                                    userData: initialUserData
-                                });
-                            }
-                        });
-                    }
-                }
+            handleError(null, 'error_stripe', err, email);
+            res.send({
+                success: false,
+                message: 'Card declined'
             });
+            return;
         }
+
+        // Logging for successful charge
+        logAction(res, 'User bought course - CHARGED, before findOne', email);
+
+        // Handle if email already exists in database
+        User.findOne({ email }, (err, result) => {
+            if (err) return handleError(res, 'error_stripe--findOne', err, email);
+
+            // If email exists, create unique email
+            if (result) {
+                // Logging for if email exists
+                logAction(res, 'User bought course - USER EXISTS', email);
+
+                const uniqueEmail = result.email + (Math.round(Math.random() * 1000));
+                const dupUser = new User({
+                    email: uniqueEmail,
+                    data: initialUserData
+                });
+                dupUser.save((err, result) => {
+                    if (err) return handleError(res, 'error_stripe--saveDuplicateUser', err, uniqueEmail);
+
+                    // Logging for successfully creating duplicate user
+                    logAction(res, 'User bought course - USER EXISTS SUCCESS', uniqueEmail);
+
+                    req.session.user = uniqueEmail;
+                    res.send({
+                        email: uniqueEmail,
+                        userData: initialUserData
+                    });
+                });
+
+                return;
+            }
+
+            // Email doesn't exist, which should be the case
+            logAction(res, 'User bought course - CREATE NEW USER', email);
+
+            const user = new User({
+                email,
+                data: initialUserData
+            });
+            user.save((err, result) => {
+                if (err) return handleError(res, 'error_stripe--saveUser');
+
+                // Logging for successfully creating user
+                logAction(res, 'User bought course - CREATE NEW USER SUCCESS', email);
+
+                const MAILGUN_DATA = {
+                    from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
+                    to: email,
+                    subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
+                    text: MAILGUN_WELCOME_EMAIL_TEXT
+                };
+                sendMailgun(MAILGUN_DATA);
+
+                // Log in the user and send token to persist login
+                req.session.user = email;
+                const token = jwt.encode(email, process.env.SECRET);
+
+                res.send({
+                    token,
+                    email,
+                    userData: initialUserData
+                });
+            });
+        });
     });
 });
 
 router.post('/setpassword', (req, res) => {
     const { email, password } = req.body;
 
-    User.findOne({ email }, (err, result) => {
-        if (!result) {
+    User.findOne({ email }, (err, user) => {
+        if (!user) {
             res.send({
                 success: false,
                 reason: 'Email not found. Have you purchased the course?'
             });
-        } else if (result.password) {
+        } else if (user.password) {
             res.send({
                 success: false,
                 reason: 'Password has already been set for this email. Please log in to change it.'
-            })
+            });
         } else {
             bcrypt.hash(password, null, null, (err, hash) => {
-                User.update({ email }, { $set: { password: hash }}, (err, result) => {
+                User.update({ email }, { $set: { password: hash }}, (err, userToUpdate) => {
                     if (err) {
                         console.log(err);
                         res.send(err);
                     } else {
-                        res.send({ success: true });
+                        const token = jwt.encode(email, process.env.SECRET);
+
+                        res.send({
+                            token,
+                            success: true,
+                            userData: user.data
+                        });
                     }
                 });
             });
@@ -324,38 +337,6 @@ router.post('/passwordreset', (req, res) => {
             });
         }
     });
-});
-
-router.post('/adduser', (req, res) => {
-    const { email, password } = req.body;
-
-    bcrypt.hash(password, null, null, (err, hash) => {
-        const user = new User({
-            email,
-            password: hash,
-            data: initialUserData
-        });
-        user.save((err, result) => {
-            if (err) {
-                console.log(err);
-                res.send(err);
-            } else {
-                console.log(`NEW USER CREATED - ${email}`);
-                res.send('New user created!');
-            }
-        });
-    });
-});
-
-// LOGGING
-router.get('/ontoken', (req, res) => {
-    console.log('ON TOKEN CALLED');
-    res.send('onToken called');
-});
-
-router.post('/buyresponse', (req, res) => {
-    console.log('BUY RESPONSE', JSON.stringify(req.body));
-    res.send('buy response');
 });
 
 export default router;

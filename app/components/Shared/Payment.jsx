@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import StripeCheckout from 'react-stripe-checkout';
 
-import { onToken } from 'api/app';
-import { addLog } from 'api/admin';
 import { setEmail } from 'actions/app';
 import { setCourseData } from 'actions/course';
+import { addLog } from 'api/admin';
+import { onToken } from 'api/app';
+import { COURSE_PRICE } from 'server/constants';
 
 import OldVideos from 'components/Shared/OldVideos';
 import NewVideos from 'components/Shared/NewVideos';
-
-export const AMOUNT = 4900;
 
 export class Payment extends React.Component {
     constructor(props) {
@@ -36,23 +35,14 @@ export class Payment extends React.Component {
     onToken(token) {
         const { setEmail, setCourseData } = this.props;
 
-        // LOGGING
-        $.ajax({
-            url: '/api/app/ontoken',
-            contentType: 'application/json'
-        });
-
         const spinnerEl = $('.spinner');
-
         spinnerEl.removeClass('hidden');
 
-        onToken(token, AMOUNT).then(response => {
-            $.ajax({
-                type: 'POST',
-                url: '/api/app/buyresponse',
-                contentType: 'application/json',
-                data: JSON.stringify({ response })
-            });
+        onToken(token).then(response => {
+            if (!response.success) {
+                spinnerEl.addClass('hidden');
+                this.context.router.push('/error');
+            }
 
             if (response.email) {
                 setEmail(response.email);
@@ -87,7 +77,7 @@ export class Payment extends React.Component {
                         <StripeCheckout
                             name="Best ACT Prep"
                             description="Online Course"
-                            amount={AMOUNT}
+                            amount={COURSE_PRICE}
                             allowRememberMe={false}
                             token={this.onToken}
                             stripeKey="pk_live_NUuMaTTOz4G39wcvUOwz7zaX"

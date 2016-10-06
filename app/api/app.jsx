@@ -24,12 +24,12 @@ export function logout() {
     });
 }
 
-export function onToken(token, amount) {
+export function onToken(token) {
     return $.ajax({
         type: 'POST',
         url: '/api/app/buycourse',
         contentType: 'application/json',
-        data: JSON.stringify({ token, amount })
+        data: JSON.stringify({ token })
     });
 }
 
@@ -66,14 +66,5 @@ export function onPasswordResetSubmit(password, email) {
         url: 'api/app/passwordreset',
         contentType: 'application/json',
         data: JSON.stringify({ password, email })
-    });
-}
-
-export function addUser(email, password) {
-    return $.ajax({
-        type: 'POST',
-        url: 'api/app/adduser',
-        contentType: 'application/json',
-        data: JSON.stringify({ email, password })
     });
 }

@@ -1,22 +1,22 @@
-import express from 'express';
 import bodyParser from 'body-parser';
+import express from 'express';
 import session from 'express-session';
+import createLocation from 'history/lib/createLocation';
 import path from 'path';
 import React from 'react';
-import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
 import { RouterContext, match } from 'react-router';
-import createLocation from 'history/lib/createLocation';
 
-import routes from 'routes';
-import serverRoutes from 'server/routes';
-import { User } from 'server/db/users';
 import { makeStore } from 'helpers';
 import moduleMappings from 'registries/module-mappings';
+import routes from 'routes';
+import { User } from 'server/db/users';
+import serverRoutes from 'server/routes';
 import { handleError } from 'server/utils';
 
-import { setActiveTab, setEmail, setPasswordResetHash } from 'actions/app';
 import { setAdminUser } from 'actions/admin';
+import { setActiveTab, setEmail, setPasswordResetHash } from 'actions/app';
 
 const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
 
