@@ -1,9 +1,33 @@
 import { LogEntry } from 'server/db/users';
 
-function handleError(res, type, err, user) {
+const mailgun = require('mailgun-js')({ apiKey: process.env.MAILGUN_API, domain: 'bestactprep.co' });
+
+// 1. Log error
+// 2. If error logging, respond with error message
+export function logAction(res, message, user) {
+    console.log(`action | ${message} | ${user}`);
+
+    const logEntry = new LogEntry({
+        message,
+        user,
+        type: 'action'
+    });
+
+    logEntry.save((err, result) => {
+        if (err) {
+            sendResponse(res, false, 'ERROR SAVING LOG!', true);
+        }
+    });
+}
+
+// 1. Log error
+// 2. Save log in database
+// 3. If production, send email
+// 4. Respond with error message
+export function handleError(res, type, err, user) {
     const stringifiedError = JSON.stringify(err);
 
-    console.log(`${type} | ${stringifiedError} | ${user}`);
+    console.log(`${type} | ${user}`, err);
 
     const logEntry = new LogEntry({
         type,
@@ -30,6 +54,8 @@ function handleError(res, type, err, user) {
                     }
                 });
             }
+
+            sendResponse(res, true, 'LOG FOR ERROR SAVED!');
         }
     });
 }
@@ -44,7 +70,14 @@ function sendResponse(res, success, message, logMessage) {
             success,
             message
         });
+        return;
     }
 }
 
-export { handleError };
+export function sendMailgun(data) {
+    mailgun.messages().send(data, (error, body) => {
+        if (error) handleError(null, 'error_mailgun', error, JSON.stringify(data));
+
+        logAction(null, `Mailgun email sent to ${data.to}`, JSON.stringify(data));
+    });
+}

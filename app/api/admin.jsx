@@ -67,6 +67,15 @@ export function updateModules(email) {
     });
 }
 
+export function addUser(email, password) {
+    return $.ajax({
+        type: 'POST',
+        url: 'api/admin/adduser',
+        contentType: 'application/json',
+        data: JSON.stringify({ email, password })
+    });
+}
+
 export function addLog(message, user) {
     return $.ajax({
         type: 'POST',

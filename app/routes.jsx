@@ -8,6 +8,7 @@ import Course from 'components/Pages/Course';
 import PracticeTests from 'components/Pages/PracticeTests';
 import Welcome from 'components/Pages/Welcome';
 import PasswordReset from 'components/Pages/PasswordReset';
+import Error from 'components/Pages/Error';
 import Admin from 'components/Admin';
 
 export default (
@@ -19,6 +20,7 @@ export default (
         <Route component={PracticeTests} path="tests" />
         <Route component={Welcome} path="welcome" />
         <Route component={PasswordReset} path="password-reset" />
+        <Route component={Error} path="error" />
         <Route component={Admin} path="admin" />
         <Route component={Course} path="10" />
         <Route component={Course} path="11" />

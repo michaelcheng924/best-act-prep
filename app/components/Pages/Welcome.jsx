@@ -1,8 +1,10 @@
+import { extend } from 'lodash';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { onSetPasswordSubmit } from 'api/app';
-import { setActiveTab } from 'actions/app';
+import { setEmail, setActiveTab } from 'actions/app';
+import { setCourseData } from 'actions/course';
 
 export class Welcome extends React.Component {
     constructor(props) {
@@ -19,6 +21,7 @@ export class Welcome extends React.Component {
         event.preventDefault();
 
         const { email, password, password1 } = this.refs;
+        const { setEmail, setCourseData } = this.props;
 
         if (password.value !== password1.value) {
             this.setState({ errorMessage: 'The passwords you entered don\'t match!'});
@@ -34,9 +37,12 @@ export class Welcome extends React.Component {
             if (!response.success) {
                 this.setState({ errorMessage: response.reason });
             } else {
+                setEmail(email.value);
+                setCourseData(response.userData);
                 this.setState({ errorReason: null });
                 this.props.setActiveTab('/course');
                 this.context.router.push('/course');
+                localStorage.setItem('bap-token', response.token);
             }
         });
     }
@@ -58,7 +64,7 @@ export class Welcome extends React.Component {
                     <form onSubmit={this.onSetPasswordSubmit}>
                       <fieldset className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" defaultValue={this.props.user} ref="email" />
+                        <input type="email" className="form-control" id="email" defaultValue={this.props.email} ref="email" />
                       </fieldset>
                       <fieldset className="form-group">
                         <label htmlFor="password">Password</label>
@@ -82,14 +88,17 @@ Welcome.contextTypes = {
 
 function mapStateToProps(state) {
     return {
-        user: state.app.get('user')
+        email: state.app.get('email')
     };
 };
 
 function mapDispatchToProps(dispatch) {
-    const appActions = bindActionCreators({ setActiveTab }, dispatch);
+    const appActions = bindActionCreators({ setEmail, setCourseData, setActiveTab }, dispatch);
+    const courseActions = bindActionCreators({ setCourseData }, dispatch);
 
-    return appActions;
+    return extend(appActions, {
+        setCourseData: courseActions.setCourseData
+    });
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
