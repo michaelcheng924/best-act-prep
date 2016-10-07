@@ -111,24 +111,32 @@ export function handleError(res, type, err, user) {
     });
 }
 
-function sendResponse(res, success, message, logMessage) {
+function sendResponse(res, success, log, logMessage) {
+    let message;
+
     if (logMessage) {
-        console.log(message);
+        console.log(log);
+        message = 'Sorry, something went wrong. Please contact us at support@bestactprep.co, or try again.';
     }
 
     if (res) {
         res.send({
             success,
+            log,
             message
         });
         return;
     }
 }
 
-export function sendMailgun(data) {
+export function sendMailgun(data, res) {
     mailgun.messages().send(data, (error, body) => {
-        if (error) handleError(null, 'error_mailgun', error, JSON.stringify(data));
+        if (error) handleError(res, 'error_mailgun', error, JSON.stringify(data));
 
         logAction(null, `Mailgun email sent to ${data.to}`, JSON.stringify(data));
+
+        if (res) {
+            res.send({ success: true });
+        }
     });
 }
