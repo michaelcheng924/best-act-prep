@@ -3,16 +3,11 @@ import crypto from 'crypto';
 import express from 'express';
 import jwt from 'jwt-simple';
 
-import initialUserData from 'registries/initial-user-data';
-import {
-    COURSE_PRICE,
-    MAILGUN_WELCOME_EMAIL_SUBJECT,
-    MAILGUN_WELCOME_EMAIL_TEXT
-} from 'server/constants';
+import { COURSE_PRICE } from 'server/constants';
 import db from 'server/db/db';
 import { User } from 'server/db/users';
 import { publicPaths } from 'server/routes';
-import { logAction, handleError, sendMailgun } from 'server/utils';
+import { addUser, logAction, handleError, sendMailgun } from 'server/utils';
 
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_LIVE_KEY);
@@ -27,21 +22,17 @@ router.post('/authenticate', (req, res) => {
     User.findOne({ email }, (err, user) => {
         if (err) return handleError(res, 'error_authenticate--findOne', err, email);
 
-        // Store user for authentication
-        if (user) {
-            req.session.user = email;
-        }
-
         // User is not authenticated if:
         // 1) path is not public AND
         // 2) not logged in
         // Allow access to 'password-reset' route with token
-        if (!publicPaths[req.body.path] && !req.session.user && req.body.path.indexOf('password-reset') === -1) {
+        if (!publicPaths[req.body.path] && !user && req.body.path.indexOf('password-reset') === -1) {
             res.send({ authenticated: false });
             return;
         }
 
-        // Response for authenticated user
+        // Handle authenticated user
+        req.session.user = email;
         res.send({ email, authenticated: true });
     });
 });
@@ -133,61 +124,12 @@ router.post('/buycourse', (req, res) => {
 
             // If email exists, create unique email
             if (result) {
-                // Logging for if email exists
-                logAction(res, 'User bought course - USER EXISTS', email);
-
-                const uniqueEmail = result.email + (Math.round(Math.random() * 1000));
-                const dupUser = new User({
-                    email: uniqueEmail,
-                    data: initialUserData
-                });
-                dupUser.save((err, result) => {
-                    if (err) return handleError(res, 'error_stripe--saveDuplicateUser', err, uniqueEmail);
-
-                    // Logging for successfully creating duplicate user
-                    logAction(res, 'User bought course - USER EXISTS SUCCESS', uniqueEmail);
-
-                    req.session.user = uniqueEmail;
-                    res.send({
-                        email: uniqueEmail,
-                        userData: initialUserData
-                    });
-                });
-
+                addUser(res, req, email, true);
                 return;
             }
 
-            // Email doesn't exist, which should be the case
-            logAction(res, 'User bought course - CREATE NEW USER', email);
-
-            const user = new User({
-                email,
-                data: initialUserData
-            });
-            user.save((err, result) => {
-                if (err) return handleError(res, 'error_stripe--saveUser');
-
-                // Logging for successfully creating user
-                logAction(res, 'User bought course - CREATE NEW USER SUCCESS', email);
-
-                const MAILGUN_DATA = {
-                    from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
-                    to: email,
-                    subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
-                    text: MAILGUN_WELCOME_EMAIL_TEXT
-                };
-                sendMailgun(MAILGUN_DATA);
-
-                // Log in the user and send token to persist login
-                req.session.user = email;
-                const token = jwt.encode(email, process.env.SECRET);
-
-                res.send({
-                    token,
-                    email,
-                    userData: initialUserData
-                });
-            });
+            // Email does not exist - Correct/Normal path
+            addUser(res, req, email);
         });
     });
 });
