@@ -101,3 +101,11 @@ export function deleteLog(_id) {
         data: JSON.stringify({ _id })
     })
 }
+
+export function deleteAllLogs() {
+    return $.ajax({
+        type: 'DELETE',
+        url: '/api/admin/deletealllogs',
+        contentType: 'application/json'
+    });
+}

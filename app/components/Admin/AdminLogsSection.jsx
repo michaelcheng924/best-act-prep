@@ -1,9 +1,18 @@
 import React from 'react';
 
+import { deleteAllLogs } from 'api/admin';
 import AdminLogEntry from 'components/Admin/AdminLogEntry';
 
 const AdminLogsSection = React.createClass({
     displayName: 'AdminLogsSection',
+
+    deleteAllLogs() {
+        const hasConfirmed = confirm('Are you sure you want to delete all logs?');
+
+        if (hasConfirmed) {
+            deleteAllLogs();
+        }
+    },
 
     renderLogEntryRow() {
         return this.props.logs.map(log => {
@@ -24,6 +33,8 @@ const AdminLogsSection = React.createClass({
         return (
             <div>
                 <h2>Logs</h2>
+
+                <button className="btn btn-danger" onClick={this.deleteAllLogs}>DELETE ALL LOGS</button>
 
                 <table className="table table-striped">
                     <thead>

@@ -22,8 +22,8 @@ const AdminLogEntry = React.createClass({
             <tr>
                 <td>{formattedDate}</td>
                 <td>{type}</td>
-                <td>{message}</td>
-                <td>{user}</td>
+                <td className="log-entry__cell">{message}</td>
+                <td className="log-entry__cell">{user}</td>
                 <td>
                     <button className="btn btn-danger" onClick={this.deleteLog}>Delete</button>
                 </td>

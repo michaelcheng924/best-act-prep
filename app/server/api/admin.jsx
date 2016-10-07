@@ -181,4 +181,10 @@ router.delete('/deletelog', (req, res) => {
     });
 });
 
+router.delete('/deletealllogs', (req, res) => {
+    LogEntry.remove({}, err => {
+        res.send('Deleted all logs!');
+    });
+});
+
 export default router;
