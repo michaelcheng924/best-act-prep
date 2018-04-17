@@ -14,7 +14,8 @@ export class Course extends React.Component {
         super(props);
 
         this.state = {
-            category: ''
+            category: '',
+            subCategory: ''
         };
     }
 
@@ -23,12 +24,10 @@ export class Course extends React.Component {
         const splitPathname = pathname.split('/');
 
         const category = splitPathname[2];
-        const subCategory = splitPathname[3];
 
         if (COURSE_MAPPINGS[category]) {
             this.setState({
-                category,
-                subCategory
+                category
             });
         } else if (pathname !== '/course') {
             window.location.pathname = '/course';
