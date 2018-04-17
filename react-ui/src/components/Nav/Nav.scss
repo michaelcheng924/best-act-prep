@@ -1,0 +1,48 @@
+.Nav {
+    align-items: center;
+    background: #138EAD;
+    color: #FFF;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+
+    &__logo-section {
+        display: flex;
+    }
+
+    &__logo {
+        height: 32px;
+        margin: 0 10px;
+    }
+
+    &__title {
+        font-size: 25px;
+
+        &--act {
+            color: #F5953E;
+            margin: 0 4px;
+        }
+    }
+
+    &__space {
+        flex-grow: 1;
+    }
+
+    &__right-link {
+        border: 1px solid #FFF;
+        margin: 4px 10px 4px 5px;
+        padding: 4px 8px;
+
+        &:hover {
+            background: darken(#138EAD, 5%);
+        }
+
+        &--buy {
+            background: #F5953E;
+
+            &:hover {
+                background: darken(#F5953E, 5%);
+            }
+        }
+    }
+}

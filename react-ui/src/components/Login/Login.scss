@@ -1,0 +1,11 @@
+.Login {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    &__input {
+        max-width: 300px;
+        width: 100%;
+    }
+}
