@@ -58,7 +58,10 @@ class CourseCategory extends Component {
 
     componentWillUpdate(nextProps) {
         if (this.props.category !== nextProps.category) {
-            this.setState({ subCategory: 'strategies' });
+            this.setState({
+                subCategory: 'strategies',
+                tabIndex: 0
+            });
         }
     }
 
@@ -203,6 +206,14 @@ class CourseCategory extends Component {
         );
     }
 
+    renderWriting() {
+        return (
+            <div className="Course__writing-coming-soon">
+                Coming soon!
+            </div>
+        );
+    }
+
     render() {
         const { category } = this.props;
         const { tabIndex } = this.state;
@@ -210,6 +221,10 @@ class CourseCategory extends Component {
 
         if (category === 'general') {
             return this.renderGeneral();
+        }
+
+        if (category === 'writing') {
+            return this.renderWriting();
         }
 
         return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { partial } from 'lodash';
+import css from 'classnames';
 
 import COURSE_MAPPINGS from 'app/constants/course-mappings';
 import CourseCategory from 'app/components/Course/CourseCategory';
@@ -41,10 +42,14 @@ export class Course extends React.Component {
     renderLink(category) {
         const data = COURSE_MAPPINGS[category];
 
+        const classNames = css(`Course__link Course__link--${category}`, {
+            'Course__link Course__link--active': category === this.state.category
+        });
+
         return (
             <Link
                 to={`/course/${category}`}
-                className={`Course__link Course__link--${category}`}
+                className={classNames}
                 onClick={partial(this.setCategory, category)}
             >
                 <i className={`fa fa-${data.icon}`} />

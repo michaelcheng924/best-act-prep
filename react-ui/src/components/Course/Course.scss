@@ -7,8 +7,13 @@
     &__link {
         color: #FFF;
         flex-grow: 1;
+        opacity: .65;
         padding: 5px 10px;
         text-align: center;
+
+        &--active {
+            opacity: 1;
+        }
 
         &--general {
             background: #78909C;
@@ -152,5 +157,12 @@
             margin-bottom: 5px;
             margin-right: 10px;
         }
+    }
+
+    &__writing-coming-soon {
+        color: #EF6C00;
+        font-size: 36px;
+        margin-top: 40px;
+        text-align: center;
     }
 }
