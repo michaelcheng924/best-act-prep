@@ -1,0 +1,75 @@
+.Course {
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        color: #FFF;
+        flex-grow: 1;
+        padding: 5px 10px;
+        text-align: center;
+
+        &--general {
+            background: #78909C;
+
+            &:hover {
+                background: darken(#78909C, 5%);
+            }
+        }
+
+        &--english {
+            background: #2196F3;
+
+            &:hover {
+                background: darken(#2196F3, 5%);
+            }
+        }
+
+        &--math {
+            background: #EF5350;
+
+            &:hover {
+                background: darken(#EF5350, 5%);
+            }
+        }
+
+        &--reading {
+            background: #E040FB;
+
+            &:hover {
+                background: darken(#E040FB, 5%);
+            }
+        }
+
+        &--science {
+            background: #689F38;
+
+            &:hover {
+                background: darken(#689F38, 5%);
+            }
+        }
+
+        &--writing {
+            background: #EF6C00;
+
+            &:hover {
+                background: darken(#EF6C00, 5%);
+            }
+        }
+    }
+
+    &__no-category {
+        color: #757575;
+        font-size: 36px;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    &__category {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+}
