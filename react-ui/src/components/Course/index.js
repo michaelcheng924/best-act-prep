@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { partial } from 'lodash';
 
 import COURSE_MAPPINGS from 'app/constants/course-mappings';
 import CourseCategory from 'app/components/Course/CourseCategory';
 
 import './Course.scss';
+import './react-tabs.scss';
 
 export class Course extends React.Component {
     constructor(props) {
@@ -33,11 +35,19 @@ export class Course extends React.Component {
         }
     }
 
+    setCategory = category => {
+        this.setState({ category });
+    };
+
     renderLink(category) {
         const data = COURSE_MAPPINGS[category];
 
         return (
-            <Link to={`/course/${category}`} className={`Course__link Course__link--${category}`}>
+            <Link
+                to={`/course/${category}`}
+                className={`Course__link Course__link--${category}`}
+                onClick={partial(this.setCategory, category)}
+            >
                 <i className={`fa fa-${data.icon}`} />
                 {`  ${data.title}`}
             </Link>
@@ -45,6 +55,7 @@ export class Course extends React.Component {
     }
 
     render() {
+        const { email } = this.props;
         const { category, subCategory } = this.state;
 
         return (
@@ -60,7 +71,11 @@ export class Course extends React.Component {
                 {
                     category
                         ? (
-                            <CourseCategory category={category} />
+                            <CourseCategory
+                                category={category}
+                                email={email}
+                                subCategory={subCategory}
+                            />
                         )
                         : (
                             <div className="Course__no-category">

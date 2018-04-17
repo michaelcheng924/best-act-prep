@@ -6,17 +6,17 @@ const VIDEOS_GENERAL = [
     {
         title: 'The most important skill to develop to improve your ACT score',
         id: '163876721',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Recommended reading list for the ACT',
         id: '163876720',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'What "optional" item do I NEED to bring to the ACT?',
         id: '163876725',
-        notOnYouTube: true
+        restricted: true
     }
 ];
 
@@ -47,17 +47,17 @@ const VIDEOS_ENGLISH_STRATEGIES = [
     {
         title: 'Don\'t read "normally"',
         id: '163876736',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Context is key',
         id: '163876743',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Read "out loud"',
         id: '163876748',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Common types of questions',
@@ -93,22 +93,22 @@ const VIDEOS_MATH_STRATEGIES = [
     {
         title: '"Cheat" by plugging in easy numbers',
         id: '163876777',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Take the ACT math test TWICE',
         id: '163876779',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'The truth about diagrams',
         id: '163876782',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Using your calculator effectively',
         id: '163876763',
-        notOnYouTube: true
+        restricted: true
     }
 ];
 
@@ -117,7 +117,7 @@ const VIDEOS_READING_STRATEGIES = [
         title: 'PDF - Strategy summary',
         id: 'reading-strategy',
         pdf: '/review-guides/reading-strategy.pdf',
-        notOnYouTube: true,
+        restricted: true,
         buttonText: 'Open PDF',
         isPdf: true
     },
@@ -140,17 +140,17 @@ const VIDEOS_READING_STRATEGIES = [
     {
         title: 'Should I read the passage or questions first?',
         id: '163876802',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Should I do the prose passage last?',
         id: '163876807',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'How fast should I read each passage?',
         id: '163876801',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'What should I be looking for as I read?',
@@ -163,12 +163,12 @@ const VIDEOS_READING_STRATEGIES = [
     {
         title: '4 types of questions to expect',
         id: '163876809',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: '5 common wrong answer choices',
         id: '163876810',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Guess the answer first'
@@ -180,7 +180,7 @@ const VIDEOS_SCIENCE_STRATEGIES = [
         title: 'PDF - Strategy summary',
         id: 'science-strategy',
         pdf: '/review-guides/science-strategy.pdf',
-        notOnYouTube: true,
+        restricted: true,
         buttonText: 'Open PDF',
         isPdf: true
     },
@@ -203,12 +203,12 @@ const VIDEOS_SCIENCE_STRATEGIES = [
     {
         title: 'Conflicting viewpoints passage strategy',
         id: '163876840',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Non-conflicting viewpoints passages strategy',
         id: '163876836',
-        notOnYouTube: true
+        restricted: true
     },
     {
         title: 'Using your finger to save time',

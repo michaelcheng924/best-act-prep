@@ -6,6 +6,21 @@ import {
     VIDEOS_SCIENCE_STRATEGIES
 } from 'app/constants/videos-strategies';
 
+import {
+    VIDEOS_ENGLISH_PRACTICE,
+    VIDEOS_MATH_PRACTICE,
+    VIDEOS_READING_PRACTICE,
+    VIDEOS_SCIENCE_PRACTICE
+} from 'app/constants/videos-practice';
+
+import {
+    ENGLISH_REVIEW_PDF
+} from 'app/constants/review-english';
+
+import {
+    MATH_REVIEW_PDF
+} from 'app/constants/review-math';
+
 export default {
     general: {
         key: 'general',
@@ -18,30 +33,30 @@ export default {
         title: 'ACT English',
         icon: 'pencil',
         strategies: VIDEOS_ENGLISH_STRATEGIES,
-        // learn: VIDEOS_ENGLISH_LEARN,
-        // practice: VIDEOS_ENGLISH_PRACTICE
+        review: ENGLISH_REVIEW_PDF,
+        practice: VIDEOS_ENGLISH_PRACTICE
     },
     math: {
         key: 'math',
         title: 'ACT Math',
         icon: 'calculator',
         strategies: VIDEOS_MATH_STRATEGIES,
-        // learn: VIDEOS_MATH_LEARN,
-        // practice: VIDEOS_MATH_PRACTICE
+        review: MATH_REVIEW_PDF,
+        practice: VIDEOS_MATH_PRACTICE
     },
     reading: {
         key: 'reading',
         title: 'ACT Reading',
         icon: 'book',
         strategies: VIDEOS_READING_STRATEGIES,
-        // practice: VIDEOS_READING_PRACTICE
+        practice: VIDEOS_READING_PRACTICE
     },
     science: {
         key: 'science',
         title: 'ACT Science',
         icon: 'flask',
         strategies: VIDEOS_SCIENCE_STRATEGIES,
-        // practice: VIDEOS_SCIENCE_PRACTICE
+        practice: VIDEOS_SCIENCE_PRACTICE
     },
     writing: {
         key: 'writing',
