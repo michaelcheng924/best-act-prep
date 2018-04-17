@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import PRACTICE_TESTS from 'app/constants/practice-tests';
 import COURSE_MAPPINGS from 'app/constants/course-mappings';
 import Video from 'app/components/Course/Video';
 
@@ -77,7 +79,7 @@ class CourseCategory extends Component {
                 </div>
                 <div className="Course__videos-container">
                     {
-                        categoryData.strategies.map(item => {
+                        categoryData.review.map(item => {
                             if (!item.id) { return null; }
 
                             return (
@@ -103,11 +105,24 @@ class CourseCategory extends Component {
         return (
             <div className="Course__category">
                 <div className="Course__section-title">
-                    Specific strategies for the ACT English test
+                    Practice with real ACT practice tests
+                </div>
+                <div className="Course__practice-tests">
+                    {
+                        PRACTICE_TESTS.map(item => {
+                            return (
+                                <a href={item.href} key={item.href} target="_blank">
+                                    <button className="Button Button--pdf">
+                                        {item.name}
+                                    </button>
+                                </a>
+                            );
+                        })
+                    }
                 </div>
                 <div className="Course__videos-container">
                     {
-                        categoryData.strategies.map(item => {
+                        categoryData.practice.map(item => {
                             if (!item.id) { return null; }
 
                             return (

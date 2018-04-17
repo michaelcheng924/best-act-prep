@@ -20,48 +20,34 @@ export class VideoSection extends React.Component {
     }
 
     renderButton() {
-        const { restricted } = this.props;
+        const { pdf, restricted } = this.props;
 
         if (this.state.showVideo) { return null; }
 
         if (restricted) {
             return (
                 <Link to="/buy">
-                    <button className="Button Button--small Button--orange">Get access</button>
+                    <button className="Button Button--small Button--orange Button--pdf">Get access</button>
                 </Link>
             );
         }
 
         return (
-            <button className="Button Button--small" onClick={this.showVideo}>
-                Watch
-            </button>
+            <a href={pdf} target="_blank">
+                <button className="Button Button--small Button--pdf">
+                    Open PDF
+                </button>
+            </a>
         );
     }
 
     renderImage() {
         const { category, id } = this.props;
 
-        if (this.state.showVideo) {
-            return (
-                <iframe
-                    src={`https://player.vimeo.com/video/${
-                        id}`}
-                    className="Course__video"
-                    frameBorder="0"
-                    webkitallowfullscreen="true"
-                    mozallowfullscreen="true"
-                    allowFullScreen
-                    title={id}
-                />
-            );
-        }
-
         return (
             <img
                 src={`/images/thumbnails/${category}/${id}.jpg`}
                 className="Course__thumbnail"
-                onClick={this.showVideo}
                 alt=""
             />
         );
@@ -81,10 +67,10 @@ export class VideoSection extends React.Component {
                     {this.renderButton()}
                 </div>
                 {
-                    pdf && !restricted
+                    !restricted
                         ? (
                             <a href={pdf} target="_blank">
-                                <button className="Button Button--small Button--pdf" style={{ marginBottom: 10 }}>
+                                <button className="button" style={{ marginBottom: 10 }}>
                                     Open PDF
                                 </button>
                             </a>

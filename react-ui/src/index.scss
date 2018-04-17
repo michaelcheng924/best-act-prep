@@ -48,6 +48,14 @@ body {
             background: darken(#EF6C00, 5%);
         }
     }
+
+    &--pdf {
+        background: #009688;
+
+        &:hover {
+            background: darken(#009688, 5%);
+        }
+    }
 }
 
 .Input {

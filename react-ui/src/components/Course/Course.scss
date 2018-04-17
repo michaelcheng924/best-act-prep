@@ -142,4 +142,15 @@
         height: 197px;
         width: 350px;
     }
+
+    &__practice-tests {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+
+        a {
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
+    }
 }
