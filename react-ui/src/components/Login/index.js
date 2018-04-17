@@ -9,6 +9,12 @@ class Login extends Component {
         this.state = {
             errorMessage: null
         };
+
+        fetch('/api', {
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(response => response.json()).then(json => console.log(json))
     }
 
     onLoginSubmit = event => {
