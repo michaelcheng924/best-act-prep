@@ -10,6 +10,7 @@ import Buy from 'app/components/Buy';
 import Contact from 'app/components/Contact';
 import Login from 'app/components/Login';
 import Course from 'app/components/Course';
+import Welcome from 'app/components/Welcome';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/contact" component={Contact} />
           <Route path="/Login" component={Login} />
           <Route path="/course" component={Course} />
+          <Route path="/welcome" component={Welcome} />
         </div>
       </Router>
     );

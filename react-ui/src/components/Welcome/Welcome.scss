@@ -1,0 +1,12 @@
+.welcome {
+    background: #FFF;
+    border: 1px solid #E0E2E3;
+    margin: 20px;
+    padding: 20px;
+
+    &__congratulations {
+        color: #F5953E;
+        font-size: 40px;
+        font-weight: bold;
+    }
+}

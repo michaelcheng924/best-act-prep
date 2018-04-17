@@ -84,7 +84,7 @@ function getClientEnvironment(publicUrl) {
     'process.env': Object.keys(raw).reduce((env, key) => {
       env[key] = JSON.stringify(raw[key]);
       return env;
-    }, {}),
+    }, {})
   };
 
   return { raw, stringified };

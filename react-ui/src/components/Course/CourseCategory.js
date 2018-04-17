@@ -78,11 +78,35 @@ class CourseCategory extends Component {
 
         const categoryData = COURSE_MAPPINGS[category];
 
+        const numberFree = categoryData.strategies.reduce((result, item) => {
+            if (!item.restricted) {
+                result++;
+            }
+
+            return result;
+        }, 0);
+        const numberRestricted = categoryData.strategies.length - numberFree;
+        const videosText = numberFree > 1 ? 'videos' : 'video';
+
         return (
             <div className="Course__category">
                 <div className="Course__section-title">
                     General strategies for the ACT
                 </div>
+                {
+                    email
+                        ? null
+                        : (
+                            <div className="Course__section-stats">
+                                <div>
+                                    <strong>{`${numberFree}`}</strong> free {videosText}
+                                </div>
+                                <div className="Course__section-stat--premium">
+                                    <strong>{numberRestricted}</strong> premium videos
+                                </div>
+                            </div>
+                        )
+                }
                 <div className="Course__videos-container">
                     {
                         categoryData.strategies.map(item => {
@@ -108,11 +132,35 @@ class CourseCategory extends Component {
 
         const categoryData = COURSE_MAPPINGS[category];
 
+        const numberFree = categoryData.strategies.reduce((result, item) => {
+            if (!item.restricted) {
+                result++;
+            }
+
+            return result;
+        }, 0);
+        const numberRestricted = categoryData.strategies.length - numberFree;
+        const videosText = numberFree > 1 ? 'videos' : 'video';
+
         return (
             <div className="Course__category">
                 <div className="Course__section-title">
                     Specific strategies for the ACT English test
                 </div>
+                {
+                    email
+                        ? null
+                        : (
+                            <div className="Course__section-stats">
+                                <div>
+                                    <strong>{`${numberFree}`}</strong> free {videosText}
+                                </div>
+                                <div className="Course__section-stat--premium">
+                                    <strong>{numberRestricted}</strong> premium videos
+                                </div>
+                            </div>
+                        )
+                }
                 <div className="Course__videos-container">
                     {
                         categoryData.strategies.map(item => {
@@ -143,6 +191,17 @@ class CourseCategory extends Component {
                 <div className="Course__section-title">
                     Review concepts that the {categoryData.title} test covers
                 </div>
+                {
+                    email
+                        ? null
+                        : (
+                            <div className="Course__section-stats">
+                                <div className="Course__section-stat--premium">
+                                    <strong>1</strong> premium PDF
+                                </div>
+                            </div>
+                        )
+                }
                 <div className="Course__videos-container">
                     {
                         categoryData.review.map(item => {
@@ -173,6 +232,20 @@ class CourseCategory extends Component {
                 <div className="Course__section-title">
                     Practice with real {categoryData.title} practice tests
                 </div>
+                {
+                    email
+                        ? null
+                        : (
+                            <div className="Course__section-stats">
+                                <div className="Course__section-stat--premium">
+                                    <strong>1</strong> premium PDF
+                                </div>
+                                <div className="Course__section-stat--premium">
+                                    <strong>{categoryData.practice.length}</strong> premium videos
+                                </div>
+                            </div>
+                        )
+                }
                 <div className="Course__practice-tests">
                     {
                         PRACTICE_TESTS.map(item => {

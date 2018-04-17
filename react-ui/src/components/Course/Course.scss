@@ -5,13 +5,14 @@
     }
 
     &__link {
-        color: #FFF;
+        color: #333;
         flex-grow: 1;
-        opacity: .65;
+        opacity: .8;
         padding: 5px 10px;
         text-align: center;
 
         &--active {
+            color: #FFF;
             opacity: 1;
         }
 
@@ -99,8 +100,15 @@
     &__section-title {
         font-size: 25px;
         font-weight: bold;
-        margin-bottom: 20px;
         text-align: center;
+    }
+
+    &__section-stats {
+        font-size: 13px;
+    }
+
+    &__section-stat--premium {
+        color: #EF6C00;
     }
 
     &__videos-container {
@@ -108,6 +116,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-top: 20px;
     }
 
     &__video-section {
