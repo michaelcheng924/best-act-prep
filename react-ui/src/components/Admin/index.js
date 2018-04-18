@@ -36,53 +36,65 @@ class Admin extends Component {
     onAddUser = event => {
         event.preventDefault();
 
-        fetch('/api/adduser', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: this.newUserEmail.value,
-                password: this.newUserPassword.value
-            })
-        })
-            .then(() => {
-                this.fetchUsers();
+        const confirm = window.confirm(`Are you sure you want to add ${this.newUserEmail.value}?`);
 
-                this.newUserEmail.value = '';
-                this.newUserPassword.value = '';
-            });
+        if (confirm) {
+            fetch('/api/adduser', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: this.newUserEmail.value,
+                    password: this.newUserPassword.value
+                })
+            })
+                .then(() => {
+                    this.fetchUsers();
+
+                    this.newUserEmail.value = '';
+                    this.newUserPassword.value = '';
+                });
+        }
     };
 
     onResetPassword = email => {
-        fetch('/api/resetpassword', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                newPassword: this[email].value
+        const confirm = window.confirm(`Are you sure you want to reset ${email}'s password?`);
+
+        if (confirm) {
+            fetch('/api/resetpassword', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    newPassword: this[email].value
+                })
             })
-        })
-            .then(() => {
-                this[email].value = '';
-            });
+                .then(() => {
+                    this[email].value = '';
+                });
+        }
     };
 
     onDeleteUser = email => {
-        fetch('/api/deleteuser', {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                email
+        const confirm = window.confirm(`Are you sure you want to delete ${email}?`);
+
+        if (confirm) {
+            fetch('/api/deleteuser', {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email
+                })
             })
-        })
-            .then(() => {
-                this.fetchUsers();
-            });
+                .then(() => {
+                    this.fetchUsers();
+                });
+        }
     };
 
     renderLogin() {
