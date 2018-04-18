@@ -37,6 +37,24 @@ class Nav extends Component {
         this.props.onSetEmail('');
     };
 
+    renderCourse() {
+        return (
+            <Link className="Nav__right-link" to="/course">
+                {this.props.email ? 'Course Home' : 'Start for Free'}
+            </Link>
+        );
+    }
+
+    renderBuy() {
+        if (this.props.email) { return null; }
+
+        return (
+            <Link className="Nav__right-link Nav__right-link--buy" to="/buy">
+                Get <strong>NO RISK, FULL</strong> access
+            </Link>
+        );
+    }
+
     renderLogin() {
         if (!this.props.email) {
             return (
@@ -63,12 +81,8 @@ class Nav extends Component {
                     <div className="Nav__title">PREP</div>
                 </Link>
                 <div className="Nav__space" />
-                <Link className="Nav__right-link" to="/course">
-                    Start for free
-                </Link>
-                <Link className="Nav__right-link Nav__right-link--buy" to="/buy">
-                    Get <strong>NO RISK, FULL</strong> access
-                </Link>
+                {this.renderCourse()}
+                {this.renderBuy()}
                 <Link className="Nav__right-link" to="/contact">
                     Contact
                 </Link>
