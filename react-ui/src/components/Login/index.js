@@ -62,7 +62,7 @@ class Login extends Component {
                 />
                 <input
                     className="Input Login__input"
-                    placeholder="Email"
+                    placeholder="Password"
                     ref={password => this.password = password}
                     type="password"
                 />
