@@ -60,6 +60,7 @@ class Buy extends Component {
                         .then(response => response.json())
                         .then(json => {
                             if (json.email) {
+                                localStorage.setItem('bap-token', json.token);
                                 self.props.onSetEmail(json.email);
                                 self.props.history.push('/welcome');
                             } else {

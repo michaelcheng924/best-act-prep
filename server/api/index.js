@@ -23,7 +23,7 @@ function api(app) {
       bcrypt.compare(password, result.password, (err, isMatch) => {
         if (!isMatch) {
           res.send({
-            message: 'Incorrect password. If you forgot your password, simply send an email to cheng.c.mike@gmail.com!'
+            message: 'Incorrect password. If you forgot your password, simply send an email to cheng.c.michael@gmail.com!'
           });
           return;
         } else {
