@@ -93,6 +93,48 @@ function api(app) {
       });
     });
   });
+
+  // ADMIN
+  app.get('/api/getusers', (req, res) => {
+    User.find({}, (err, results) => {
+      res.send({
+        users: results
+      });
+    });
+  });
+
+  app.post('/api/adduser', (req, res) => {
+    const { email, password } = req.body;
+
+    bcrypt.hash(password, null, null, (err, hash) => {
+      const newUser = new User({
+        email,
+        password: hash
+      });
+
+      newUser.save((err, result) => {
+        res.send({ success: true });
+      });
+    });
+  });
+
+  app.post('/api/resetpassword', (req, res) => {
+    const { email, newPassword } = req.body;
+
+    bcrypt.hash(newPassword, null, null, (err, hash) => {
+        User.update({ email }, { $set: { password: hash } }, err => {
+            res.send({ success: true });
+        });
+    });
+  });
+
+  app.delete('/api/deleteuser', (req, res) => {
+    const { email } = req.body;
+
+    User.remove({ email }, err => {
+      res.send({ success: true });
+    });
+  });
 }
 
 module.exports = {

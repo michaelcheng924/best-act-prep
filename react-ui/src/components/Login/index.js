@@ -59,7 +59,6 @@ class Login extends Component {
                     className="Input Login__input"
                     placeholder="Email"
                     ref={email => this.email = email}
-                    type="email"
                 />
                 <input
                     className="Input Login__input"

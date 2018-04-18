@@ -21,7 +21,7 @@ class Buy extends Component {
 
         paypal.Button.render({
 
-            env: 'sandbox', // 'production' or 'sandbox',
+            env: 'production', // 'production' or 'sandbox',
 
             client: {
                 sandbox:    'AXlU2z839LU9Q4hftqV3DTdpg8-zgS4rIqk6CnrU4qvNod6y_YFV1hQVGNLoTweawjNEejd2ewxK1Bqy',

@@ -11,6 +11,7 @@ import Contact from 'app/components/Contact';
 import Login from 'app/components/Login';
 import Course from 'app/components/Course';
 import Welcome from 'app/components/Welcome';
+import Admin from 'app/components/Admin';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/Login" component={Login} />
           <Route path="/course" component={Course} />
           <Route path="/welcome" component={Welcome} />
+          <Route path="/admin" component={Admin} />
         </div>
       </Router>
     );
