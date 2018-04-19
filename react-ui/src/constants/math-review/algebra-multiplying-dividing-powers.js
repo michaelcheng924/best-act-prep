@@ -51,7 +51,7 @@ const MULTIPLYING_DIVIDING_POWERS = {
                 },
                 {
                     text: <div><em>w</em><sup>7</sup></div>,
-                    correct: true,
+                    correct: false,
                     explanation: 'Take a closer look at the bases of the exponents.'
                 },
                 {
