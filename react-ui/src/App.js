@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Nav from 'app/components/Nav';
 import Home from 'app/components/Home';
@@ -17,16 +18,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <Nav />
-          <Route exact path="/" component={Home} />
-          <Route path="/buy" component={Buy} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/Login" component={Login} />
-          <Route path="/course" component={Course} />
-          <Route path="/welcome" component={Welcome} />
-          <Route path="/admin" component={Admin} />
-        </div>
+        <MuiThemeProvider>
+          <div className="App">
+            <Nav />
+            <Route exact path="/" component={Home} />
+            <Route path="/buy" component={Buy} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/Login" component={Login} />
+            <Route path="/course" component={Course} />
+            <Route path="/welcome" component={Welcome} />
+            <Route path="/admin" component={Admin} />
+          </div>
+        </MuiThemeProvider>
       </Router>
     );
   }

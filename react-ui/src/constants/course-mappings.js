@@ -14,7 +14,7 @@ import {
 } from 'app/constants/videos-practice';
 
 import {
-    ENGLISH_REVIEW_PDF
+    ENGLISH_REVIEW
 } from 'app/constants/review-english';
 
 import {
@@ -33,7 +33,7 @@ export default {
         title: 'ACT English',
         icon: 'pencil',
         strategies: VIDEOS_ENGLISH_STRATEGIES,
-        review: ENGLISH_REVIEW_PDF,
+        review: ENGLISH_REVIEW,
         practice: VIDEOS_ENGLISH_PRACTICE
     },
     math: {

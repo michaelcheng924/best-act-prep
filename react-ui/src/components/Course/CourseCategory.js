@@ -6,6 +6,7 @@ import { partial } from 'lodash';
 import PRACTICE_TESTS from 'app/constants/practice-tests';
 import COURSE_MAPPINGS from 'app/constants/course-mappings';
 import Video from 'app/components/Course/Video';
+import CourseConcepts from 'app/components/Course/CourseConcepts';
 
 const TAB_INDEX_MAPPING = {
     english: {
@@ -187,38 +188,11 @@ class CourseCategory extends Component {
         const categoryData = COURSE_MAPPINGS[category];
 
         return (
-            <div className="Course__category">
-                <div className="Course__section-title">
-                    Review concepts that the {categoryData.title} test covers
-                </div>
-                {
-                    email
-                        ? null
-                        : (
-                            <div className="Course__section-stats">
-                                <div className="Course__section-stat--premium">
-                                    <strong>1</strong> premium PDF
-                                </div>
-                            </div>
-                        )
-                }
-                <div className="Course__videos-container">
-                    {
-                        categoryData.review.map(item => {
-                            if (!item.id) { return null; }
-
-                            return (
-                                <Video
-                                    {...item}
-                                    category={category}
-                                    key={item.id}
-                                    restricted={!email && item.restricted}
-                                />
-                            );
-                        })
-                    }
-                </div>
-            </div>
+            <CourseConcepts
+                category={category}
+                categoryData={categoryData}
+                email={email}
+            />
         );
     }
 

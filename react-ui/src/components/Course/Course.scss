@@ -119,6 +119,26 @@
         margin-top: 20px;
     }
 
+    &__practice-container {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    &__concepts-container {
+        width: 100%;
+    }
+
+    &__concepts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+        width: 100%;
+    }
+
     &__video-section {
         margin-bottom: 25px;
         width: 350px;
@@ -173,5 +193,94 @@
         font-size: 36px;
         margin-top: 40px;
         text-align: center;
+    }
+
+    &__concept-card {
+        border: 1px solid #757575;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        max-width: 350px;
+
+        &:hover {
+            .Course__concept-title {
+                background: darken(#E91E63, 5%);
+            }
+
+            .Course__concept-rule {
+                background: #EEEEEE;
+            }
+
+            .Course__concept-view {
+                background: #EEEEEE;
+
+                .Button {
+                    background: darken(#43A047, 5%);
+                }
+            }
+        }
+    }
+
+    &__concept-title {
+        background: #E91E63;
+        color: #FFF;
+        padding: 5px 10px;
+    }
+
+    &__concept-rule {
+        flex-grow: 1;
+        padding: 5px 10px;
+    }
+
+    &__concept-view {
+        padding: 0 0 10px;
+        text-align: center
+    }
+
+    &__concept-detail {
+        max-width: 700px;
+    }
+
+    &__concept-detail-rule,
+    &__concept-detail-example {
+        margin-top: 20px;
+    }
+
+    &__concept-detail-sub-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    &__concept-detail-question {
+        margin-bottom: 10px;
+    }
+
+    &__concept-detail-answers {
+        margin: 10px 0 20px;
+    }
+
+    &__concept-detail-answer {
+        align-items: center;
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    &__concept-detail-letter {
+        align-items: center;
+        border: 1px solid #333;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        height: 20px;
+        justify-content: center;
+        margin-right: 10px;
+        width: 20px;
+
+        &:hover {
+            background: #757575;
+            color: #FFF;
+        }
     }
 }
