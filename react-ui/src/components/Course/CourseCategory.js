@@ -274,6 +274,8 @@ class CourseCategory extends Component {
             return this.renderWriting();
         }
 
+        const reviewTitle = category === 'english' ? 'Grammar Rules' : 'Math Concepts';
+
         return (
             <div className="Course__category">
                 <Tabs
@@ -303,7 +305,7 @@ class CourseCategory extends Component {
                                             to={`/course/${category}/review`}
                                             onClick={partial(this.setSubCategory, 'review')}
                                         >
-                                            Review
+                                            {reviewTitle}
                                         </Link>
                                     </Tab>
                                 )
@@ -317,7 +319,7 @@ class CourseCategory extends Component {
                                             to={`/course/${category}/practice`}
                                             onClick={partial(this.setSubCategory, 'practice')}
                                         >
-                                            Practice
+                                            Practice Tests
                                         </Link>
                                     </Tab>
                                 )

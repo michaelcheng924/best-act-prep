@@ -100,7 +100,11 @@ class Buy extends Component {
                     </div>
                     <div className="buy__reason">
                         <i className="fa fa-star" />&nbsp;
-                        Exclusive PDF summaries downloads - <strong>All English grammar rules</strong>, <strong>all math concepts</strong>, <strong>strategy summaries for reading and science</strong>
+                        <strong>Printable PDF summaries</strong> of grammar rules, math concepts, reading strategies, and science strategies
+                    </div>
+                    <div className="buy__reason">
+                        <i className="fa fa-star" />&nbsp;
+                        <strong>Practice questions</strong> for grammar rules and math concepts (we are in the process of adding more and more of these!)
                     </div>
                     <div className="buy__reason">
                         <i className="fa fa-star" />&nbsp;

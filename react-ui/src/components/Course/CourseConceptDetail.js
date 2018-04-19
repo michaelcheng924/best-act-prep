@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import CourseConceptQuestion from 'app/components/Course/CourseConceptQuestion';
 
 class CourseConceptDetail extends Component {
     render() {
-        const { example, questions, rule, title } = this.props;
+        const { email, example, questions, rule, title } = this.props;
 
         return (
             <div className="Course__concept-detail">
@@ -24,11 +25,24 @@ class CourseConceptDetail extends Component {
                         Practice questions                        
                     </div>
                     {
-                        questions.map((item, index) => {
-                            return (
-                                <CourseConceptQuestion key={index} number={index + 1} {...item} />
-                            );
-                        })
+                        email
+                            ? (
+                                questions.map((item, index) => {
+                                    return (
+                                        <CourseConceptQuestion key={index} number={index + 1} {...item} />
+                                    );
+                                })
+                            )
+                            : (
+                                <div className="Course__practice-questions-restricted">
+                                    <Link to="/buy">
+                                        <button className="Button Button--orange">Get access</button> to the practice questions!
+                                    </Link>
+                                    {/*<div className="Course__practice-questions-restricted-sample">
+                                        <CourseConceptQuestion number={1} {...questions[0]} isSample />
+                                    </div>*/}
+                                </div>
+                            )
                     }
                 </div>
             </div>

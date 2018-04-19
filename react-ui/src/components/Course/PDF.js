@@ -3,31 +3,13 @@ import { Link } from 'react-router-dom';
 import css from 'classnames';
 
 export class VideoSection extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            showVideo: false
-        };
-
-        this.showVideo = this.showVideo.bind(this);
-    }
-
-    showVideo() {
-        if (this.props.isPdf) { return; }
-
-        this.setState({ showVideo: true });
-    }
-
     renderButton() {
         const { pdf, restricted } = this.props;
-
-        if (this.state.showVideo) { return null; }
 
         if (restricted) {
             return (
                 <Link to="/buy">
-                    <button className="Button Button--small Button--orange Button--pdf">Get access</button>
+                    <button className="Button Button--small Button--orange">Get access</button>
                 </Link>
             );
         }
@@ -42,19 +24,21 @@ export class VideoSection extends React.Component {
     }
 
     renderImage() {
-        const { category, id } = this.props;
+        const { category, id, pdf } = this.props;
 
         return (
-            <img
-                src={`/images/thumbnails/${category}/${id}.jpg`}
-                className="Course__thumbnail"
-                alt=""
-            />
+            <a href={pdf} target="_blank">
+                <img
+                    src={`/images/thumbnails/${category}/${id}.jpg`}
+                    className="Course__thumbnail"
+                    alt=""
+                />
+            </a>
         );
     }
 
     render() {
-        const { pdf, restricted, title } = this.props;
+        const { restricted, title } = this.props;
 
         const classNames = css('Course__video-section', {
             'Course__video-section--restricted': restricted
@@ -66,17 +50,6 @@ export class VideoSection extends React.Component {
                     {title}
                     {this.renderButton()}
                 </div>
-                {
-                    !restricted
-                        ? (
-                            <a href={pdf} target="_blank">
-                                <button className="button" style={{ marginBottom: 10 }}>
-                                    Open PDF
-                                </button>
-                            </a>
-                        )
-                        : null
-                }
                 {this.renderImage()}
             </div>
         );

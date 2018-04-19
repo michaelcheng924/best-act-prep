@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { partial } from 'lodash';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
 
 import CourseConcept from 'app/components/Course/CourseConcept';
 import CourseConceptDetail from 'app/components/Course/CourseConceptDetail';
-import Video from 'app/components/Course/Video';
+import PDF from 'app/components/Course/PDF';
 
 class CourseConcepts extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class CourseConcepts extends Component {
                     <BackIcon />
                 </FloatingActionButton>
                 <br />
-                <CourseConceptDetail {...selected} />
+                <CourseConceptDetail {...selected} email={this.props.email} />
             </div>
         );
     }
@@ -64,6 +65,22 @@ class CourseConcepts extends Component {
                                             <div className="Course__section-title">
                                                 {item.title}
                                             </div>
+                                            <div className="Course__construction">
+                                                <em>Note: We are in the process of adding more and more concepts and practice questions to this section.</em>
+                                                {
+                                                    email
+                                                        ? null
+                                                        : (
+                                                            <span>
+                                                                <em>&nbsp;Buying the course today gets you lifetime access to everything we add, even if the price goes up!</em>
+                                                                &nbsp;
+                                                                <Link to="/buy">
+                                                                    <button className="Button Button--small Button--orange">Buy Now</button>
+                                                                </Link>
+                                                            </span>
+                                                        )
+                                                }
+                                            </div>
                                             <div className="Course__concepts">
                                                 {
                                                     item.concepts.map(concept => {
@@ -83,7 +100,7 @@ class CourseConcepts extends Component {
                                 }
 
                                 return (
-                                    <Video
+                                    <PDF
                                         {...item}
                                         category={category}
                                         key={item.id}

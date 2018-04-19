@@ -12,7 +12,7 @@ const ENGLISH_REVIEW = [
         title: 'Specific Review of Grammar Rules',
         concepts: [
             SUBJECT_VERB_1,
-            SUBJECT_VERB_2
+            // SUBJECT_VERB_2
         ]
     }
 ];

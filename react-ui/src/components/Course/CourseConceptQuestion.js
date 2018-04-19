@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { findIndex, partial } from 'lodash';
+import css from 'classnames';
 
 const LETTER_MAPPING = {
     0: 'A',
@@ -12,9 +14,13 @@ class CourseConceptQuestion extends Component {
         super(props);
 
         this.state = {
-            answer: null
+            answerIndex: props.isSample ? findIndex(this.props.answers, ['correct', false]) : null
         };
     }
+
+    selectAnswer = index => {
+        this.setState({ answerIndex: index });
+    };
 
     render() {
         const { answers, number, question } = this.props;
@@ -25,12 +31,34 @@ class CourseConceptQuestion extends Component {
                 <div className="Course__concept-detail-answers">
                     {
                         answers.map((answer, index) => {
+                            const isCorrect = this.state.answerIndex === index && answer.correct;
+                            const isIncorrect = this.state.answerIndex === index && !answer.correct
+
+                            const classNames = css('Course__concept-detail-answer', {
+                                'Course__concept-detail-answer--correct': isCorrect,
+                                'Course__concept-detail-answer--incorrect': isIncorrect
+                            });
+
                             return (
-                                <div className="Course__concept-detail-answer" key={index}>
-                                    <div className="Course__concept-detail-letter">
-                                        {LETTER_MAPPING[index]}
+                                <div key={index}>
+                                    <div
+                                        className={classNames}
+                                        onClick={partial(this.selectAnswer, index)}
+                                    >
+                                        <div className="Course__concept-detail-letter">
+                                            {LETTER_MAPPING[index]}
+                                        </div>
+                                        <div>{answer.text}</div>
                                     </div>
-                                    <div>{answer.text}</div>
+                                    {
+                                        this.state.answerIndex === index
+                                            ? (
+                                                <div className={answer.correct ? 'green' : 'red'}>
+                                                    {answer.explanation}
+                                                </div>
+                                            )
+                                            : null
+                                    }
                                 </div>
                             );
                         })
