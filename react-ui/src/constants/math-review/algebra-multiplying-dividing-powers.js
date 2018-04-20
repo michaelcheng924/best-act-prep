@@ -1,6 +1,7 @@
 import React from 'react';
 
 const MULTIPLYING_DIVIDING_POWERS = {
+    id: 'multiplying-dividing-powers',
     title: 'Multiplying and Dividing Powers',
     rule: (
         <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SUBJECT_VERB_1 = {
+    id: 'subject-verb-1',
     title: 'Subject Verb Agreement, Rule #1',
     rule: (
         <div>A singular subject (<em>she, Tom, bear</em>) takes a singular verb (<em>is, goes, climbs</em>, whereas a plural subject takes a plural verb. Be careful when a subject is followed by the word "of"!</div>

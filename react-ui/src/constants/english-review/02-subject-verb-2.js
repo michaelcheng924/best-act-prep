@@ -1,34 +1,66 @@
 import React from 'react';
 
-const SUBJECT_VERB_1 = {
+const SUBJECT_VERB_2 = {
+    id: 'subject-verb-2',
     title: 'Subject Verb Agreement, Rule #2',
     rule: (
-        <div>Two singular subjects connected by <em>or, either/or,</em> or <em>neither/nor</em> require a singular verb.</div>
+        <div>Two singular subjects connected by <em>or, either/or,</em> or <em>neither/nor</em> require a singular verb. The correct answer oftentimes does not sound right!</div>
     ),
     example: (
         <div>
-            <div><strong>Examples:</strong> The <span className="blue">list</span> of items <span className="purple">is</span>/are on the board.</div>
-            <div><strong>Explanation:</strong> The subject is <em>list</em>, so we will choose <em>is</em> for the verb. Be careful--many people will identify the plural <em>items</em> as the subject, but it is <em>not</em> the subject.</div>
-            <div><em>Tip: When you see the phrase "of SOMETHING," take it out of the sentence. "The <span className="blue">list</span> <span className="purple">is</span> on the board.</em></div>
+            <div><strong>Examples:</strong></div>
+            <div>My <span className="blue">grandmother or my grandfather</span> <span className="purple">is arriving</span> by train today.</div>
+            <div>Neither <span className="blue">Joseph nor Darah</span> <span className="purple">is</span> available.</div>
+            <div>Either <span className="blue">John or Sandra</span> <span className="purple">is helping</span> tomorrow with the job.</div>
         </div>
     ),
     questions: [
         {
-            question: <div>The stack of papers <strong><em>look/looks</em></strong> forboding.</div>,
+            question: <span>Neither the bear nor the giraffe <strong>is/are</strong> doing anything exciting today at the zoo.</span>,
             answers: [
                 {
-                    text: 'look',
-                    correct: false,
-                    explanation: 'The subject of the sentence is "stack," which is singular. "look" is a plural verb.'
+                    text: 'is',
+                    correct: true,
+                    explanation: 'Great work! Since "bear" and "giraffe" are both singular, "Neither" will use a singular verb. "is" is the singular verb here.'
                 },
                 {
-                    text: 'looks',
+                    text: 'are',
+                    correct: false,
+                    explanation: 'Since "bear" and "giraffe" are singular, "Neither" needs to use a singular verb. "are" is a plural verb.'
+                }
+            ]
+        },
+        {
+            question: <span>Either my brother or my sister <strong>run/runs</strong> the fastest.</span>,
+            answers: [
+                {
+                    text: 'run',
+                    correct: false,
+                    explanation: 'Since "brother" and "sister" are singular, "Either" needs to use a singular verb. "run" is a plural verb.'
+                },
+                {
+                    text: 'runs',
                     correct: true,
-                    explanation: 'Great work! The singular subject, "stack," matches with the singular verb "looks."'
+                    explanation: 'Great work! Since "brother" and "sister" are both singular, "Either" will use a singular verb. "runs" is the singular verb here.'
+                }
+            ]
+        },
+        {
+            question: <span>Samuel or Rebecca <strong>is/are</strong> swimming in the competition today.</span>,
+            answers: [
+                {
+                    text: 'is',
+                    correct: true,
+                    explanation: 'Great work! Since "Samuel" and "Rebecca" are both singular, "or" will use a singular verb. "is" is the singular verb here.'
+                },
+                {
+                    text: 'are',
+                    correct: false,
+                    explanation: 'Since "Samuel" and "Rebecca" are singular, "or" needs to use a singular verb. "are" is a plural verb.'
                 }
             ]
         }
     ]
 }
 
-export default SUBJECT_VERB_1;
+export default SUBJECT_VERB_2;

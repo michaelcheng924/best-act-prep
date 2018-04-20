@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { partial } from 'lodash';
+import { find, get, partial } from 'lodash';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back';
 
@@ -17,26 +17,113 @@ class CourseConcepts extends Component {
         };
     }
 
-    onConceptClick = title => {
-        this.setState({ selected: title });
+    componentDidMount() {
+        const { category } = this.props;
+
+        const pathname = window.location.pathname;
+        const splitPathname = pathname.split('/');
+
+        const conceptId = splitPathname[4];
+
+        if (conceptId && !this.getSelectedConcept(conceptId)) {
+            window.location.pathname = `/course/${category}/review`;
+        } else if (conceptId && this.getSelectedConcept(conceptId)) {
+            this.setState({
+                selected: conceptId
+            });
+        }
+    }
+
+    onConceptClick = id => {
+        this.setState({ selected: id });
     };
 
-    renderConceptDetail() {
+    getSelectedConcept(id) {
         const { selected } = this.state;
+        const { categoryData } = this.props;
+
+        const selectedConcept = find(get(categoryData, 'review.concepts.concepts', []), concept => {
+            return concept.id === (id || selected);
+        });
+
+        if (!selectedConcept) {
+            return null;
+        }
+
+        return selectedConcept;
+    }
+
+    renderConceptDetail() {
+        const { category } = this.props;
+
+        const selectedConcept = this.getSelectedConcept();
+
+        if (!selectedConcept) {
+            return null;
+        }
 
         return (
             <div className="Course__category">
-                <FloatingActionButton mini={true} onClick={partial(this.onConceptClick, null)}>
-                    <BackIcon />
-                </FloatingActionButton>
+                <Link to={`/course/${category}/review`}>
+                    <FloatingActionButton mini={true} onClick={partial(this.onConceptClick, null)}>
+                        <BackIcon />
+                    </FloatingActionButton>
+                </Link>
                 <br />
-                <CourseConceptDetail {...selected} email={this.props.email} />
+                <CourseConceptDetail {...selectedConcept} email={this.props.email} />
+            </div>
+        );
+    }
+
+    renderUnderConstruction() {
+        return (
+            <div className="Course__construction">
+                <em>Note: We are in the process of adding more and more concepts and practice questions to this section.</em>
+                {
+                    this.props.email
+                        ? null
+                        : (
+                            <span>
+                                <em>&nbsp;Buying the course today gets you lifetime access to everything we add, even if the price goes up!</em>
+                                &nbsp;
+                                <Link to="/buy">
+                                    <button className="Button Button--small Button--orange">Buy Now</button>
+                                </Link>
+                            </span>
+                        )
+                }
+            </div>
+        );
+    }
+
+    renderConceptCards(concepts) {
+        const { category } = this.props;
+
+        return (
+            <div className="Course__concepts">
+                {
+                    concepts.map(concept => {
+                        return (
+                            <div
+                                key={concept.id}
+                                onClick={partial(this.onConceptClick, concept.id)}
+                            >
+                                <Link to={`/course/${category}/review/${concept.id}`}>
+                                    <CourseConcept {...concept} />
+                                </Link>
+                            </div>
+                        );
+                    })
+                }
             </div>
         );
     }
 
     render() {
         const { category, categoryData, email } = this.props;
+
+        const pdf = categoryData.review.pdf;
+        const concepts = categoryData.review.concepts;
 
         return this.state.selected
             ? this.renderConceptDetail()
@@ -57,58 +144,18 @@ class CourseConcepts extends Component {
                             )
                     }
                     <div className="Course__practice-container">
-                        {
-                            categoryData.review.map((item, index) => {
-                                if (item.concepts) {
-                                    return (
-                                        <div key={index} className="Course__concepts-container">
-                                            <div className="Course__section-title">
-                                                {item.title}
-                                            </div>
-                                            <div className="Course__construction">
-                                                <em>Note: We are in the process of adding more and more concepts and practice questions to this section.</em>
-                                                {
-                                                    email
-                                                        ? null
-                                                        : (
-                                                            <span>
-                                                                <em>&nbsp;Buying the course today gets you lifetime access to everything we add, even if the price goes up!</em>
-                                                                &nbsp;
-                                                                <Link to="/buy">
-                                                                    <button className="Button Button--small Button--orange">Buy Now</button>
-                                                                </Link>
-                                                            </span>
-                                                        )
-                                                }
-                                            </div>
-                                            <div className="Course__concepts">
-                                                {
-                                                    item.concepts.map(concept => {
-                                                        return (
-                                                            <div
-                                                                key={concept.title}
-                                                                onClick={partial(this.onConceptClick, concept)}
-                                                            >
-                                                                <CourseConcept {...concept} />
-                                                            </div>
-                                                        );
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                    );
-                                }
-
-                                return (
-                                    <PDF
-                                        {...item}
-                                        category={category}
-                                        key={item.id}
-                                        restricted={!email && item.restricted}
-                                    />
-                                );
-                            })
-                        }
+                        <PDF
+                            {...pdf}
+                            category={category}
+                            restricted={!email && pdf.restricted}
+                        />
+                        <div className="Course__concepts-container">
+                            <div className="Course__section-title">
+                                {concepts.title}
+                            </div>
+                            {this.renderUnderConstruction()}
+                            {this.renderConceptCards(concepts.concepts)}
+                        </div>
                     </div>
                 </div>
             );

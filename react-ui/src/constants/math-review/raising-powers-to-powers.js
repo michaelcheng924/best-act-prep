@@ -1,6 +1,7 @@
 import React from 'react';
 
 const RAISING_POWERS_TO_POWERS = {
+    id: 'raising-powers-to-powers',
     title: 'Raising Powers to Powers',
     rule: (
         <div>
