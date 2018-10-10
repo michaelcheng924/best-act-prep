@@ -1,21 +1,24 @@
-const bcrypt = require('bcrypt-nodejs');
-const jwt = require('jwt-simple');
-const mailgun = require('mailgun-js')({ apiKey: 'key-8f4bfd53c20e48900b98c956c47ef07c', domain: 'bestactprep.co' });
+const bcrypt = require("bcrypt-nodejs");
+const jwt = require("jwt-simple");
+const mailgun = require("mailgun-js")({
+  apiKey: "key-8f4bfd53c20e48900b98c956c47ef07c",
+  domain: "bestactprep.co"
+});
 
-const { User, AdminUser } = require('../db/schemas');
+const { User, AdminUser } = require("../db/schemas");
 const {
-    MAILGUN_WELCOME_EMAIL_SUBJECT,
-    MAILGUN_WELCOME_EMAIL_TEXT
-} = require('../constants');
+  MAILGUN_WELCOME_EMAIL_SUBJECT,
+  MAILGUN_WELCOME_EMAIL_TEXT
+} = require("../constants");
 
 function api(app) {
-  app.post('/api/login', (req, res) => {
+  app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
 
     User.findOne({ email }, (err, result) => {
       if (!result) {
         res.send({
-          message: 'Email not found. Have you purchased the course?'
+          message: "Email not found. Have you purchased the course?"
         });
         return;
       }
@@ -23,13 +26,14 @@ function api(app) {
       bcrypt.compare(password, result.password, (err, isMatch) => {
         if (!isMatch) {
           res.send({
-            message: 'Incorrect password. If you forgot your password, simply send an email to cheng.c.michael@gmail.com!'
+            message:
+              "Incorrect password. If you forgot your password, simply send an email to cheng.c.michael@gmail.com!"
           });
           return;
         } else {
           res.send({
             email,
-            token: jwt.encode(email, 'secret')
+            token: jwt.encode(email, "secret")
           });
           return;
         }
@@ -37,65 +41,65 @@ function api(app) {
     });
   });
 
-  app.post('/api/authenticate', (req, res) => {
-      const token = req.body.token;
-      const email = jwt.decode(token, 'secret');
+  app.post("/api/authenticate", (req, res) => {
+    const token = req.body.token;
+    const email = jwt.decode(token, "secret");
 
-      User.findOne({ email }, (err, user) => {
-          if (user) {
-              res.send({ email });
-              return;
-          } else {
-              res.send({ authenticated: false });
-              return;
-          }
-      });
+    User.findOne({ email }, (err, user) => {
+      if (user) {
+        res.send({ email });
+        return;
+      } else {
+        res.send({ authenticated: false });
+        return;
+      }
+    });
   });
 
-  app.post('/api/buycourse', (req, res) => {
+  app.post("/api/buycourse", (req, res) => {
     const email = req.body.email;
 
     const MAILGUN_DATA = {
-        from: 'COURSE BOUGHT <dev@bestactprep.co>',
-        to: 'cheng.c.mike@gmail.com',
-        subject: `COURSE BOUGHT by ${email}`,
-        text: `Course bought by ${email}`
+      from: "COURSE BOUGHT <dev@bestactprep.co>",
+      to: "cheng.c.mike@gmail.com",
+      subject: `COURSE BOUGHT by ${email}`,
+      text: `Course bought by ${email}`
     };
-    
+
     mailgun.messages().send(MAILGUN_DATA);
 
     User.findOne({ email }, (err, result) => {
-        bcrypt.hash('hungrykoala', null, null, (err, hash) => {
-          const user = new User({
-              email,
-              password: hash
+      bcrypt.hash("hungrykoala", null, null, (err, hash) => {
+        const user = new User({
+          email,
+          password: hash
+        });
+
+        user.save((err, result) => {
+          if (err) return handleError(res, errorMessage, err, email);
+
+          const MAILGUN_DATA = {
+            from: "Best ACT Prep Welcome Team <welcome@bestactprep.co>",
+            to: email,
+            subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
+            text: MAILGUN_WELCOME_EMAIL_TEXT(email)
+          };
+          mailgun.messages().send(MAILGUN_DATA);
+
+          // Log in the user and send token to persist login
+          const token = jwt.encode(email, "secret");
+
+          res.send({
+            email,
+            token
           });
-
-          user.save((err, result) => {
-              if (err) return handleError(res, errorMessage, err, email);
-
-              const MAILGUN_DATA = {
-                  from: 'Best ACT Prep Welcome Team <welcome@bestactprep.co>',
-                  to: email,
-                  subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
-                  text: MAILGUN_WELCOME_EMAIL_TEXT(email)
-              };
-              mailgun.messages().send(MAILGUN_DATA);
-
-              // Log in the user and send token to persist login
-              const token = jwt.encode(email, 'secret');
-
-              res.send({
-                  email,
-                  token
-              });
-          });
+        });
       });
     });
   });
 
   // ADMIN
-  app.get('/api/getusers', (req, res) => {
+  app.get("/api/getusers", (req, res) => {
     User.find({}, (err, results) => {
       res.send({
         users: results
@@ -103,7 +107,7 @@ function api(app) {
     });
   });
 
-  app.post('/api/adduser', (req, res) => {
+  app.post("/api/adduser", (req, res) => {
     const { email, password } = req.body;
 
     bcrypt.hash(password, null, null, (err, hash) => {
@@ -118,17 +122,17 @@ function api(app) {
     });
   });
 
-  app.post('/api/resetpassword', (req, res) => {
+  app.post("/api/resetpassword", (req, res) => {
     const { email, newPassword } = req.body;
 
     bcrypt.hash(newPassword, null, null, (err, hash) => {
-        User.update({ email }, { $set: { password: hash } }, err => {
-            res.send({ success: true });
-        });
+      User.update({ email }, { $set: { password: hash } }, err => {
+        res.send({ success: true });
+      });
     });
   });
 
-  app.delete('/api/deleteuser', (req, res) => {
+  app.delete("/api/deleteuser", (req, res) => {
     const { email } = req.body;
 
     User.remove({ email }, err => {
