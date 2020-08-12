@@ -21,7 +21,6 @@ class Admin extends Component {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log("==========", json.users);
         this.setState({ users: json.users });
       });
   }
