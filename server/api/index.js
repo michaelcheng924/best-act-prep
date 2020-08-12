@@ -2,13 +2,13 @@ const bcrypt = require("bcrypt-nodejs");
 const jwt = require("jwt-simple");
 const mailgun = require("mailgun-js")({
   apiKey: "key-8f4bfd53c20e48900b98c956c47ef07c",
-  domain: "bestactprep.co"
+  domain: "bestactprep.co",
 });
 
 const { User, AdminUser } = require("../db/schemas");
 const {
   MAILGUN_WELCOME_EMAIL_SUBJECT,
-  MAILGUN_WELCOME_EMAIL_TEXT
+  MAILGUN_WELCOME_EMAIL_TEXT,
 } = require("../constants");
 
 function api(app) {
@@ -18,7 +18,7 @@ function api(app) {
     User.findOne({ email }, (err, result) => {
       if (!result) {
         res.send({
-          message: "Email not found. Have you purchased the course?"
+          message: "Email not found. Have you purchased the course?",
         });
         return;
       }
@@ -27,13 +27,13 @@ function api(app) {
         if (!isMatch) {
           res.send({
             message:
-              "Incorrect password. If you forgot your password, simply send an email to cheng.c.michael@gmail.com!"
+              "Incorrect password. If you forgot your password, simply send an email to cheng.c.michael@gmail.com!",
           });
           return;
         } else {
           res.send({
             email,
-            token: jwt.encode(email, "secret")
+            token: jwt.encode(email, "secret"),
           });
           return;
         }
@@ -63,7 +63,7 @@ function api(app) {
       from: "COURSE BOUGHT <dev@bestactprep.co>",
       to: "cheng.c.mike@gmail.com",
       subject: `COURSE BOUGHT by ${email}`,
-      text: `Course bought by ${email}`
+      text: `Course bought by ${email}`,
     };
 
     mailgun.messages().send(MAILGUN_DATA);
@@ -72,7 +72,7 @@ function api(app) {
       bcrypt.hash("hungrykoala", null, null, (err, hash) => {
         const user = new User({
           email,
-          password: hash
+          password: hash,
         });
 
         user.save((err, result) => {
@@ -82,7 +82,7 @@ function api(app) {
             from: "Best ACT Prep Welcome Team <welcome@bestactprep.co>",
             to: email,
             subject: MAILGUN_WELCOME_EMAIL_SUBJECT,
-            text: MAILGUN_WELCOME_EMAIL_TEXT(email)
+            text: MAILGUN_WELCOME_EMAIL_TEXT(email),
           };
           mailgun.messages().send(MAILGUN_DATA);
 
@@ -91,7 +91,7 @@ function api(app) {
 
           res.send({
             email,
-            token
+            token,
           });
         });
       });
@@ -102,18 +102,21 @@ function api(app) {
   app.get("/api/getusers", (req, res) => {
     User.find({}, (err, results) => {
       res.send({
-        users: results
+        users: results,
       });
+    }).catch((e) => {
+      console.log("==========", e);
     });
   });
 
   app.post("/api/adduser", (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, data } = req.body;
 
     bcrypt.hash(password, null, null, (err, hash) => {
       const newUser = new User({
         email,
-        password: hash
+        password: hash,
+        data,
       });
 
       newUser.save((err, result) => {
@@ -126,7 +129,7 @@ function api(app) {
     const { email, newPassword } = req.body;
 
     bcrypt.hash(newPassword, null, null, (err, hash) => {
-      User.update({ email }, { $set: { password: hash } }, err => {
+      User.update({ email }, { $set: { password: hash } }, (err) => {
         res.send({ success: true });
       });
     });
@@ -135,12 +138,12 @@ function api(app) {
   app.delete("/api/deleteuser", (req, res) => {
     const { email } = req.body;
 
-    User.remove({ email }, err => {
+    User.remove({ email }, (err) => {
       res.send({ success: true });
     });
   });
 }
 
 module.exports = {
-  api
+  api,
 };
